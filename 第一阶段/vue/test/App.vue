@@ -11,9 +11,10 @@
 import BaseSon from "./Son";
 
 export default {
-    data(){
+    data(){  
         return {
-            name:"hahah"
+            name:"hahah",
+            data:[1,2,3,4,5]
         }
     },
     components:{
