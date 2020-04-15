@@ -3,7 +3,7 @@
     <button @click="handleClick">click</button>
     <transition
       mode="in-out"
-    >
+    ><!--先插入后删除-->
       <div class="box" :key="keyName">hello {{ keyName }}</div>
     </transition>
   </div>

@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    handleAdd () {
+    handleAdd () {  
       const randomIndex = Math.floor( Math.random() * this.lists.length );
       this.lists.splice(randomIndex, 0, this.nextNum ++);
     },

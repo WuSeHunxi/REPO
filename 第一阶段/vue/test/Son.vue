@@ -1,7 +1,7 @@
 <template>
     <div>
         <p @click="click">{{user.age}}</p>
-        <div :data="hah">{{data}}</div>
+        <div :data="data">{{data}}</div>
         <div v-for="item in data" :key="item">{{item}}</div>
         <slot></slot>
     </div>
@@ -9,6 +9,12 @@
 
 <script>
 export default {
+    name:'base-son',
+    props:{
+        data:{
+            type:Array,
+        },
+    },
     data(){
         return {
             user:{
@@ -16,25 +22,14 @@ export default {
                 age:12
             }
         }
-    },
-    props:{
-        // data:{
-        //     type:String,
-        //     // required: true
-        //     // default:()=>'jajja'
-        // },
-        data:{
-            type:Array,
-            required:true
-        }
-    },
+    }, 
     created(){
-        console.log(this.name)
+        console.log(this.data)
         console.log(0)
     },
     methods:{
         click(){
-            console.log(this.name)
+            console.log(this.user.name)
         }
     }
 }

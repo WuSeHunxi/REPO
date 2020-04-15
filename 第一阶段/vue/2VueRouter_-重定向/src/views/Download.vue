@@ -1,3 +1,3 @@
 <template>
-  <div>资源下载</div>
+  <div>下载资源</div>
 </template>

@@ -3,15 +3,13 @@
     <div class="main">问题：{{ question.title }}</div>
 
     <div class="other">
-      <div 
-        v-for="other in otherQuestionList" 
+      <div
+        v-for="other in otherQuestionList"
         :key="other.id"
         :class="other.type"
         :title="other.title"
         @click="handleClick(other.id)"
-      >
-        {{ other.title }}
-      </div>
+      >{{ other.title }}</div>
     </div>
   </div>
 </template>
@@ -20,72 +18,69 @@
 export default {
   props: {
     id: {
-      type: [String, Number],
-    },
-  },
-  data () {
-    return {
-      question: null,
+      type: [String, Number]
     }
   },
-  mounted () {
-    
+  data() {
+    return {
+      question: null
+    };
   },
+  mounted() {},
   computed: {
-    otherQuestionList () {
+    otherQuestionList() {
       const arr = [];
 
-      if(this.question.prev) {
+      if (this.question.prev) {
         const { prev, prevId } = this.question;
 
         arr.push({
-          type: 'prev',
+          type: "prev",
           title: prev,
           id: prevId
-        })
+        });
       }
 
-      if(this.question.next) {
+      if (this.question.next) {
         const { next, nextId } = this.question;
 
         arr.push({
-          type: 'next',
+          type: "next",
           title: next,
           id: nextId
-        })
+        });
       }
 
       return arr;
-    },
+    }
   },
   methods: {
-    handleClick (id) {
-
+    handleClick(id) {
       this.$router.push({
-        name: 'question',
+        name: "question",
         params: {
-          id,
+          id
         }
       });
     },
-    getData () {
+    getData() {
       // const { id } = this.$route.params;
       const { id } = this;
 
       this.$axios.get(`/question/${id}`).then(res => {
         this.question = res;
-      })
-    },
+      });
+    }
   },
   watch: {
-    '$route': {
-      handler () {
+    $route: {
+      handler() {
         this.getData();
       },
-      immediate: true,
-    } 
+      immediate: true
+    }
   }
-}
+};
 </script>
 
 <style scoped>

@@ -52,6 +52,7 @@ export default {
     handleClick (index) {
       const flag = !this.showChildren[index];
       this.$set(this.showChildren, index, flag);
+      console.log(this.data);
     },
   },
 }

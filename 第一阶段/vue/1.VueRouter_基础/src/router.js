@@ -4,6 +4,7 @@ import Home from './views/Home';
 
 Vue.use(VueRouter);
 
+//每一个路由映射一个组件
 const routes = [
   {
     path: '/',
