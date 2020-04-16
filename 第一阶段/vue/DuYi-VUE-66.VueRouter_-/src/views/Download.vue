@@ -1,3 +1,3 @@
 <template>
-  <div>资源下载</div>
+  <div>èµ„æº�ä¸‹è½½</div>
 </template>

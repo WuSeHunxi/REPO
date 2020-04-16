@@ -1,36 +1,36 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from './views/Home';
-import auth from './utils/auth';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "./views/Home";
+import auth from "./utils/auth";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    redirect: '/home',
+    path: "/",
+    redirect: "/home",
   },
   {
-    path: '/home',
+    path: "/home",
     component: Home,
     // alias: '/',
   },
   {
-    path: '/learn',
+    path: "/learn",
     // component: () => import('./views/Learn'),
     components: {
-      default: () => import('./views/Learn'),
-      student: () => import('./views/Student'),
+      default: () => import("./views/Learn"),
+      student: () => import("./views/Student"),
     },
   },
   {
-    path: '/student',
-    component: () => import('./views/Student'),
+    path: "/student",
+    component: () => import("./views/Student"),
   },
   {
-    path: '/about',
-    component: () => import('./views/About'),
-    beforeEnter (to, from, next) {
+    path: "/about",
+    component: () => import("./views/About"),
+    beforeEnter(to, from, next) {
       next();
     },
     meta: {
@@ -39,12 +39,13 @@ const routes = [
     },
   },
   {
-    path: '/activity',
-    component: () => import(/* webpackChunkName: 'academic' */'./views/Activity'),
-    redirect (to) {
+    path: "/activity",
+    component: () =>
+      import(/* webpackChunkName: 'academic' */ "./views/Activity"),
+    redirect(to) {
       return {
-        name: 'academic',
-      }
+        name: "academic",
+      };
     },
     meta: {
       requiresLogin: true,
@@ -56,69 +57,71 @@ const routes = [
       //   component: () => import('./views/Academic'),
       // },
       {
-        path: 'academic',
-        name: 'academic',
-        component: () => import(/* webpackChunkName: 'academic' */'./views/Academic'),
+        path: "academic",
+        name: "academic",
+        component: () =>
+          import(/* webpackChunkName: 'academic' */ "./views/Academic"),
       },
       {
-        path: 'personal',
-        name: 'personal',
-        component: () => import('./views/Personal'),
+        path: "personal",
+        name: "personal",
+        component: () => import("./views/Personal"),
       },
       {
-        path: 'download',
-        name: 'download',
-        component: () => import('./views/Download'),
+        path: "download",
+        name: "download",
+        component: () => import("./views/Download"),
       },
     ],
   },
   {
-    path: '/course/:userId',
-    component: () => import('./views/About'),
+    path: "/course/:userId",
+    component: () => import("./views/About"),
   },
   {
-    path: '/question/:id',
-    name: 'question',
+    path: "/question/:id",
+    name: "question",
     // props: true,
-    props: route => ({
+    props: (route) => ({
       // name: route.name,
-      id: route.params.id 
+      id: route.params.id,
     }),
-    component: () => import('./views/Question'),
+    component: () => import("./views/Question"),
   },
   {
-    path: '/login',
-    component: () => import('./views/Login'),
-  }
+    path: "/login",
+    component: () => import("./views/Login"),
+  },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes,
-  scrollBehavior (to, from, savedPosition) {
-    if(savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      //如果我前进或者后退了
       return savedPosition;
     } else {
-      if(to.hash) {
-        return { selector: to.hash }
+      if (to.hash) {
+        return { selector: to.hash };//定位到有锚点的位置
       } else {
-        return {x: 0, y: 0}
+        return { x: 0, y: 0 };
       }
     }
-  }
+  },
 });
 
 router.beforeEach((to, from, next) => {
-  const isRequiresLogin = to.matched.some(item => item.meta.requiresLogin);
+  const isRequiresLogin = to.matched.some((item) => item.meta.requiresLogin);
 
-  if(isRequiresLogin) {
+  if (isRequiresLogin) {
     const isLogin = auth.isLogin();
-    if(isLogin) {
+    if (isLogin) {
       next();
     } else {
-      const isToLogin = window.confirm('要登录后才可以浏览，要去登录吗？');
+      const isToLogin = window.confirm("要登录后才可以浏览，要去登录吗？");
 
-      isToLogin ? next('/login') : next(false);
+      isToLogin ? next("/login") : next(false);
     }
   } else {
     next();
