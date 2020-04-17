@@ -1,0 +1,3 @@
+export const COUNT_INCREMENT='COUNT_INCREMENT'
+export const UPDATE_OBJ='UPDATE_OBJ';
+export const CHANGE_VALUE="CHANGE_VALUE";

@@ -9,7 +9,7 @@ class VueRouter {
     this.init();
   }
 
-  createRouteMap (routes) {
+  createRouteMap (routes) {//得到对象：路径对应组件
     const routeMap = {};
 
     for(let i = 0; i < routes.length; i ++) {

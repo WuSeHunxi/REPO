@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- router-link -->
+    <!-- <span onclick="routerChange('/')">首页</span>
+  <span onclick="routerChange('/about')">关于</span> -->
+    <a onclick="routerChange('/')">首页</a>
+    <a onclick="routerChange('/about')">关于</a>
+
+    <!-- router-view -->
+    <div id="view"></div>
+
+    <script>
+    //------>hash
+    // document.addEventListener('DOMContentLoaded', () => {//加载完毕触发的的事件，比Load更快
+    //   view.innerHTML = location.hash.slice(1);
+    // })
+
+    // window.addEventListener('hashchange', () => {
+    //   view.innerHTML = location.hash.slice(1);
+    // })
+
+    // function routerChange (pathname) {
+    //   location.hash = pathname;
+    // }
+
+
+    // history
+    function routerChange (pathname) {
+      history.pushState(null, null, pathname);
+      view.innerHTML = location.pathname;
+    }
+
+    window.addEventListener('popstate', () => {
+      view.innerHTML = location.pathname;
+    })
+
+
+    // hash hsitory
+    // #(锚点跳转) url会更改、浏览器可以前进和后退、浏览器不刷新
+    // hansh模式下永远不会将请求发送到后台，即：不和服务端交流
+
+    // 无 #(锚点)，需要服务端的配合
+    // 服务端的同事配合
+
+
+    //笔记：
+    //hash：页面不会刷新：当url发生改变的时候，会触发hashchange事件
+    //    触发hashchange方法，拿到对应的路径，渲染组件
+
+    //history：利用html5实现的，需要利用pushState这个方法（添加历史状态）
+    //    window的popstate当浏览器前进和后退的时候触发的事件
+  </script>
+  </body>
+</html>
