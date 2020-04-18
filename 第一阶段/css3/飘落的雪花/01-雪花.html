@@ -95,9 +95,12 @@
         this.speedY = speedY;
         this.speedR = speedR;
       }
+      
+      //添加画线的方法
       Snow.prototype.render = function () {
         context.save(); //保存最初始的状态
         context.beginPath();
+        //改变画布的原点
         context.translate(this.x, this.y); //线的中心点所在的坐标
         context.scale(this.scale, this.scale);
         context.rotate((this.rotate * Math.PI) / 180);
@@ -109,24 +112,21 @@
         context.lineWidth = 10;
         context.lineCap = "round";
 
-        //第二条线
+        //利用三角函数将点算出来的
         var disX = Math.sin((30 * Math.PI) / 180) * 20;
         var disY = Math.sin((60 * Math.PI) / 180) * 20;
 
+        //第二条线
         context.moveTo(-disX, -disY);
         context.lineTo(disX, disY);
 
+        //第三条线
         context.moveTo(-disX, disY);
         context.lineTo(disX, -disY);
 
         context.stroke();
         context.restore(); //恢复最初始状态
       };
-      /* var snow=new Snow(100,100,1,10,10,10,10);
-		snow.render();
-
-		var snow=new Snow(200,170,2,30,10,10,10);
-		snow.render(); */
 
       var snowArray = []; //存储所有的雪花
       function init() {
