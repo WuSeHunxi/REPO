@@ -1,34 +1,29 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8" />
-		<title></title>
-		<style>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
       body {
         margin: 0;
         overflow: hidden;
       }
-
       #canvas {
-        background: #000;
+        background-color: #000;
       }
     </style>
-	</head>
-
-	<body>
-		<canvas id="canvas"></canvas>
-		<script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
       var canvas = document.getElementById("canvas");
       var context = canvas.getContext("2d");
       var circleList = [];
-
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
       canvas.addEventListener("mousemove", function (ev) {
-        /* var circle=new Circle(ev.clientX,ev.clientY);
-			circle.draw(); */
-
         circleList.push(new Circle(ev.clientX, ev.clientY));
       });
 
@@ -47,38 +42,33 @@
           "," +
           random(0, 255) +
           ")";
-
-        this.vx = (Math.random() - 0.5) * 3; //-0.5-0.5
+        this.vx = (Math.random() - 0.5) * 3;
         this.vy = (Math.random() - 0.5) * 3;
-
         this.a = 1;
       }
+
       Circle.prototype = {
         draw: function () {
           context.beginPath();
           context.fillStyle = this.color;
           context.globalAlpha = this.a;
-          //重合属性用于颜色重合叠加
           context.globalCompositeOperation = "lighter";
           context.arc(this.x, this.y, 30, 0, Math.PI * 2);
           context.fill();
-
-          this.upDate();
+          this.update();
         },
-        upDate: function () {
+        update: function () {
           this.x += this.vx;
           this.y += this.vy;
-
           this.a *= 0.98;
-        }
+        },
       };
 
       function render() {
         context.clearRect(0, 0, canvas.width, canvas.height);
-        circleList.forEach(function (ele, i) {
-          ele.draw();
-
-          if (ele.a < 0.05) {
+        circleList.forEach(function (item, i) {
+          item.draw();
+          if (item.a < 0.05) {
             circleList.splice(i, 1);
           }
         });
@@ -86,5 +76,5 @@
       }
       render();
     </script>
-	</body>
+  </body>
 </html>
