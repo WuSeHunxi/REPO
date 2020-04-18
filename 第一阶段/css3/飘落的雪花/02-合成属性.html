@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+
+		/* context.beginPath();
+		context.fillStyle = 'skyblue';
+		context.fillRect(100, 100, 200, 200);
+
+		context.globalCompositeOperation='lighter';
+
+		context.beginPath();
+		context.fillStyle = 'green';
+		context.arc(300, 300, 100, 0, Math.PI * 2);
+		context.fill(); */
+
+		context.beginPath();
+		context.strokeRect(200,200,200,200);
+		context.font='40px sans';
+		context.textAlign='left';
+		context.textBaseline='middle';
+		context.fillText('陈学辉真帅',200,200);
+	</script>
+</body>
+
+</html>
