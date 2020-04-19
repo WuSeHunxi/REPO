@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj={
+            name:"hah",
+            age:1,
+            sex:true,
+            address:{
+                name:"hhahahha",
+                city:"huhu"
+            }
+        }
+
+        const obj2={
+            ...obj,
+            name:'oo',
+            address:{
+                ...obj.address,
+                name:'iaiaiai'
+            }
+        }
+        console.log(obj2)
+    </script>
+</body>
+</html>
