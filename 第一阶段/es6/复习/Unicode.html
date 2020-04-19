@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        // codePointAt()：ES6新增的语法
+      function is32bit(str) {
+        return str.codePointAt(0) > 0xffff;
+      }
+      console.log("𠮷是否是32位的：", is32bit("𠮷"));
+
+      //计算字符串长度
+      function getLengthOfCodePoint(str) {
+        let len = 0;
+        for (let i = 0; i < str.length; i++) {
+          if (is32bit(str, i)) {
+            i++;
+          }
+          len++;
+        }
+        return len;
+      }
+      console.log("ab𠮷ab的码点长度", getLengthOfCodePoint("ab𠮷ab"));
+    </script>
+  </body>
+</html>

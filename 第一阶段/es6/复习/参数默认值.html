@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test(a, b = 1, c = 2) {
+        const result = a + b + c;
+        return result;
+      }
+      const rs = test(10, undefined, 5);
+      console.log(rs);
+
+      const result = () => {
+        console.log(this);
+        // console.log(arguments);
+      };
+      result();
+
+      const obj = {
+        name: "kaka",
+        eat: () => {
+          console.log(this);
+        },
+        drink(){
+            console.log(this);
+        }
+      };
+      obj.eat();
+      obj.drink()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Animal {
+        constructor(name, age, sex) {
+          this.name = name;
+          this.age = age;
+          this.sex = sex;
+        }
+
+        print() {
+          console.log(this.name, this.age, this.sex);
+        }
+      }
+
+      const animal = new Animal("pp", 12, true);
+      animal.print();
+
+      for (prop in animal) {
+        console.log(prop);
+      }
+    </script>
+  </body>
+</html>
