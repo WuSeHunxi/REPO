@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const pro = new Promise((resolve, reject) => {
+      //     console.log("a");
+      //     resolve(1);
+      //     setTimeout(() => {
+      //       console.log("b");
+      //     }, 0);
+      //   });
+      //   //pro: resolved---->已经是resolve的状态了
+      //   pro.then((data) => {
+      //     console.log(data);
+      //   });
+      //   pro.catch((err) => {
+      //     console.log(err);
+      //   });
+      //   console.log("c");
+      //   console.log(pro); //resolve
+
+      const p = new Promise((resolve, reject) => {
+        resolve(1);
+      });
+      p.then((res) => {
+        console.log(res);
+      });
+      console.log(p);
+
+      const p1=new Promise((resolve,reject)=>{
+          throw new Error(1);
+      })
+      
+      const p2=p1.then(res=>{
+          console.log(res);
+      },err=>{
+        //   console.log(err);
+        throw new Error(22)
+      })
+      
+      const p3=p2.then(data=>{
+          console.log(data)
+      },err=>{
+          console.log(err)
+      })
+    </script>
+  </body>
+</html>
