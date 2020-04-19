@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //三个对象相结合的案例
+      function getCommonHeaders() {
+        return new Headers({
+          a: 1,
+          b: 2,
+        });
+      }
+
+      function printHeaders(headers) {
+        const data = headers.entries();
+        for (const item of data) {
+          console.log(item[0] + ":" + item[1]);
+        }
+      }
+
+      let req;
+      //创建请求头
+      function getRequestInfo() {
+        if (!req) {
+          const url = "./data/classes.json";
+          const headers = getCommonHeaders();
+          headers.set("a", 1);
+          headers.append("c", "hello");
+          printHeaders(headers);
+          req = new Request(url, {
+            headers,
+          });
+        }
+        return req.clone();
+      }
+
+      async function getClass() {
+        const resp = await fetch(getRequestInfo());
+        const data = await resp.json();
+        console.log(data);
+      }
+
+      getClass();
+    </script>
+  </body>
+</html>
