@@ -28,6 +28,10 @@
             }))
         }
         //等到所有的promise变成resolved状态后输出: 全部完成
+        Promise.all(proms).then(res=>{
+            console.log(res);
+        })
+        
         const pro = Promise.race(proms)
         pro.then(data => {
             console.log("有人完成了", data);

@@ -16,21 +16,26 @@
           let str = i + "=" + obj[i];
           arr.push(str);
         }
-        console.log(arr);
         return arr.join("&");
       }
-
       function ajax(obj) {
         return new Promise((resolve, reject) => {
+          //指定提交方式的默认值
           obj.type = obj.type || "get";
+          //设置是否异步，默认为true(异步)
           obj.async = obj.async || true;
+          //设置数据的默认值
           obj.data = obj.data || null;
+          // 根据不同的浏览器创建XHR对象
           let xhr = null;
           if (window.XMLHttpRequest) {
+            // 非IE浏览器
             xhr = new XMLHttpRequest();
           } else {
+            // IE浏览器
             xhr = new ActiveXObject("Microsoft.XMLHTTP");
           }
+          // 区分get和post,发送HTTP请求
           if (obj.type === "post") {
             xhr.open(obj.type, obj.url, obj.async);
             xhr.setRequestHeader(
@@ -60,32 +65,38 @@
         });
       }
 
-      ajax({
-        url: "./data/students.json",
-      })
-        .then((res) => {
-          for (let i = 0; i < res.length; i++) {
-            if (res[i].name === "李华") {
-              return res[i].classId;
-            }
-          }
-        })
-        .then((cid) => {
-          ajax({
-            url: "./data/classes.json?classId=" + cid,
-          }).then(data=>{
-            //   console.log(data)
-            console.log(cid);
-            for (let i = 0; i < data.length; i++) {
-                if(data[i].id===cid){
-                    return data[i];
-                }
-            }
-          }).then(teacher=>{
-              console.log(teacher.teacherId);
-              console.log(cid)
-          })
+      async function getTeacher() {
+        const stus = await ajax({
+          url: "./data/students.json",
         });
+        let cid;
+        for (let i = 0; i < stus.length; i++) {
+          if (stus[i].name === "李华") {
+            cid = stus[i].classId;
+          }
+        }
+
+        const cls = await ajax({
+          url: "./data/classes.json",
+        });
+        let tid;
+        for (let i = 0; i < cls.length; i++) {
+          if (cls[i].id === cid) {
+            tid = cls[i].teacherId;
+          }
+        }
+        const ts = await ajax({
+          url: "./data/teachers.json",
+        });
+        for (let i = 0; i < ts.length; i++) {
+          const element = ts[i];
+          if (element.id === tid) {
+            console.log(element);
+          }
+        }
+      }
+
+      getTeacher();
     </script>
   </body>
 </html>
