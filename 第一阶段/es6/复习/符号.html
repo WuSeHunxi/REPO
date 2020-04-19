@@ -30,6 +30,26 @@
       for (prop in r) {
         console.log(prop);
       }
+      console.log(Object.getOwnPropertySymbols(r));
+
+      const test=(function(){
+        console.log("test")
+      }())
+
+      /**
+       * 
+       * 共享符号的实现原理
+      */
+
+      const SymmbolFor=(()=>{
+        const global={};
+        return function (){
+            if(!global[name]){
+                global[name]=Symbol(name);
+            }
+            return global[name];
+        }
+      })();
     </script>
   </body>
 </html>
