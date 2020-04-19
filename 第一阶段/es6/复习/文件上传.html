@@ -6,9 +6,9 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" id="avatar" />
+    <input type="file" id="avatar" />
     <img src="" id="imgAvatar" />
-    <button>上传</button>asfsz
+    <button>上传</button>
     <script>
       /**
        * 文件上传利用的是FormData创建请求体
@@ -16,6 +16,7 @@
        */
       async function upload() {
         const inp = document.getElementById("avatar");
+        console.log(inp)
         if (inp.files.length === 0) {
           alert("请选择要上传的文件");
           return;
@@ -28,6 +29,7 @@
           method: "POST",
           body: formData,
         });
+        console.log(resp)
         const result = await resp.json();
         return result;
       }
