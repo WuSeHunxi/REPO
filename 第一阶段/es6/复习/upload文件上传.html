@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="file" id="avatar" />
+    <img src="" alt="" id="imgAvatar" />
+    <button>开始上传</button>
+    <script>
+      const img = document.getElementById("imgAvatar");
+      const inpFile = document.getElementById("avatar");
+      const button = document.getElementsByTagName("button")[0];
+      //上传的功能
+      async function upload() {
+        const formData = new FormData();
+        const url = "http://101.132.72.36:5100/api/upload";
+        //文件的字段头不能修改
+        formData.append("imagefile", inpFile.files[0]);
+        const res = await fetch(url, {
+          method: "POST",
+          body: formData,
+        });
+        const result = await res.json();
+        console.log(res);
+        return result;
+      }
+
+      // async function test(){
+      //     const res=await upload();
+      //     const json=await res.json();
+      //     console.log(json);
+      // }
+      // test()
+
+      button.onclick = async function () {
+        if (inpFile.files.length === 0) {
+          alert("请先选择上传文件哦~");
+          return;
+        }
+        const res = await upload();
+        img.src = res.path;
+      };
+    </script>
+  </body>
+</html>

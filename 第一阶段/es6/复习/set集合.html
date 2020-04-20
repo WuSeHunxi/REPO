@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const s1 = new Set();
+      s1.add(1);
+      s1.add(+0);
+      s1.add(-0);
+      s1.add(3);
+      console.log(s1);
+      for (const item of s1) {
+          console.log(item)
+      }
+      console.log("长度为"+s1.size)
+
+      const s2 = new Set("oaoaoaoa");
+      console.log(s2);
+      //for-of循环
+      for (const item of s2) {
+        console.log(item);
+      }
+      const s3 = new Set([1, 2, 3, 4]); //可迭代对象，参数也是
+      for (const item of s3) {
+        //Set使用for-of进行遍历
+        console.log(item);
+      }
+
+      //数组 字符串去重
+      const arr = [45, 7, 2, 2, 34, 46, 6, 57, 8, 55, 6, 46];
+    //   const arr2=[...new Set(arr)]
+      const set=new Set(arr);
+      const arr2=[...set]
+      console.log(arr2)
+
+      const str = "asf23sdfgsdgfsafasdfasfasfasfsafsagfdsfg";
+      const set1=new Set(str);
+      const s=[...set1].join('');
+      console.log(s)
+    </script>
+  </body>
+</html>
