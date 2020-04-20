@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const arr = [1, 2, 3, 4];
+
+      //   const iterator = {
+      //     i: 0,
+      //     next() {
+      //       return {
+      //         value: arr[this.i++],
+      //         done: this.i > arr.length,
+      //       };
+      //     },
+      //   };
+      //   const data = iterator.next();
+      //   console.log(data);
+
+      //迭代器创建函数
+      function createFeiboIterator() {
+        let pre1 = 1,
+          pre2 = 1;
+        let n = 1;
+        return {
+          next() {
+            if (n <= 2) {
+              result = 1;
+            } else {
+              result = pre1 + pre2;
+              pre2 = pre1;
+              pre1 = result;
+            }
+            pre2 = pre1;
+            pre1 = result;
+            n++;
+            return {
+              value: result,
+              done: false,
+            };
+          },
+        };
+      }
+
+      const iterator = createFeiboIterator().next();
+      // console.log(iterator.next());
+      for (const prop in iterator) {
+        console.log(prop);
+      }
+    </script>
+  </body>
+</html>

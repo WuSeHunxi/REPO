@@ -7,40 +7,32 @@
   </head>
   <body>
     <script>
-      var obj = {
+      const obj = {
         a: 1,
         b: 2,
-        [Symbol.iterator]() {
-          const keys = Object.keys(this);
+        [Symbol.iterator]: function () {
+          const prop = Object.keys(this);
           let i = 0;
           return {
             next() {
-              const propName = keys[i];
+              const propName = prop[i];
               const propValue = this[propName];
-              const result = {
+              return {
                 value: {
                   propName,
                   propValue,
                 },
-                done: i > keys.length,
+                done: i++ > prop.length,
               };
-              i++;
-              return result;
             },
           };
         },
       };
-      for (const item in obj) {
-        console.log(item);
+      for (const prop in obj) {
+        console.log(prop);
       }
-
-      const arr = [...obj];
-      console.log(arr);
-
-      function test(a, b) {
-        console.log(a, b);
-      }
-      test(...obj);
+      const arr={...obj};
+      console.log(arr)
     </script>
   </body>
 </html>
