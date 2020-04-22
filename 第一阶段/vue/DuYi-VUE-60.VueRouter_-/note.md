@@ -4943,6 +4943,8 @@ data: [
 拉取 2.x 模板 (旧版本)
 
 ```js
+vue create 项目名(只能小写)
+  
 npm install -g @vue/cli-init
 # `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同
 vue init webpack my-project

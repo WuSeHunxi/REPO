@@ -1,8 +1,10 @@
 class History {
-  constructor () {
+  constructor() {
+    //设置当前路径
     this.current = {
-      path: null
-    }
+      path: null,
+    };
+    console.log(this)
   }
 }
 
