@@ -25,7 +25,11 @@
               <i :class="iconObj[item.id]"></i>
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item
+              :index="'/'+subItem.path"
+              v-for="subItem in item.children"
+              :key="subItem.id"
+            >
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{subItem.authName}}</span>
@@ -53,7 +57,7 @@ export default {
         "102": "iconfont icon-danju",
         "145": "iconfont icon-baobiao"
       },
-      isCollapse: false,
+      isCollapse: false
     };
   },
   methods: {
