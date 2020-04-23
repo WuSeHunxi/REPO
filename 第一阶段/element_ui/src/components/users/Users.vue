@@ -227,9 +227,9 @@ export default {
           { validator: checkMobile, trigger: "blur" }
         ]
       },
-      userInfo: "",
+      userInfo: "",//需要被分配橘色得用户信息
       rolesList: [],
-      selectRoleId: ""
+      selectRoleId: ""//已选中得角色Id（分配角色得时候）
     };
   },
   methods: {
@@ -323,15 +323,19 @@ export default {
           });
         });
     },
+    //展示分配角色得对话框
     async setRole(userInfo) {
+      //获取所有得角色列表
       const { data } = await this.$http.get("roles");
       if (data.meta.status !== 200) {
         return this.$message.error(data.meta.msg);
       }
       this.rolesList = data.data;
       this.userInfo = userInfo;
+      //显示
       this.setRoleDialogVisible = true;
     },
+    //点击按钮分配角色
     async saveRoleInfo() {
       if (!this.selectRoleId) {
         return this.$message.error("请选择要分配的角色！");
@@ -346,8 +350,11 @@ export default {
       this.getUserList();
       this.setRoleDialogVisible = false;
     },
+    //监听分配角色对话框的关闭事件
     setRoleDialogClosed() {
-      (this.selectRoleId = ""), (this.userInfo = {});
+      // (this.selectRoleId = ""), (this.userInfo = {});
+      this.selectRoleId='';
+      this.userInfo={};
     }
   },
   created() {
