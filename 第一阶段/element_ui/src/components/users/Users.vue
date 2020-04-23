@@ -8,23 +8,12 @@
     <el-card>
       <el-row :gutter="20">
         <el-col :span="7">
-          <el-input
-            placeholder="请输入内容"
-            clearable
-            @clear="getUserList"
-            v-model="queryInfo.query"
-          >
-            <el-button
-              slot="append"
-              icon="el-icon-search"
-              @click="getUserList"
-            ></el-button>
+          <el-input placeholder="请输入内容" clearable @clear="getUserList" v-model="queryInfo.query">
+            <el-button slot="append" icon="el-icon-search" @click="getUserList"></el-button>
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary" @click="dialogVisible = true"
-            >添加用户</el-button
-          >
+          <el-button type="primary" @click="dialogVisible = true">添加用户</el-button>
         </el-col>
       </el-row>
       <el-table :data="userlist" border stripe style="width: 100%">
@@ -35,10 +24,7 @@
         <el-table-column prop="role_name" label="角色"></el-table-column>
         <el-table-column label="状态">
           <template v-slot="scope">
-            <el-switch
-              v-model="scope.row.mg_state"
-              @change="userStateChanged(scope.row)"
-            ></el-switch>
+            <el-switch v-model="scope.row.mg_state" @change="userStateChanged(scope.row)"></el-switch>
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -58,12 +44,7 @@
               size="mini"
             ></el-button>
             <!-- 分配角色 -->
-            <el-tooltip
-              :enterable="false"
-              effect="dark"
-              content="分配角色"
-              placement="top-start"
-            >
+            <el-tooltip :enterable="false" effect="dark" content="分配角色" placement="top-start">
               <el-button
                 type="warning"
                 icon="el-icon-setting"
@@ -86,12 +67,7 @@
     </el-card>
 
     <!-- 添加用户对话框 -->
-    <el-dialog
-      title="添加用户"
-      :visible.sync="dialogVisible"
-      width="50%"
-      @close="addDialogClosed"
-    >
+    <el-dialog title="添加用户" :visible.sync="dialogVisible" width="50%" @close="addDialogClosed">
       <el-form
         :model="addUserForm"
         :rules="addUserFormRules"
@@ -119,12 +95,7 @@
     </el-dialog>
 
     <!-- 修改用户对话框 -->
-    <el-dialog
-      title="修改用户"
-      :visible.sync="editDialogVisible"
-      width="50%"
-      @close="editDialogClosed"
-    >
+    <el-dialog title="修改用户" :visible.sync="editDialogVisible" width="50%" @close="editDialogClosed">
       <el-form
         :model="editUserForm"
         :rules="editUserFormRules"
@@ -158,22 +129,21 @@
       <div>
         <p>当前的用户:{{ userInfo.username }}</p>
         <p>当前的角色:{{ userInfo.role_name }}</p>
-        <p>分配新角色:
+        <p>
+          分配新角色:
           <el-select v-model="selectRoleId" placeholder="请选择新角色">
             <el-option
               v-for="item in rolesList"
               :key="item.id"
               :label="item.roleName"
-              :value="item.id">
-            </el-option>
+              :value="item.id"
+            ></el-option>
           </el-select>
         </p>
       </div>
       <div slot="footer">
         <el-button @click="setRoleDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="saveRoleInfo"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="saveRoleInfo">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -182,6 +152,7 @@
 <script>
 export default {
   data() {
+    //在data中定义表单的自定义校验规则
     // 自定义邮箱校验规则
     var checkEmail = (rule, value, cb) => {
       const regEail = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
@@ -200,7 +171,7 @@ export default {
     };
     return {
       queryInfo: {
-        query: "",
+        query: "", //搜索关键字
         pagenum: 1,
         pagesize: 2
       },
@@ -258,7 +229,7 @@ export default {
       },
       userInfo: "",
       rolesList: [],
-      selectRoleId:''
+      selectRoleId: ""
     };
   },
   methods: {
@@ -291,12 +262,13 @@ export default {
     addUser() {
       this.$refs.addUserFormRef.validate(async valid => {
         if (!valid) return;
-        const { data } = await this.$http.post("users", this.addUserForm);
+        const { data } = await this.$http.post("users", this.addUserForm); //将新添加的数据加到数据库中
         if (data.meta.status !== 201) {
           this.$message.error("添加用户失败！");
         }
         this.$message.success("添加用户成功！");
         this.dialogVisible = false;
+        //刷新列表，重新获取数据
         this.getUserList();
       });
     },
@@ -356,27 +328,26 @@ export default {
       if (data.meta.status !== 200) {
         return this.$message.error(data.meta.msg);
       }
-      this.rolesList = data.data
+      this.rolesList = data.data;
       this.userInfo = userInfo;
       this.setRoleDialogVisible = true;
     },
     async saveRoleInfo() {
-      if(!this.selectRoleId) {
-        return this.$message.error('请选择要分配的角色！')
+      if (!this.selectRoleId) {
+        return this.$message.error("请选择要分配的角色！");
       }
-      const {data} = await this.$http.put(`users/${this.userInfo.id}/role`,{
-        rid:this.selectRoleId
-      })
-      if(data.meta.status!==200) {
-        return this.$message.error(data.meta.msg)
+      const { data } = await this.$http.put(`users/${this.userInfo.id}/role`, {
+        rid: this.selectRoleId
+      });
+      if (data.meta.status !== 200) {
+        return this.$message.error(data.meta.msg);
       }
-      this.$message.success('分配角色成功！')
+      this.$message.success("分配角色成功！");
       this.getUserList();
-      this.setRoleDialogVisible = false
+      this.setRoleDialogVisible = false;
     },
     setRoleDialogClosed() {
-      this.selectRoleId = '',
-      this.userInfo = {}
+      (this.selectRoleId = ""), (this.userInfo = {});
     }
   },
   created() {

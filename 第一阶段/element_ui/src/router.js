@@ -73,7 +73,7 @@ const router = new VueRouter({
 
 //路由导航守卫
 router.beforeEach((to, from, next) => {
-    //如果访问的是登录页，直接放行
+  //如果访问的是登录页，直接放行
   if (to.path === "/login") return next();
   const tokenStr = window.sessionStorage.getItem("token");
   if (!tokenStr) return next("/login");
