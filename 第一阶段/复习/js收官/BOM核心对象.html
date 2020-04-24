@@ -27,6 +27,7 @@
        *    1.字符串反转
        *    2.返回指定值得索引：二分查找(low,high)---low和high逐渐逼近
        *    3.判断是否为对称数组
+       *    4.查询字串首次出现得位置
        */
       var str = "12321";
       console.log(str.split("").reverse().join(""));
@@ -51,6 +52,7 @@
 
       var arr1 = ["a", "b", 1, "b", "a"];
       function test1() {
+        //严禁判断
         if (arr === null) {
           return false;
         }
@@ -60,6 +62,45 @@
           }
         }
         return true;
+      }
+      //优化
+      function test2(arr) {
+        if (arr === null) {
+          return false;
+        }
+        var low = 0;
+        var high = arr.length - 1;
+        while (true) {
+          if (low >= high) {
+            //奇偶长度个一种情况
+            break;
+          }
+          if (arr[low] != arr[high]) {
+            return false;
+          }
+          low++;
+          high--;
+        }
+      }
+
+      function test(origin, sub) {
+        if (!origin || !sub || origin.length == 0 || sub.length == 0) {
+          return -1;
+        }
+        //外层循环控制从哪个位置开始取
+        for (var i = 0; i <= origin.length - sub.length; i++) {
+          //边界判断
+          for (var j = 0; j < sub.length; j++) {
+            if (origin[i + j] != sub[j]) {
+              break;
+            }
+            //字串已经走完
+            if (j == sub.length - 1) {
+              return i;
+            }
+          }
+        }
+        return -1;
       }
     </script>
   </body>

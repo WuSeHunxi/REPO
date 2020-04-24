@@ -213,11 +213,14 @@ export default {
     },
     async userStateChanged(userinfo) {
       const { data } = await this.$http.put(
-        `/users/${userinfo.id}/state/${userinfo.mg_status}`
+        `/users/${userinfo.id}/state/${userinfo.mg_state}`
       );
       if (data.meta.status !== 200) {
         this.$message.error("获取信息失败！");
       }
+    },
+    addDialogClosed() {
+      this.$refs.addUserFormRef.resetFields();
     },
     addDialogClosed() {
       this.$refs.addUserFormRef.resetFields();

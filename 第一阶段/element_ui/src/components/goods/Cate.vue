@@ -15,6 +15,7 @@
         </el-col>
       </el-row>
 
+      <!-- 使用注册插件：表格 -->
       <tree-table
         :data="catelist"
         show-index
@@ -106,22 +107,22 @@
 export default {
   data() {
     return {
-      catelist: [],
-      queryInfo: {
+      catelist: [],//商品列表
+      queryInfo: {//请求参数
         type: 3,
         pagenum: 1,
         pagesize: 5
       },
       total: 0,
-      columns: [
+      columns: [//表格中的每一列
         {
           label: "分类名称",
           prop: "cat_name"
         },
         {
           label: "是否有效",
-          type: "template",
-          template: "isok"
+          type: "template",//tree-table得模板
+          template: "isok"//模板名称
         },
         {
           label: "排序",
@@ -134,7 +135,9 @@ export default {
           template: "opt"
         }
       ],
+      //控制添加分类对话框的显示与隐藏
       addCateDialogVisible: false,
+      //添加分类的表单数据对象
       addCateForm: {
         cat_name: "",
         cat_pid: 0,
@@ -146,13 +149,15 @@ export default {
         ]
       },
       parentCateList: [],
+      //级联选择框的配置对象
       cascadarProps: {
         expandTrigger: "hover",
-        value: "cat_id",
-        label: "cat_name",
-        children: "children",
+        value: "cat_id",//指定选中的值
+        label: "cat_name",//看到的分类
+        children: "children",//父子嵌套用的是哪个属性
         checkStrictly: true
       },
+      //选中的父级分类的Id数组
       selectKeys: []
     };
   },
@@ -167,18 +172,24 @@ export default {
       this.catelist = data.data.result;
       this.total = data.data.total;
     },
+    //监听pageSize改变
     handleSizeChange(newSize) {
       this.queryInfo.pagesize = newSize;
       this.getCateList();
     },
+    //监听pageNum得改变
     handleCurrentChange(newPage) {
       this.queryInfo.pagenum = newPage;
       this.getCateList();
     },
+    // 点击按钮，展示添加分类的对话框
     showAddCateDialog() {
+      //先获取父级分类的数据列表
       this.getParentCateList();
+      //再展示出对话框
       this.addCateDialogVisible = true;
     },
+    //获取父级分类的数据列表
     async getParentCateList() {
       const { data } = await this.$http.get("categories", {
         params: { type: 2 }
@@ -188,9 +199,13 @@ export default {
       }
       this.parentCateList = data.data;
     },
+    //只要级联选择的选择项发生变化就触发这个函数change事件，selectKeys发生变化
     parentCateChanged() {
+      //如果大于0 则证明选中了父级分类，要选择最后一项作为Id； 反之没有
       if (this.selectKeys.length > 0) {
+        //父级分类的Id
         this.addCateForm.cat_pid = this.selectKeys[this.selectKeys.length - 1];
+        //为当前分类的等级赋值
         this.addCateForm.cat_level = this.selectKeys.length;
         return;
       } else {
@@ -198,20 +213,24 @@ export default {
         this.addCateForm.cat_level = 0;
       }
     },
+    //关闭了就要立即清空，并且表单重置
     addCateDialogClosed() {
       this.$refs.addCateFormRef.resetFields();
       this.selectKeys = [];
       this.addCateForm.cat_pid = 0;
       this.addCateForm.cat_level = 0;
     },
+    //点击按钮，添加新的分类
     addCate() {
       this.$refs.addCateFormRef.validate(async valid => {
         if (!valid) return;
+        //第二个参数是请求体
         const { data } = await this.$http.post("categories", this.addCateForm);
         if (data.meta.status !== 201) {
           return this.$message.error(data.meta.msg);
         }
         this.$message.success('添加分类成功！')
+        //刷新数据列表
         this.getCateList()
         this.addCateDialogVisible = false
       });

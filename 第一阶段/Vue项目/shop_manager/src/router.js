@@ -17,6 +17,8 @@ const routes = [
     children: [
       { path: "/welcome", component: () => import("./components/Welcome") },
       { path: "/users", component: () => import("./components/users/Users") },
+      {path:"/rights",component:()=>import("./components/power/Roles")},
+      {path:"/roles",component:()=>import("./components/power/Rights")}
     ],
   },
 ];

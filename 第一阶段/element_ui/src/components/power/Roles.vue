@@ -109,8 +109,8 @@ export default {
         children: "children",
         label: "authName"
       },
-      defKeys: [],//默认选中节点id值得数组
-      roleId: ""//当前即将分配权限得Id
+      defKeys: [], //默认选中节点id值的数组
+      roleId: "" //当前即将分配权限的Id
     };
   },
   methods: {
@@ -128,6 +128,7 @@ export default {
         type: "warning"
       })
         .then(async () => {
+          //API需要得是角色和权限Id
           const { data } = await this.$http.delete(
             `roles/${role.id}/rights/${rightId}`
           );
@@ -169,7 +170,7 @@ export default {
     },
     //监听分配权限对话框得关闭事件
     setRightDialogClosed() {
-      this.defKeys = [];//清空数组
+      this.defKeys = []; //清空数组
     },
     // 点击确定为角色分配权限
     async allotRights() {
@@ -182,7 +183,7 @@ export default {
       const idStr = keys.join(",");
       //请求得API需要得是当前即将分配权限得Id
       const { data } = await this.$http.post(`roles/${this.roleId}/rights`, {
-        rids: idStr//新角色得Id值
+        rids: idStr //新角色得Id值
       });
       if (data.meta.status !== 200) {
         return this.$message.error(data.meta.msg);
