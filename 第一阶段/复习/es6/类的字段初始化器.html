@@ -10,6 +10,8 @@
       /**
        * 静态成员变量需要使用static修饰
        * 类的字段初始值可以直接写在类中(不需要非得写在constructor中)
+       * 类的字段属性不在原型上，而是在每一个对象中，每创建一个对象就会有相应的字段属性
+       * 字段属性直接是xxx=XXX的形式
        */
 
       class Test {
@@ -17,19 +19,19 @@
         a = 1; //类的字段属性
         b = 2;
         constructor() {
+          this.name = "ppp";
           // this.a=1;
           // this.b=2;
         }
         static c = "pnsnsnsnns";
+        print = () => {
+          console.log(this);
+        };
       }
 
       const t = new Test();
       console.log(t.a + "    " + Test.c);
-
-
-      class A{
-          
-      }
+      t.print();
     </script>
   </body>
 </html>

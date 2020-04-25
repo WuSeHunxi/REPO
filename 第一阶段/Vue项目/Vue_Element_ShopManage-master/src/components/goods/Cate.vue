@@ -9,9 +9,7 @@
     <el-card>
       <el-row>
         <el-col>
-          <el-button type="primary" @click="showAddCateDialog"
-            >添加分类</el-button
-          >
+          <el-button type="primary" @click="showAddCateDialog">添加分类</el-button>
         </el-col>
       </el-row>
 
@@ -27,31 +25,19 @@
       >
         <!-- 是否有效插槽 -->
         <template v-slot:isok="scope">
-          <i
-            class="el-icon-success"
-            v-if="!scope.row.cat_deleted"
-            style="color:lightgreen"
-          ></i>
+          <i class="el-icon-success" v-if="!scope.row.cat_deleted" style="color:lightgreen"></i>
           <i class="el-icon-error" v-else style="color:red"></i>
         </template>
         <!-- 排序插槽 -->
         <template v-slot:order="scope">
           <el-tag size="mini" v-if="scope.row.cat_level === 0">一级</el-tag>
-          <el-tag size="mini" v-if="scope.row.cat_level === 1" type="success"
-            >二级</el-tag
-          >
-          <el-tag size="mini" v-if="scope.row.cat_level === 2" type="warning"
-            >三级</el-tag
-          >
+          <el-tag size="mini" v-if="scope.row.cat_level === 1" type="success">二级</el-tag>
+          <el-tag size="mini" v-if="scope.row.cat_level === 2" type="warning">三级</el-tag>
         </template>
         <!-- 操作插槽 -->
         <template slot="opt">
-          <el-button size="mini" type="primary" icon="el-icon-edit"
-            >编辑</el-button
-          >
-          <el-button size="mini" type="warning" icon="el-icon-delete"
-            >删除</el-button
-          >
+          <el-button size="mini" type="primary" icon="el-icon-edit">编辑</el-button>
+          <el-button size="mini" type="warning" icon="el-icon-delete">删除</el-button>
         </template>
       </tree-table>
       <!-- 分页 -->
@@ -63,8 +49,7 @@
         :page-size="queryInfo.pagesize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
-      >
-      </el-pagination>
+      ></el-pagination>
     </el-card>
 
     <!-- 添加分类对话框 -->
@@ -90,8 +75,7 @@
             clearable
             v-model="selectKeys"
             @change="parentCateChanged"
-          >
-          </el-cascader>
+          ></el-cascader>
         </el-form-item>
       </el-form>
       <div slot="footer">
@@ -211,9 +195,27 @@ export default {
         if (data.meta.status !== 201) {
           return this.$message.error(data.meta.msg);
         }
-        this.$message.success('添加分类成功！')
-        this.getCateList()
-        this.addCateDialogVisible = false
+        // const resp = await fetch(
+        //   "https://www.liulongbin.top:8888/api/private/v1/categories",
+        //   {
+        //     method: "POST",
+        //     body: {
+        //       "cat_name": "",
+        //       "cat_pid": "0",
+        //       "cat_level": "0"
+        //     },
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Authorization: window.sessionStorage.getItem("token")
+        //     },
+        //     mode: "no-cors"
+        //   }
+        // );
+        // const json = await resp.json();
+        // console.log(resp);
+        this.$message.success("添加分类成功！");
+        this.getCateList();
+        this.addCateDialogVisible = false;
       });
     }
   },

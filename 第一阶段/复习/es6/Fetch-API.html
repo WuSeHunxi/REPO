@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Fetch API 进行网络请求(HTML5的API)(ajax是不刷新页面的请求的标准)，使用Promise API，更利于异步处理
+       * XMLHttpRequest无法返回一个Promise对象，因此不能适应新的PromiseAPI
+       * fetch:默认已经解决了跨域问题(mode为cors)
+       * 请求体一定是POST的请求，然后还需要在请求头中匹配Content-Type
+       * 只要有响应,不管这个响应是404还是成功的,都会进入resolved状态,除非请求的参数出现问题或者没有网等情况才会进入rejected状态(响应的请求没有到达服务器)
+       * fetch(url,{}<--->Request对象)
+       * 请求的表单格式为multipart/form-data的请求体太过复杂,因此可以使用FormData()来构建,并且需要添加键值对请求体
+       */
+    </script>
+  </body>
+</html>
