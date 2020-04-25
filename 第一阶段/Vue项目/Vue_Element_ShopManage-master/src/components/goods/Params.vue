@@ -7,24 +7,18 @@
     </el-breadcrumb>
 
     <el-card>
-      <el-alert
-        title="注意：只允许为第三级分类设置相关参数！"
-        :closable="false"
-        show-icon
-        type="warning"
-      >
-      </el-alert>
+      <el-alert title="注意：只允许为第三级分类设置相关参数！" :closable="false" show-icon type="warning"></el-alert>
       <el-row class="cat_opt">
         <el-col>
           <span>选择商品分类：</span>
+          <!-- 级联选择框 -->
           <el-cascader
             :options="catelist"
             :props="cateProps"
             clearable
             v-model="selectCateKeys"
             @change="CateChanged"
-          >
-          </el-cascader>
+          ></el-cascader>
         </el-col>
       </el-row>
 
@@ -35,8 +29,7 @@
             type="primary"
             size="mini"
             @click="showAddDialog"
-            >添加参数</el-button
-          >
+          >添加参数</el-button>
           <el-table :data="manyTableData" stripe border>
             <el-table-column type="expand">
               <template v-slot="scope">
@@ -46,9 +39,7 @@
                   @close="handleClosed(i, scope.row)"
                   :key="i"
                   closable
-                >
-                  {{ item }}
-                </el-tag>
+                >{{ item }}</el-tag>
                 <el-input
                   class="input-new-tag"
                   v-if="scope.row.inputVisible"
@@ -57,20 +48,17 @@
                   size="small"
                   @keyup.enter.native="handleInputConfirm(scope.row)"
                   @blur="handleInputConfirm(scope.row)"
-                >
-                </el-input>
+                ></el-input>
                 <el-button
                   v-else
                   class="button-new-tag"
                   size="small"
                   @click="showInput(scope.row)"
-                  >+ New Tag</el-button
-                >
+                >+ New Tag</el-button>
               </template>
             </el-table-column>
-            <el-table-column type="index"> </el-table-column>
-            <el-table-column prop="attr_name" label="参数名称" width="width">
-            </el-table-column>
+            <el-table-column type="index"></el-table-column>
+            <el-table-column prop="attr_name" label="参数名称" width="width"></el-table-column>
             <el-table-column label="操作">
               <template v-slot="scope">
                 <el-button
@@ -78,15 +66,13 @@
                   size="mini"
                   icon="el-icon-edit"
                   @click="showEditDialog(scope.row.attr_id)"
-                  >编辑</el-button
-                >
+                >编辑</el-button>
                 <el-button
                   type="danger"
                   size="mini"
                   icon="el-icon-delete"
                   @click="removeParams(scope.row.attr_id)"
-                  >删除</el-button
-                >
+                >删除</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -97,9 +83,9 @@
             type="primary"
             size="mini"
             @click="showAddDialog"
-            >添加属性</el-button
-          >
+          >添加属性</el-button>
           <el-table :data="onlyTableData" stripe border>
+            <!-- 展开行 -->
             <el-table-column type="expand">
               <template v-slot="scope">
                 <el-tag
@@ -108,9 +94,7 @@
                   @close="handleClosed(i, scope.row)"
                   :key="i"
                   closable
-                >
-                  {{ item }}
-                </el-tag>
+                >{{ item }}</el-tag>
                 <el-input
                   class="input-new-tag"
                   v-if="scope.row.inputVisible"
@@ -119,20 +103,18 @@
                   size="small"
                   @keyup.enter.native="handleInputConfirm(scope.row)"
                   @blur="handleInputConfirm(scope.row)"
-                >
-                </el-input>
+                ></el-input>
                 <el-button
                   v-else
                   class="button-new-tag"
                   size="small"
                   @click="showInput(scope.row)"
-                  >+ New Tag</el-button
-                >
+                >+ New Tag</el-button>
               </template>
             </el-table-column>
-            <el-table-column type="index"> </el-table-column>
-            <el-table-column prop="attr_name" label="属性名称" width="width">
-            </el-table-column>
+            <!-- 索引列 -->
+            <el-table-column type="index"></el-table-column>
+            <el-table-column prop="attr_name" label="属性名称" width="width"></el-table-column>
             <el-table-column label="操作">
               <template v-slot="scope">
                 <el-button
@@ -140,15 +122,13 @@
                   size="mini"
                   icon="el-icon-edit"
                   @click="showEditDialog(scope.row.attr_id)"
-                  >编辑</el-button
-                >
+                >编辑</el-button>
                 <el-button
                   type="danger"
                   size="mini"
                   icon="el-icon-delete"
                   @click="removeParams(scope.row.attr_id)"
-                  >删除</el-button
-                >
+                >删除</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -156,19 +136,14 @@
       </el-tabs>
     </el-card>
 
-    <!-- 添加参数和添加属性对话框 -->
+    <!-- 添加参数和添加属性对话框：标题是动态的 -->
     <el-dialog
       :title="'添加' + textTitle"
       :visible.sync="addDialogVisible"
       @close="addDialogClosed"
       width="50%"
     >
-      <el-form
-        ref="addFormRef"
-        :model="addForm"
-        :rules="addFormRules"
-        label-width="100px"
-      >
+      <el-form ref="addFormRef" :model="addForm" :rules="addFormRules" label-width="100px">
         <el-form-item :label="textTitle" prop="attr_name">
           <el-input v-model="addForm.attr_name"></el-input>
         </el-form-item>
@@ -186,12 +161,7 @@
       @close="editDialogClosed"
       width="50%"
     >
-      <el-form
-        ref="editFormRef"
-        :model="editForm"
-        :rules="editFormRules"
-        label-width="100px"
-      >
+      <el-form ref="editFormRef" :model="editForm" :rules="editFormRules" label-width="100px">
         <el-form-item :label="textTitle" prop="attr_name">
           <el-input v-model="editForm.attr_name"></el-input>
         </el-form-item>
@@ -208,6 +178,7 @@
 export default {
   data() {
     return {
+      //商品分类列表
       catelist: [],
       cateProps: {
         expandTrigger: "hover",
@@ -215,15 +186,21 @@ export default {
         label: "cat_name",
         children: "children"
       },
+      //级联选择框双向绑定的数组
       selectCateKeys: [],
+      //被激活的页签的名称
       activeName: "many",
+      //动态参数的数据
       manyTableData: [],
+      //静态参数的数据
       onlyTableData: [],
+      //控制添加对话框的显示与隐藏
       addDialogVisible: false,
       editDialogVisible: false,
       addForm: {
         attr_name: ""
       },
+      //添加表单验证的规则对象
       addFormRules: {
         attr_name: [{ required: true, message: "请输入", trigger: "blur" }]
       },
@@ -243,20 +220,25 @@ export default {
       }
       this.catelist = data.data;
     },
+    //级联选择框选中项变化时，触发的函数
     CateChanged() {
       this.getParamsData();
     },
+    //tab页签点击事件的处理函数
     handleTabClick() {
       this.getParamsData();
     },
+    //根据所选的id和当前所处的面板获取对应的参数
     async getParamsData() {
       if (this.selectCateKeys.length !== 3) {
         this.selectCateKeys = [];
+        //将参数都清空，防止修改
         this.manyTableData = [];
         this.onlyTableData = [];
         this.$message.error("此选项不是三级分类");
         return;
       }
+      //证明选中的是三级分类
       const { data } = await this.$http.get(
         `categories/${this.cateId}/attributes`,
         {
@@ -268,12 +250,17 @@ export default {
       if (data.meta.status !== 200) {
         return this.$message.error(data.meta.msg);
       }
+      //转成数组--->为了参数的展开项attr_vals
       data.data.forEach(item => {
+        //在分割前要判断字符串是否为空
         item.attr_vals = item.attr_vals ? item.attr_vals.split(" ") : [];
-        // 每一行控制是否按钮和文本框输入
+        // 给展开项的每一行都添加动态编辑框，互不影响
+        //控制输入框的显示
         item.inputVisible = false;
+        //输入框的值
         item.inputValue = "";
       });
+      //判断数据是哪个面板中的
       if (this.activeName === "many") {
         this.manyTableData = data.data;
       } else {
@@ -304,6 +291,7 @@ export default {
         this.getParamsData();
       });
     },
+    //点击按钮，修改参数信息
     async showEditDialog(attr_id) {
       const { data } = await this.$http.get(
         `categories/${this.cateId}/attributes/${attr_id}`,
@@ -318,8 +306,10 @@ export default {
       this.editDialogVisible = true;
     },
     editDialogClosed() {
+      //重置没修改之前的，修改的表单数据对象
       this.$refs.editFormRef.resetFields();
     },
+    //点击按钮修改参数信息
     editParams() {
       this.$refs.editFormRef.validate(async valid => {
         if (!valid) return;
@@ -364,35 +354,45 @@ export default {
           });
         });
     },
+    //文本框失去焦点或者按下Enter键都会触发
     handleInputConfirm(row) {
+      //去除字符串两端的空格
       if (row.inputValue.trim().length === 0) {
         row.inputValue = "";
         row.inputVisible = false;
         return;
       }
+      //输入了内容，拿取到然后将其添加到attr_vals中
       row.attr_vals.push(row.inputValue.trim());
+      //输入框重置为空，隐藏
       row.inputValue = "";
       row.inputVisible = false;
+      //需要发起请求，保存这次操作
       this.setAttrVals(row);
     },
+    //点击按钮展示文本输入框
     showInput(row) {
-      row.inputVisible = true;
-      // 文本框自动获得焦点
+      row.inputVisible = true;//该值为true的时候元素并没有及时渲染
+      // 让文本框自动获得焦点
       this.$nextTick(() => {
+        //$nextTick()方法的作用：当页面上的元素被重新渲染之后，才会指定回调函数中的代码，
+        //为了防止因为没有渲染出来就去获取而造成的错误情况
         this.$refs.saveTagInput.$refs.input.focus();
       });
     },
+    //删除对应参数的展开项
     handleClosed(i, row) {
       row.attr_vals.splice(i, 1);
       this.setAttrVals(row);
     },
+    //将输入框的值提交（将对attr_vals的操作保存到数据库）
     async setAttrVals(row) {
       const { data } = await this.$http.put(
         `categories/${this.cateId}/attributes/${row.attr_id}`,
         {
           attr_name: row.attr_name,
           attr_sel: row.attr_sel,
-          attr_vals: row.attr_vals.join(" ")
+          attr_vals: row.attr_vals.join(" ")//拼接出来的新数组
         }
       );
       if (data.meta.status !== 200) {
@@ -405,19 +405,21 @@ export default {
     this.getCateList();
   },
   computed: {
+    //如果按钮需要被禁用则返回true，反之返回false
     isBtnDisabled() {
       if (this.selectCateKeys.length !== 3) {
         return true;
       }
       return false;
     },
-    // 当前选中三级分类的id
+    // 当前选中三级分类的id：从数组中取最后一项
     cateId() {
       if (this.selectCateKeys.length === 3) {
         return this.selectCateKeys[2];
       }
       return null;
     },
+    //动态计算标题的文本
     textTitle() {
       if (this.activeName === "many") {
         return "动态参数";
