@@ -10,10 +10,26 @@
         /**
          * 属性描述符是一个对象
          * Object.getOwnPropertyDescriptor()
-         * 
+         * Object.defineProperty(对象,属性名,描述符)
          * 
         */
 
+        const obj={
+            a:'aaa',
+            b:2
+        }
+        //添加属性
+        Object.defineProperty(obj,'a',{
+            get(){
+                console.log('')
+            },
+            set(val){
+                console.log('')
+            }
+
+        })
+        obj.a=20;//set(20)
+        console.log(obj.a)//console.log(get())
     </script>
 </body>
 </html>
