@@ -27,6 +27,7 @@
         <!-- 索引列 -->
         <el-table-column type="index"></el-table-column>
         <!-- 其他列 -->
+        <!-- prop属性来对应对象中的键名即可填入数据 -->
         <el-table-column prop="goods_name" label="商品名称"></el-table-column>
         <el-table-column prop="goods_price" label="商品价格（元）" width="95px"></el-table-column>
         <el-table-column prop="goods_weight" label="商品重量" width="70px"></el-table-column>
@@ -70,7 +71,7 @@ export default {
       queryInfo: {
         query: "",
         pagenum: 1,
-        pagesize: 10//每页显示的条数
+        pagesize: 10 //每页显示的条数
       },
       goodslist: [],
       total: 0
@@ -92,7 +93,7 @@ export default {
       this.queryInfo.pagesize = newSize;
       this.getGoodsList();
     },
-    //当前的页码值改变 
+    //当前的页码值改变
     handleCurrentChange(newPage) {
       this.queryInfo.pagenum = newPage;
       this.getGoodsList();
@@ -116,12 +117,13 @@ export default {
             message: "删除成功!"
           });
         })
-        .catch(() => {//捕获用户的取消行为
+        .catch(() => {
+          //捕获用户的取消行为
           // this.$message({
           //   type: "info",
           //   message: "已取消删除"
           // });
-          this.$message.info("已取消删除")
+          this.$message.info("已取消删除");
         });
     },
     //点击跳转添加页面

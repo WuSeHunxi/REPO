@@ -112,6 +112,7 @@ export default {
         goods_number: 0,
         //商品所属的分类的Id数组
         goods_cat: [],
+        //可以没有图片，但是如果要上传的话就必须将图片的信息添加到pics中
         pics: [], //请求的参数，可以为空
         goods_introduce: "",
         attrs: []
@@ -236,6 +237,7 @@ export default {
       //2.将图片的信息对象push到pics
       const picInfo = { pic: response.data.tmp_path };
       this.addForm.pics.push(picInfo);
+      console.log(response);
     },
     //添加商品
     add() {

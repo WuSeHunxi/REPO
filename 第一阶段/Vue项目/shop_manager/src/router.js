@@ -4,7 +4,11 @@ import Vue from "vue";
 Vue.use(VueRouter);
 
 const routes = [
-  {path:'/',redirect:'/login',component:()=>import('./components/Login')},
+  {
+    path: "/",
+    redirect: "/login",
+    component: () => import("./components/Login"),
+  },
   {
     path: "/login",
     name: "Login",
@@ -18,17 +22,23 @@ const routes = [
     children: [
       { path: "/welcome", component: () => import("./components/Welcome") },
       { path: "/users", component: () => import("./components/users/Users") },
-      {path:"/rights",component:()=>import("./components/power/Roles")},
-      {path:"/roles",component:()=>import("./components/power/Rights")},
-      {path:"/categories",component:()=>import ("./components/goods/Cate")},
-      {path:"/params",component:()=>import('./components/goods/Params')}
+      { path: "/rights", component: () => import("./components/power/Roles") },
+      { path: "/roles", component: () => import("./components/power/Rights") },
+      {
+        path: "/categories",
+        component: () => import("./components/goods/Cate"),
+      },
+      { path: "/params", component: () => import("./components/goods/Params") },
+      { path: "/goods", component: () => import("./components/goods/List") },
+      {path:"/goods/add",component:()=>import('./components/goods/Add')},
+      
     ],
   },
 ];
 
 const router = new VueRouter({
   routes,
-  mode:'history'
+  mode: "history",
 });
 
 router.beforeEach((to, from, next) => {
