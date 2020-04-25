@@ -7,18 +7,21 @@
     </el-breadcrumb>
 
     <el-card>
+      <!-- 2.准备一个dom -->
       <div id="main" style="width: 750px;height:400px;"></div>
     </el-card>
   </div>
 </template>
 
 <script>
+//1.导入echarts
 import echarts from "echarts";
 import _ from "lodash";
 
 export default {
   data() {
     return {
+      //4.准备数据和配置项
       option: {
         title: {
           text: "用户来源"
@@ -51,6 +54,7 @@ export default {
       }
     };
   },
+  //3.在DOM渲染完之后初始化图表
   async mounted() {
     // 基于准备好的dom，初始化echarts实例
     const myChart = echarts.init(document.getElementById("main"));
@@ -61,7 +65,10 @@ export default {
     }
     // 指定图表的配置项和数据
     // 使用刚指定的配置项和数据显示图表。
+    // 将获取到的数据和option做合并，使展示的图表更完整（为了出现鼠标跟随效果）
     const result = _.merge(data.data, this.option);
+
+    //5.展示数据
     myChart.setOption(result);
   }
 };
