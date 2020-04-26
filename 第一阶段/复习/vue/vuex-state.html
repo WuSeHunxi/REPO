@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Vue的过滤器：用来进行一些常用的文本格式化处理；只能用再{{}}和v-bind中
+       *      过滤器中返回的值会显示在页面上
+       *      每次都要使用|前面的值作为过滤器的参数
+       *
+       */
+
+      /**
+       * Vuex的配置项
+       * 
+       * Vuex---进行组间直接的通信
+       * mapState---辅助函数，返回的是计算属性：一次性拿到多个状态，可以直接生成计算属性
+       *
+       *
+       * getters---计算属性，第一个参数就是status（他依赖的是status中的值）；getters中的值可以是一个函数
+       * mapGetters也要放在计算属性中，在commit()方法中传递
+       *
+       * Mutation---更改store中的状态（严格模式下）
+       *     生产模式下不要使用严格模式
+       *     参数通常放在一个对象中
+       *     项目优化：使用常量代替Mutation的事件类型
+       *     双向数据绑定不好使，是因为不能够再mutaiton函数之外的地方修改status中的值，
+       *        因此如果想要双向绑定的话需要使用commit()
+       * mapMutations---得到的是函数
+       * 
+       * Action---利用mutation更改status，可以包含异步操作  
+       * 
+       */
+    </script>
+  </body>
+</html>
