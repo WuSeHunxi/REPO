@@ -4,7 +4,13 @@
       <div class="avatar_box">
         <img src="../assets/logo.png" alt />
       </div>
-      <el-form ref="LoginFormRef" :model="loginForm" label-width="0" :rule="LoginFormRules" class="login_form">
+      <el-form
+        ref="LoginFormRef"
+        :model="loginForm"
+        label-width="0"
+        :rule="LoginFormRules"
+        class="login_form"
+      >
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
         </el-form-item>
@@ -25,8 +31,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "admin",
-        password: "123456"
+        username: "",
+        password: ""
       },
       LoginFormRules: {
         username: [
@@ -37,31 +43,31 @@ export default {
     };
   },
   methods: {
-    login() {
-        this.$refs['LoginFormRef'].validate(async valid=>{
-            if(valid){
-                //如果登录了，则需要加上有上一个token字段
-                const {data:res}=await this.$http.post('login',this.loginForm);
-                if(res.meta.status===200){
-                    this.$message({
-                        message:'登录成功',
-                        type:"success"
-                    })
-                    window.sessionStorage.setItem("token",res.data.token);
-                    this.$router.push('/home')
-                }else{
-                    this.$message({
-                        message:res.meta.msg,
-                        type:'error'
-                    })
-                }
-            }else{
-                return false;
-            }
-        })
-    },
     resetLoginForm() {
-        this.$refs.LoginFormRef.resetFields();
+      this.$refs.LoginFormRef.resetFields();
+    },
+    login() {
+      this.$refs["LoginFormRef"].validate(async valid => {
+        if (valid) {
+          //如果登录了，则需要加上有上一个token字段
+          const { data: res } = await this.$http.post("login", this.loginForm);
+          if (res.meta.status === 200) {
+            this.$message({
+              message: "登录成功",
+              type: "success"
+            });
+            window.sessionStorage.setItem("token", res.data.token);
+            this.$router.push("/home");
+          } else {
+            this.$message({
+              message: res.meta.msg,
+              type: "error"
+            });
+          }
+        } else {
+          return false;
+        }
+      });
     }
   }
 };

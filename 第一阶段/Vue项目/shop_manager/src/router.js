@@ -31,9 +31,12 @@ const routes = [
       { path: "/params", component: () => import("./components/goods/Params") },
       { path: "/goods", component: () => import("./components/goods/List") },
       {path:"/goods/add",component:()=>import('./components/goods/Add')},
-      
+      {path:"/orders",component:()=>import ('./components/order/Order.vue')},
+      {path:"/reports",component:()=>import('./components/report/Report.vue')}
     ],
+    
   },
+  
 ];
 
 const router = new VueRouter({

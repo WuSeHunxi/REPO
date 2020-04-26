@@ -31,6 +31,7 @@ Vue.filter("dateFormat", (originVal) => {
 Vue.use(VueQuillEditor);
 
 Vue.config.productionTip = false;
+//http://shop.liulongbin.top/api/private/v1/
 axios.defaults.baseURL = "https://www.liulongbin.top:8888/api/private/v1/";
 //在访问其他API的时候需要有权限才能访问，因此需要一份Authorization字段，利用拦截器进行处理
 axios.interceptors.request.use((config) => {
