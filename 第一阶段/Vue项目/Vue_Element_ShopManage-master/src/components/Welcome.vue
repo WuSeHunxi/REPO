@@ -6,7 +6,9 @@
 
 <script>
 export default {
-
+  created(){
+    console.log(0)
+  }
 }
 </script>
 

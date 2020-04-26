@@ -237,7 +237,7 @@ export default {
       //2.将图片的信息对象push到pics
       const picInfo = { pic: response.data.tmp_path };
       this.addForm.pics.push(picInfo);
-      console.log(response);
+     
     },
     //添加商品
     add() {
@@ -265,6 +265,7 @@ export default {
             attr_value: item.attr_vals
           };
           this.addForm.attrs.push(newInfo);
+          
         });
         //将复制的对象和本来的对象联系起来
         form.attrs = this.addForm.attrs;

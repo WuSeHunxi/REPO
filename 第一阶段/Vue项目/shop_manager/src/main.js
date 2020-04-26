@@ -12,6 +12,8 @@ import VueQuillEditor from "vue-quill-editor";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 Vue.use(ElementUI);
 Vue.filter("dateFormat", (originVal) => {
@@ -32,7 +34,13 @@ Vue.config.productionTip = false;
 axios.defaults.baseURL = "https://www.liulongbin.top:8888/api/private/v1/";
 //在访问其他API的时候需要有权限才能访问，因此需要一份Authorization字段，利用拦截器进行处理
 axios.interceptors.request.use((config) => {
+  NProgress.start();
   config.headers.Authorization = window.sessionStorage.getItem("token");
+  return config;
+});
+
+axios.interceptors.response.use((config) => {
+  NProgress.done();
   return config;
 });
 
