@@ -8,7 +8,7 @@
         :to="{ name: 'question', params: { id: question.id }}"
       >
         {{ question.title }}
-      </router-link>
+      </router-link> 
     </ul>
   </div>
 </template>

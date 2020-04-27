@@ -1,0 +1,3482 @@
+<!DOCTYPE html><html><head>
+      <title>&#x7535;&#x5546;&#x7BA1;&#x7406;&#x540E;&#x53F0; API &#x63A5;&#x53E3;&#x6587;&#x6863;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\Administrator\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.3\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="1-%E7%94%B5%E5%95%86%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0-api-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3">1. &#x7535;&#x5546;&#x7BA1;&#x7406;&#x540E;&#x53F0; API &#x63A5;&#x53E3;&#x6587;&#x6863;</h1>
+
+<h2 class="mume-header" id="11-api-v1-%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E">1.1. API V1 &#x63A5;&#x53E3;&#x8BF4;&#x660E;</h2>
+
+<ul>
+<li>&#x63A5;&#x53E3;&#x57FA;&#x51C6;&#x5730;&#x5740;&#xFF1A;<code>http://127.0.0.1:8888/api/private/v1/</code></li>
+<li>&#x670D;&#x52A1;&#x7AEF;&#x5DF2;&#x5F00;&#x542F; CORS &#x8DE8;&#x57DF;&#x652F;&#x6301;</li>
+<li>API V1 &#x8BA4;&#x8BC1;&#x7EDF;&#x4E00;&#x4F7F;&#x7528; Token &#x8BA4;&#x8BC1;</li>
+<li>&#x9700;&#x8981;&#x6388;&#x6743;&#x7684; API &#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x4F7F;&#x7528; <code>Authorization</code> &#x5B57;&#x6BB5;&#x63D0;&#x4F9B; <code>token</code> &#x4EE4;&#x724C;</li>
+<li>&#x4F7F;&#x7528; HTTP Status Code &#x6807;&#x8BC6;&#x72B6;&#x6001;</li>
+<li>&#x6570;&#x636E;&#x8FD4;&#x56DE;&#x683C;&#x5F0F;&#x7EDF;&#x4E00;&#x4F7F;&#x7528; JSON</li>
+</ul>
+<h3 class="mume-header" id="111-%E6%94%AF%E6%8C%81%E7%9A%84%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95">1.1.1. &#x652F;&#x6301;&#x7684;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;</h3>
+
+<ul>
+<li>GET&#xFF08;SELECT&#xFF09;&#xFF1A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x53D6;&#x51FA;&#x8D44;&#x6E90;&#xFF08;&#x4E00;&#x9879;&#x6216;&#x591A;&#x9879;&#xFF09;&#x3002;</li>
+<li>POST&#xFF08;CREATE&#xFF09;&#xFF1A;&#x5728;&#x670D;&#x52A1;&#x5668;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x3002;</li>
+<li>PUT&#xFF08;UPDATE&#xFF09;&#xFF1A;&#x5728;&#x670D;&#x52A1;&#x5668;&#x66F4;&#x65B0;&#x8D44;&#x6E90;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#x63D0;&#x4F9B;&#x6539;&#x53D8;&#x540E;&#x7684;&#x5B8C;&#x6574;&#x8D44;&#x6E90;&#xFF09;&#x3002;</li>
+<li>PATCH&#xFF08;UPDATE&#xFF09;&#xFF1A;&#x5728;&#x670D;&#x52A1;&#x5668;&#x66F4;&#x65B0;&#x8D44;&#x6E90;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#x63D0;&#x4F9B;&#x6539;&#x53D8;&#x7684;&#x5C5E;&#x6027;&#xFF09;&#x3002;</li>
+<li>DELETE&#xFF08;DELETE&#xFF09;&#xFF1A;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x5220;&#x9664;&#x8D44;&#x6E90;&#x3002;</li>
+<li>HEAD&#xFF1A;&#x83B7;&#x53D6;&#x8D44;&#x6E90;&#x7684;&#x5143;&#x6570;&#x636E;&#x3002;</li>
+<li>OPTIONS&#xFF1A;&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#xFF0C;&#x5173;&#x4E8E;&#x8D44;&#x6E90;&#x7684;&#x54EA;&#x4E9B;&#x5C5E;&#x6027;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x7684;&#x3002;</li>
+</ul>
+<h3 class="mume-header" id="112-%E9%80%9A%E7%94%A8%E8%BF%94%E5%9B%9E%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E">1.1.2. &#x901A;&#x7528;&#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x8BF4;&#x660E;</h3>
+
+<table>
+<thead>
+<tr>
+<th><em>&#x72B6;&#x6001;&#x7801;</em></th>
+<th><em>&#x542B;&#x4E49;</em></th>
+<th><em>&#x8BF4;&#x660E;</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>&#x8BF7;&#x6C42;&#x6210;&#x529F;</td>
+</tr>
+<tr>
+<td>201</td>
+<td>CREATED</td>
+<td>&#x521B;&#x5EFA;&#x6210;&#x529F;</td>
+</tr>
+<tr>
+<td>204</td>
+<td>DELETED</td>
+<td>&#x5220;&#x9664;&#x6210;&#x529F;</td>
+</tr>
+<tr>
+<td>400</td>
+<td>BAD REQUEST</td>
+<td>&#x8BF7;&#x6C42;&#x7684;&#x5730;&#x5740;&#x4E0D;&#x5B58;&#x5728;&#x6216;&#x8005;&#x5305;&#x542B;&#x4E0D;&#x652F;&#x6301;&#x7684;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td>401</td>
+<td>UNAUTHORIZED</td>
+<td>&#x672A;&#x6388;&#x6743;</td>
+</tr>
+<tr>
+<td>403</td>
+<td>FORBIDDEN</td>
+<td>&#x88AB;&#x7981;&#x6B62;&#x8BBF;&#x95EE;</td>
+</tr>
+<tr>
+<td>404</td>
+<td>NOT FOUND</td>
+<td>&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x4E0D;&#x5B58;&#x5728;</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocesable entity</td>
+<td>[POST/PUT/PATCH] &#x5F53;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x53D1;&#x751F;&#x4E00;&#x4E2A;&#x9A8C;&#x8BC1;&#x9519;&#x8BEF;</td>
+</tr>
+<tr>
+<td>500</td>
+<td>INTERNAL SERVER ERROR</td>
+<td>&#x5185;&#x90E8;&#x9519;&#x8BEF;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 class="mume-header" id="12-%E7%99%BB%E5%BD%95">1.2. &#x767B;&#x5F55;</h2>
+
+<h3 class="mume-header" id="121-%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81%E6%8E%A5%E5%8F%A3">1.2.1. &#x767B;&#x5F55;&#x9A8C;&#x8BC1;&#x63A5;&#x53E3;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;login</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>&#x7528;&#x6237;&#x540D;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>password</td>
+<td>&#x5BC6;&#x7801;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>rid</td>
+<td>&#x7528;&#x6237;&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>&#x7528;&#x6237;&#x540D;</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>&#x4EE4;&#x724C;</td>
+<td>&#x57FA;&#x4E8E; jwt &#x7684;&#x4EE4;&#x724C;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;rid&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123@qq.com&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;token&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x767B;&#x5F55;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="13-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86">1.3. &#x7528;&#x6237;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="131-%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E5%88%97%E8%A1%A8">1.3.1. &#x7528;&#x6237;&#x6570;&#x636E;&#x5217;&#x8868;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>&#x67E5;&#x8BE2;&#x53C2;&#x6570;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x9875;&#x7801;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>&#x6BCF;&#x9875;&#x663E;&#x793A;&#x6761;&#x6570;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>totalpage</td>
+<td>&#x603B;&#x8BB0;&#x5F55;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x9875;&#x7801;</td>
+<td></td>
+</tr>
+<tr>
+<td>users</td>
+<td>&#x7528;&#x6237;&#x6570;&#x636E;&#x96C6;&#x5408;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;totalpage&quot;</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;pagenum&quot;</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;tige117&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;18616358651&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;tige112@163.com&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;create_time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2017-11-09T20:36:26.000Z&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;mg_state&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x5F53;&#x524D;&#x7528;&#x6237;&#x7684;&#x72B6;&#x6001;</span>
+                <span class="token property">&quot;role_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x7092;&#x9E21;&#x7BA1;&#x7406;&#x5458;&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="132-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7">1.3.2. &#x6DFB;&#x52A0;&#x7528;&#x6237;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>&#x7528;&#x6237;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>password</td>
+<td>&#x7528;&#x6237;&#x5BC6;&#x7801;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>rid</td>
+<td>&#x7528;&#x6237;&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>username</td>
+<td>&#x7528;&#x6237;&#x540D;</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">28</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;tige1200&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;openid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;test@test.com&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;create_time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2017-11-10T03:47:13.533Z&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;modify_time&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;is_delete&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;is_active&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">201</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="133-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%8A%B6%E6%80%81">1.3.3. &#x4FEE;&#x6539;&#x7528;&#x6237;&#x72B6;&#x6001;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users/:uId/state/:type</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uId</td>
+<td>&#x7528;&#x6237; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>&#x7528;&#x6237;&#x72B6;&#x6001;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code>&#xFF0C;&#x503C;&#x4E3A; true &#x6216;&#x8005; false</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">566</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;rid&quot;</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;bb@itcast.com&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;mg_state&quot;</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x8BBE;&#x7F6E;&#x72B6;&#x6001;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="134-%E6%A0%B9%E6%8D%AE-id-%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF">1.3.4. &#x6839;&#x636E; ID &#x67E5;&#x8BE2;&#x7528;&#x6237;&#x4FE1;&#x606F;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>role_id</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">503</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin3&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;role_id&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;00000&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;new@new.com&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x67E5;&#x8BE2;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="135-%E7%BC%96%E8%BE%91%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4">1.3.5. &#x7F16;&#x8F91;&#x7528;&#x6237;&#x63D0;&#x4EA4;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; id</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A; <code>&#x53C2;&#x6570;&#x662F;url&#x53C2;&#x6570;:id</code></td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>role_id</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token comment">/* 200&#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;500&#x8868;&#x793A;&#x5931;&#x8D25; */</span>
+<span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">503</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin3&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;role_id&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;111&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123@123.com&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="136-%E5%88%A0%E9%99%A4%E5%8D%95%E4%B8%AA%E7%94%A8%E6%88%B7">1.3.6. &#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;delete</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; id</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x53C2;&#x6570;&#x662F;url&#x53C2;&#x6570;:id</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5220;&#x9664;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="137-%E5%88%86%E9%85%8D%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2">1.3.7. &#x5206;&#x914D;&#x7528;&#x6237;&#x89D2;&#x8272;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;users/:id/role</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x53C2;&#x6570;&#x662F;url&#x53C2;&#x6570;:id</code></td>
+</tr>
+<tr>
+<td>rid</td>
+<td>&#x89D2;&#x8272; id</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x53C2;&#x6570;body&#x53C2;&#x6570;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>role_id</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>&#x624B;&#x673A;&#x53F7;</td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>&#x90AE;&#x7BB1;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">508</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;rid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;30&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;asdf1&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;mobile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123123&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;adfsa@qq.com&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x8BBE;&#x7F6E;&#x89D2;&#x8272;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="14-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86">1.4. &#x6743;&#x9650;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="141-%E6%89%80%E6%9C%89%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8">1.4.1. &#x6240;&#x6709;&#x6743;&#x9650;&#x5217;&#x8868;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;rights/:type</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>&#x7C7B;&#x578B;</td>
+<td>&#x503C; list &#x6216; tree , list &#x5217;&#x8868;&#x663E;&#x793A;&#x6743;&#x9650;, tree &#x6811;&#x72B6;&#x663E;&#x793A;&#x6743;&#x9650;,<code>&#x53C2;&#x6570;&#x662F;url&#x53C2;&#x6570;:type</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x6743;&#x9650; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>authName</td>
+<td>&#x6743;&#x9650;&#x8BF4;&#x660E;</td>
+<td></td>
+</tr>
+<tr>
+<td>level</td>
+<td>&#x6743;&#x9650;&#x5C42;&#x7EA7;</td>
+<td></td>
+</tr>
+<tr>
+<td>pid</td>
+<td>&#x6743;&#x9650;&#x7236; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>path</td>
+<td>&#x5BF9;&#x5E94;&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E; type=list</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json">  <span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x7BA1;&#x7406;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;level&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;pid&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">102</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x8BA2;&#x5355;&#x7BA1;&#x7406;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;level&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;pid&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x6743;&#x9650;&#x5217;&#x8868;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p>type=tree</p>
+<pre data-role="codeBlock" data-info="json" class="language-json">  <span class="token punctuation">{</span>
+    data<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+        authName<span class="token operator">:</span> &apos;&#x5546;&#x54C1;&#x7BA1;&#x7406;&apos;<span class="token punctuation">,</span>
+        path<span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+        pid<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        children<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            id<span class="token operator">:</span> <span class="token number">104</span><span class="token punctuation">,</span>
+            authName<span class="token operator">:</span> &apos;&#x5546;&#x54C1;&#x5217;&#x8868;&apos;<span class="token punctuation">,</span>
+            path<span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+            pid<span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+            children<span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">{</span>
+                id<span class="token operator">:</span> <span class="token number">105</span><span class="token punctuation">,</span>
+                authName<span class="token operator">:</span> &apos;&#x6DFB;&#x52A0;&#x5546;&#x54C1;&apos;<span class="token punctuation">,</span>
+                path<span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                pid<span class="token operator">:</span> &apos;<span class="token number">104</span><span class="token punctuation">,</span><span class="token number">101</span>&apos;
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    meta<span class="token operator">:</span> <span class="token punctuation">{</span>
+      msg<span class="token operator">:</span> &apos;&#x83B7;&#x53D6;&#x6743;&#x9650;&#x5217;&#x8868;&#x6210;&#x529F;&apos;<span class="token punctuation">,</span>
+      status<span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="142-%E5%B7%A6%E4%BE%A7%E8%8F%9C%E5%8D%95%E6%9D%83%E9%99%90">1.4.2. &#x5DE6;&#x4FA7;&#x83DC;&#x5355;&#x6743;&#x9650;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;menus</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x7BA1;&#x7406;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">104</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x5217;&#x8868;&quot;</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x83DC;&#x5355;&#x5217;&#x8868;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="15-%E8%A7%92%E8%89%B2%E7%AE%A1%E7%90%86">1.5. &#x89D2;&#x8272;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="151-%E8%A7%92%E8%89%B2%E5%88%97%E8%A1%A8">1.5.1. &#x89D2;&#x8272;&#x5217;&#x8868;</h3>
+
+<ul>
+<li>
+<p>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles</p>
+</li>
+<li>
+<p>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</p>
+</li>
+<li>
+<p>&#x54CD;&#x5E94;&#x6570;&#x636E;&#x8BF4;&#x660E;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x5C42;&#x4E3A;&#x89D2;&#x8272;&#x4FE1;&#x606F;</li>
+</ul>
+<ul>
+<li>&#x7B2C;&#x4E8C;&#x5C42;&#x5F00;&#x59CB;&#x4E3A;&#x6743;&#x9650;&#x8BF4;&#x660E;&#xFF0C;&#x6743;&#x9650;&#x4E00;&#x5171;&#x6709; 3 &#x5C42;&#x6743;&#x9650;</li>
+<li>&#x6700;&#x540E;&#x4E00;&#x5C42;&#x6743;&#x9650;&#xFF0C;&#x4E0D;&#x5305;&#x542B; <code>children</code> &#x5C5E;&#x6027;</li>
+</ul>
+</li>
+<li>
+<p>&#x54CD;&#x5E94;&#x6570;&#x636E;</p>
+</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;roleName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x4E3B;&#x7BA1;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;roleDesc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6280;&#x672F;&#x8D1F;&#x8D23;&#x4EBA;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x7BA1;&#x7406;&quot;</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">104</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x5217;&#x8868;&quot;</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                                <span class="token punctuation">{</span>
+                                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">105</span><span class="token punctuation">,</span>
+                                    <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6DFB;&#x52A0;&#x5546;&#x54C1;&quot;</span><span class="token punctuation">,</span>
+                                    <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+                                <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="152-%E6%B7%BB%E5%8A%A0%E8%A7%92%E8%89%B2">1.5.2. &#x6DFB;&#x52A0;&#x89D2;&#x8272;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roleName</td>
+<td>&#x89D2;&#x8272;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>&#x89D2;&#x8272;&#x63CF;&#x8FF0;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roleId</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>roleName</td>
+<td>&#x89D2;&#x8272;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>&#x89D2;&#x8272;&#x63CF;&#x8FF0;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;roleId&quot;</span><span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;roleName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin2&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;roleDesc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;admin2Desc&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x521B;&#x5EFA;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">201</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="153-%E6%A0%B9%E6%8D%AE-id-%E6%9F%A5%E8%AF%A2%E8%A7%92%E8%89%B2">1.5.3. &#x6839;&#x636E; ID &#x67E5;&#x8BE2;&#x89D2;&#x8272;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roleId</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>roleName</td>
+<td>&#x89D2;&#x8272;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>&#x89D2;&#x8272;&#x63CF;&#x8FF0;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;roleId&quot;</span><span class="token operator">:</span> <span class="token number">31</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;roleName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6D4B;&#x8BD5;&#x89D2;&#x8272;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;roleDesc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6D4B;&#x8BD5;&#x8D1F;&#x8D23;&#x4EBA;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="154-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E8%A7%92%E8%89%B2">1.5.4. &#x7F16;&#x8F91;&#x63D0;&#x4EA4;&#x89D2;&#x8272;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>roleName</td>
+<td>&#x89D2;&#x8272;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>roleDesc</td>
+<td>&#x89D2;&#x8272;&#x63CF;&#x8FF0;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;roleId&quot;</span><span class="token operator">:</span> <span class="token number">31</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;roleName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6D4B;&#x8BD5;&#x89D2;&#x8272;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;roleDesc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6D4B;&#x8BD5;&#x89D2;&#x8272;&#x63CF;&#x8FF0;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="155-%E5%88%A0%E9%99%A4%E8%A7%92%E8%89%B2">1.5.5. &#x5220;&#x9664;&#x89D2;&#x8272;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;delete</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5220;&#x9664;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="156-%E8%A7%92%E8%89%B2%E6%8E%88%E6%9D%83">1.5.6. &#x89D2;&#x8272;&#x6388;&#x6743;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles/:roleId/rights</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#xFF1A;&#x901A;&#x8FC7; <code>&#x8BF7;&#x6C42;&#x4F53;</code> &#x53D1;&#x9001;&#x7ED9;&#x540E;&#x7AEF;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:roleId</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>rids</td>
+<td>&#x6743;&#x9650; ID &#x5217;&#x8868;&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#xFF09;</td>
+<td>&#x4EE5; <code>,</code> &#x5206;&#x5272;&#x7684;&#x6743;&#x9650; ID &#x5217;&#x8868;&#xFF08;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x88AB;&#x9009;&#x4E2D;&#x3001;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;key&#x548C;&#x534A;&#x9009;&#x4E2D;&#x8282;&#x70B9;&#x7684;key, &#x5305;&#x62EC; 1&#xFF0C;2&#xFF0C;3&#x7EA7;&#x8282;&#x70B9;&#xFF09;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="157-%E5%88%A0%E9%99%A4%E8%A7%92%E8%89%B2%E6%8C%87%E5%AE%9A%E6%9D%83%E9%99%90">1.5.7. &#x5220;&#x9664;&#x89D2;&#x8272;&#x6307;&#x5B9A;&#x6743;&#x9650;</h3>
+
+<ul>
+<li>
+<p>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;roles/:roleId/rights/:rightId</p>
+</li>
+<li>
+<p>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;delete</p>
+</li>
+<li>
+<p>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</p>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:roleId</td>
+<td>&#x89D2;&#x8272; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>:rightId</td>
+<td>&#x6743;&#x9650; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>&#x54CD;&#x5E94;&#x6570;&#x636E;&#x8BF4;&#x660E;</p>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x7684;data, &#x662F;&#x5F53;&#x524D;&#x89D2;&#x8272;&#x4E0B;&#x6700;&#x65B0;&#x7684;&#x6743;&#x9650;&#x6570;&#x636E;</li>
+</ul>
+</li>
+<li>
+<p>&#x54CD;&#x5E94;&#x6570;&#x636E;</p>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x7BA1;&#x7406;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">104</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x5217;&#x8868;&quot;</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">105</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6DFB;&#x52A0;&#x5546;&#x54C1;&quot;</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token number">116</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;authName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x4FEE;&#x6539;&quot;</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x53D6;&#x6D88;&#x6743;&#x9650;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre></li>
+</ul>
+<h2 class="mume-header" id="16-%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E7%AE%A1%E7%90%86">1.6. &#x5546;&#x54C1;&#x5206;&#x7C7B;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="161-%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E5%88%97%E8%A1%A8">1.6.1. &#x5546;&#x54C1;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x5217;&#x8868;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>[1,2,3]</td>
+<td>&#x503C;&#xFF1A;1&#xFF0C;2&#xFF0C;3 &#x5206;&#x522B;&#x8868;&#x793A;&#x663E;&#x793A;&#x4E00;&#x5C42;&#x4E8C;&#x5C42;&#x4E09;&#x5C42;&#x5206;&#x7C7B;&#x5217;&#x8868;<br>&#x3010;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x3011;&#x5982;&#x679C;&#x4E0D;&#x4F20;&#x9012;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7EA7;&#x522B;&#x7684;&#x5206;&#x7C7B;</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x9875;&#x7801;&#x503C;</td>
+<td>&#x3010;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x3011;&#x5982;&#x679C;&#x4E0D;&#x4F20;&#x9012;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x5206;&#x7C7B;</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>&#x6BCF;&#x9875;&#x663E;&#x793A;&#x591A;&#x5C11;&#x6761;&#x6570;&#x636E;</td>
+<td>&#x3010;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x3011;&#x5982;&#x679C;&#x4E0D;&#x4F20;&#x9012;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x5206;&#x7C7B;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat_id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_name</td>
+<td>&#x5206;&#x7C7B;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_pid</td>
+<td>&#x5206;&#x7C7B;&#x7236; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_level</td>
+<td>&#x5206;&#x7C7B;&#x5F53;&#x524D;&#x5C42;&#x7EA7;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;cat_id&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;cat_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5927;&#x5BB6;&#x7535;&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;cat_pid&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;cat_level&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;cat_deleted&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">&quot;cat_id&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;cat_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x7535;&#x89C6;&quot;</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;cat_pid&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;cat_level&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;cat_deleted&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+                    <span class="token property">&quot;children&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token property">&quot;cat_id&quot;</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x66F2;&#x9762;&#x7535;&#x89C6;&quot;</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_pid&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_level&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_deleted&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token property">&quot;cat_id&quot;</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x6D77;&#x4FE1;&quot;</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_pid&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_level&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                            <span class="token property">&quot;cat_deleted&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="162-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB">1.6.2. &#x6DFB;&#x52A0;&#x5206;&#x7C7B;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat_pid</td>
+<td>&#x5206;&#x7C7B;&#x7236; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x6DFB;&#x52A0;1&#x7EA7;&#x5206;&#x7C7B;&#xFF0C;&#x5219;&#x7236;&#x5206;&#x7C7B;Id&#x5E94;&#x8BE5;&#x8BBE;&#x7F6E;&#x4E3A;  <code>0</code></td>
+</tr>
+<tr>
+<td>cat_name</td>
+<td>&#x5206;&#x7C7B;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>cat_level</td>
+<td>&#x5206;&#x7C7B;&#x5C42;&#x7EA7;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#xFF0C;<code>0</code>&#x8868;&#x793A;&#x4E00;&#x7EA7;&#x5206;&#x7C7B;&#xFF1B;<code>1</code>&#x8868;&#x793A;&#x4E8C;&#x7EA7;&#x5206;&#x7C7B;&#xFF1B;<code>2</code>&#x8868;&#x793A;&#x4E09;&#x7EA7;&#x5206;&#x7C7B;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;cat_id&quot;</span><span class="token operator">:</span> <span class="token number">62</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;cat_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x76F8;&#x6846;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;cat_pid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;cat_level&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x521B;&#x5EFA;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">201</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="163-%E6%A0%B9%E6%8D%AE-id-%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB">1.6.3. &#x6839;&#x636E; id &#x67E5;&#x8BE2;&#x5206;&#x7C7B;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;cat_id&quot;: 3,
+        &quot;cat_name&quot;: &quot;&#x53A8;&#x536B;&#x7535;&#x5668;&quot;,
+        &quot;cat_pid&quot;: 0,
+        &quot;cat_level&quot;: 0
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="164-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E5%88%86%E7%B1%BB">1.6.4. &#x7F16;&#x8F91;&#x63D0;&#x4EA4;&#x5206;&#x7C7B;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>cat_name</td>
+<td>&#x5206;&#x7C7B;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#x3010;&#x6B64;&#x53C2;&#x6570;&#xFF0C;&#x653E;&#x5230;&#x8BF7;&#x6C42;&#x4F53;&#x4E2D;&#x3011;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;cat_id&quot;: 22,
+        &quot;cat_name&quot;: &quot;&#x81EA;&#x62CD;&#x6746;&quot;,
+        &quot;cat_pid&quot;: 7,
+        &quot;cat_level&quot;: 2
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="165-%E5%88%A0%E9%99%A4%E5%88%86%E7%B1%BB">1.6.5. &#x5220;&#x9664;&#x5206;&#x7C7B;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;delete</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x5220;&#x9664;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h2 class="mume-header" id="17-%E5%88%86%E7%B1%BB%E5%8F%82%E6%95%B0%E7%AE%A1%E7%90%86">1.7. &#x5206;&#x7C7B;&#x53C2;&#x6570;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="171-%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8">1.7.1. &#x53C2;&#x6570;&#x5217;&#x8868;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id/attributes</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>sel</td>
+<td>[only,many]</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;,&#x901A;&#x8FC7; only &#x6216; many &#x6765;&#x83B7;&#x53D6;&#x5206;&#x7C7B;&#x9759;&#x6001;&#x53C2;&#x6570;&#x8FD8;&#x662F;&#x52A8;&#x6001;&#x53C2;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attr_id</td>
+<td>&#x5206;&#x7C7B;&#x53C2;&#x6570; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_name</td>
+<td>&#x5206;&#x7C7B;&#x53C2;&#x6570;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>cat_id</td>
+<td>&#x5206;&#x7C7B;&#x53C2;&#x6570;&#x6240;&#x5C5E;&#x5206;&#x7C7B;</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>only:&#x8F93;&#x5165;&#x6846;(&#x552F;&#x4E00;) many:&#x540E;&#x53F0;&#x4E0B;&#x62C9;&#x5217;&#x8868;/&#x524D;&#x53F0;&#x5355;&#x9009;&#x6846;</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_write</td>
+<td>manual:&#x624B;&#x5DE5;&#x5F55;&#x5165; list:&#x4ECE;&#x5217;&#x8868;&#x9009;&#x62E9;</td>
+<td></td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>&#x5982;&#x679C; attr_write:list,&#x90A3;&#x4E48;&#x6709;&#x503C;&#xFF0C;&#x8BE5;&#x503C;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: [
+        {
+            &quot;attr_id&quot;: 1,
+            &quot;attr_name&quot;: &quot;cpu&quot;,
+            &quot;cat_id&quot;: 22,
+            &quot;attr_sel&quot;: &quot;only&quot;,
+            &quot;attr_write&quot;: &quot;manual&quot;,
+            &quot;attr_vals&quot;: &quot;ffff&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="172-%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E6%88%96%E8%80%85%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7">1.7.2. &#x6DFB;&#x52A0;&#x52A8;&#x6001;&#x53C2;&#x6570;&#x6216;&#x8005;&#x9759;&#x6001;&#x5C5E;&#x6027;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id/attributes</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>attr_name</td>
+<td>&#x53C2;&#x6570;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>[only,many]</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>&#x5982;&#x679C;&#x662F; many &#x5C31;&#x9700;&#x8981;&#x586B;&#x5199;&#x503C;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td>&#x3010;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x3011;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;attr_id&quot;: 44,
+        &quot;attr_name&quot;: &quot;&#x6D4B;&#x8BD5;&#x53C2;&#x6570;&quot;,
+        &quot;cat_id&quot;: &quot;1&quot;,
+        &quot;attr_sel&quot;: &quot;many&quot;,
+        &quot;attr_write&quot;: &quot;list&quot;,
+        &quot;attr_vals&quot;: &quot;a,b,c&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x521B;&#x5EFA;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 201
+    }
+}
+</code></pre><h3 class="mume-header" id="173-%E5%88%A0%E9%99%A4%E5%8F%82%E6%95%B0">1.7.3. &#x5220;&#x9664;&#x53C2;&#x6570;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A; categories/:id/attributes/:attrid</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;delete</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>:attrid</td>
+<td>&#x53C2;&#x6570; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x5220;&#x9664;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="174-%E6%A0%B9%E6%8D%AE-id-%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0">1.7.4. &#x6839;&#x636E; ID &#x67E5;&#x8BE2;&#x53C2;&#x6570;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id/attributes/:attrId</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>:attrId</td>
+<td>&#x5C5E;&#x6027; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>[only,many]</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>&#x5982;&#x679C;&#x662F; many &#x5C31;&#x9700;&#x8981;&#x586B;&#x5199;&#x503C;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;attr_id&quot;: 1,
+        &quot;attr_name&quot;: &quot;cpu&quot;,
+        &quot;cat_id&quot;: 22,
+        &quot;attr_sel&quot;: &quot;only&quot;,
+        &quot;attr_write&quot;: &quot;manual&quot;,
+        &quot;attr_vals&quot;: &quot;ffff&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="175-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E5%8F%82%E6%95%B0">1.7.5. &#x7F16;&#x8F91;&#x63D0;&#x4EA4;&#x53C2;&#x6570;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;categories/:id/attributes/:attrId</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>&#x5206;&#x7C7B; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>:attrId</td>
+<td>&#x5C5E;&#x6027; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>attr_name</td>
+<td>&#x65B0;&#x5C5E;&#x6027;&#x7684;&#x540D;&#x5B57;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#xFF0C;&#x643A;&#x5E26;&#x5728;<code>&#x8BF7;&#x6C42;&#x4F53;</code>&#x4E2D;</td>
+</tr>
+<tr>
+<td>attr_sel</td>
+<td>&#x5C5E;&#x6027;&#x7684;&#x7C7B;&#x578B;[many&#x6216;only]</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#xFF0C;&#x643A;&#x5E26;&#x5728;<code>&#x8BF7;&#x6C42;&#x4F53;</code>&#x4E2D;</td>
+</tr>
+<tr>
+<td>attr_vals</td>
+<td>&#x53C2;&#x6570;&#x7684;&#x5C5E;&#x6027;&#x503C;</td>
+<td>&#x53EF;&#x9009;&#x53C2;&#x6570;&#xFF0C;&#x643A;&#x5E26;&#x5728;<code>&#x8BF7;&#x6C42;&#x4F53;</code>&#x4E2D;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;attr_id&quot;: 9,
+        &quot;attr_name&quot;: &quot;&#x6D4B;&#x8BD5;&#x66F4;&#x65B0;&quot;,
+        &quot;cat_id&quot;: &quot;43&quot;,
+        &quot;attr_sel&quot;: &quot;only&quot;,
+        &quot;attr_write&quot;: &quot;manual&quot;,
+        &quot;attr_vals&quot;: &quot;abc&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h2 class="mume-header" id="18-%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86">1.8. &#x5546;&#x54C1;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="181-%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE">1.8.1. &#x5546;&#x54C1;&#x5217;&#x8868;&#x6570;&#x636E;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>&#x67E5;&#x8BE2;&#x53C2;&#x6570;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x9875;&#x7801;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>&#x6BCF;&#x9875;&#x663E;&#x793A;&#x6761;&#x6570;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>&#x603B;&#x5171;&#x5546;&#x54C1;&#x6761;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x5546;&#x54C1;&#x9875;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>&#x5546;&#x54C1;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>&#x4EF7;&#x683C;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>&#x91CD;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001;</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001; 0: &#x672A;&#x901A;&#x8FC7; 1: &#x5BA1;&#x6838;&#x4E2D; 2: &#x5DF2;&#x5BA1;&#x6838;</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>&#x6DFB;&#x52A0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>&#x70ED;&#x9500;&#x54C1;&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>&#x662F;&#x5426;&#x662F;&#x70ED;&#x9500;&#x54C1;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;total&quot;: 50,
+        &quot;pagenum&quot;: &quot;1&quot;,
+        &quot;goods&quot;: [
+            {
+                &quot;goods_id&quot;: 144,
+                &quot;goods_name&quot;: &quot;asfdsd&quot;,
+                &quot;goods_price&quot;: 1,
+                &quot;goods_number&quot;: 1,
+                &quot;goods_weight&quot;: 1,
+                &quot;goods_state&quot;: null,
+                &quot;add_time&quot;: 1512954923,
+                &quot;upd_time&quot;: 1512954923,
+                &quot;hot_mumber&quot;: 0,
+                &quot;is_promote&quot;: false
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="182-%E6%B7%BB%E5%8A%A0%E5%95%86%E5%93%81">1.8.2. &#x6DFB;&#x52A0;&#x5546;&#x54C1;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>goods_name</td>
+<td>&#x5546;&#x54C1;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_cat</td>
+<td>&#x4EE5;&#x4E3A;&apos;,&apos;&#x5206;&#x5272;&#x7684;&#x5206;&#x7C7B;&#x5217;&#x8868;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>&#x4EF7;&#x683C;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>&#x6570;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>&#x91CD;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_introduce</td>
+<td>&#x4ECB;&#x7ECD;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pics</td>
+<td>&#x4E0A;&#x4F20;&#x7684;&#x56FE;&#x7247;&#x4E34;&#x65F6;&#x8DEF;&#x5F84;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x6570;&#x7EC4;&#xFF09;&#xFF0C;&#x5305;&#x542B; <code>&#x52A8;&#x6001;&#x53C2;&#x6570;</code> &#x548C; <code>&#x9759;&#x6001;&#x5C5E;&#x6027;</code></td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;goods_name&quot;</span><span class="token operator">:</span><span class="token string">&quot;test_goods_name2&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;goods_cat&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1,2,3&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;goods_price&quot;</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;goods_number&quot;</span><span class="token operator">:</span><span class="token number">30</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;goods_weight&quot;</span><span class="token operator">:</span><span class="token number">40</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;goods_introduce&quot;</span><span class="token operator">:</span><span class="token string">&quot;abc&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;pics&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span><span class="token property">&quot;pic&quot;</span><span class="token operator">:</span><span class="token string">&quot;/tmp_uploads/30f08d52c551ecb447277eae232304b8&quot;</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;attrs&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;attr_id&quot;</span><span class="token operator">:</span><span class="token number">15</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;attr_value&quot;</span><span class="token operator">:</span><span class="token string">&quot;ddd&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;attr_id&quot;</span><span class="token operator">:</span><span class="token number">15</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;attr_value&quot;</span><span class="token operator">:</span><span class="token string">&quot;eee&quot;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre><ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>&#x603B;&#x5171;&#x5546;&#x54C1;&#x6761;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x5546;&#x54C1;&#x9875;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_cat</td>
+<td>&#x4EE5;&#x4E3A;&apos;,&apos;&#x5206;&#x5272;&#x7684;&#x5206;&#x7C7B;&#x5217;&#x8868;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>&#x5546;&#x54C1;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>&#x4EF7;&#x683C;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>&#x91CD;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001;</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001; 0: &#x672A;&#x901A;&#x8FC7; 1: &#x5BA1;&#x6838;&#x4E2D; 2: &#x5DF2;&#x5BA1;&#x6838;</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>&#x6DFB;&#x52A0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>&#x70ED;&#x9500;&#x54C1;&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>&#x662F;&#x5426;&#x662F;&#x70ED;&#x9500;&#x54C1;</td>
+<td></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>&#x4E0A;&#x4F20;&#x7684;&#x56FE;&#x7247;&#x4E34;&#x65F6;&#x8DEF;&#x5F84;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;</td>
+<td>pics_id:&#x56FE;&#x7247; ID,goods_id:&#x5546;&#x54C1; ID,pics_big:&#x5927;&#x56FE;,pics_mid:&#x4E2D;&#x56FE;,pics_sma:&#x5C0F;&#x56FE;</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x6570;&#x7EC4;&#xFF09;</td>
+<td>goods_id:&#x5546;&#x54C1; ID,attr_value:&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#x503C;,add_price:&#x6D6E;&#x52A8;&#x4EF7;&#x683C;,attr_vals:&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570;&#x503C;,attr_sel:&#x624B;&#x52A8;&#x8F93;&#x5165;&#xFF0C;&#x8FD8;&#x662F;&#x5355;&#x9009;,</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;goods_id&quot;</span><span class="token operator">:</span> <span class="token number">145</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;test_goods_name2&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_price&quot;</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;cat_id&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_number&quot;</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_weight&quot;</span><span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_introduce&quot;</span><span class="token operator">:</span> <span class="token string">&quot;abc&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_big_logo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_small_logo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;goods_state&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;add_time&quot;</span><span class="token operator">:</span> <span class="token number">1512962370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;upd_time&quot;</span><span class="token operator">:</span> <span class="token number">1512962370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;hot_mumber&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;is_promote&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;pics&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">&quot;pics_id&quot;</span><span class="token operator">:</span> <span class="token number">397</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;goods_id&quot;</span><span class="token operator">:</span> <span class="token number">145</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;pics_big&quot;</span><span class="token operator">:</span> <span class="token string">&quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;pics_mid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;pics_sma&quot;</span><span class="token operator">:</span> <span class="token string">&quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;attrs&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">&quot;goods_id&quot;</span><span class="token operator">:</span> <span class="token number">145</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_id&quot;</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ddd&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;add_price&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fffffff&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_sel&quot;</span><span class="token operator">:</span> <span class="token string">&quot;many&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_write&quot;</span><span class="token operator">:</span> <span class="token string">&quot;list&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_vals&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">&quot;goods_id&quot;</span><span class="token operator">:</span> <span class="token number">145</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_id&quot;</span><span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_value&quot;</span><span class="token operator">:</span> <span class="token string">&quot;eee&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;add_price&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fffffff&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_sel&quot;</span><span class="token operator">:</span> <span class="token string">&quot;many&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_write&quot;</span><span class="token operator">:</span> <span class="token string">&quot;list&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;attr_vals&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x521B;&#x5EFA;&#x5546;&#x54C1;&#x6210;&#x529F;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">201</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="183-%E6%A0%B9%E6%8D%AE-id-%E6%9F%A5%E8%AF%A2%E5%95%86%E5%93%81">1.8.3. &#x6839;&#x636E; ID &#x67E5;&#x8BE2;&#x5546;&#x54C1;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>&#x603B;&#x5171;&#x5546;&#x54C1;&#x6761;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x5546;&#x54C1;&#x9875;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>&#x5546;&#x54C1;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>&#x4EF7;&#x683C;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>&#x91CD;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001;</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001; 0: &#x672A;&#x901A;&#x8FC7; 1: &#x5BA1;&#x6838;&#x4E2D; 2: &#x5DF2;&#x5BA1;&#x6838;</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>&#x6DFB;&#x52A0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>&#x70ED;&#x9500;&#x54C1;&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>&#x662F;&#x5426;&#x662F;&#x70ED;&#x9500;&#x54C1;</td>
+<td></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>&#x4E0A;&#x4F20;&#x7684;&#x56FE;&#x7247;&#x4E34;&#x65F6;&#x8DEF;&#x5F84;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;</td>
+<td>pics_id:&#x56FE;&#x7247; ID,goods_id:&#x5546;&#x54C1; ID,pics_big:&#x5927;&#x56FE;,pics_mid:&#x4E2D;&#x56FE;,pics_sma:&#x5C0F;&#x56FE;</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x6570;&#x7EC4;&#xFF09;</td>
+<td>goods_id:&#x5546;&#x54C1; ID,attr_value:&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#x503C;,add_price:&#x6D6E;&#x52A8;&#x4EF7;&#x683C;,attr_vals:&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570;&#x503C;,attr_sel:&#x624B;&#x52A8;&#x8F93;&#x5165;&#xFF0C;&#x8FD8;&#x662F;&#x5355;&#x9009;,</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 145,
+        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,
+        &quot;goods_price&quot;: 20,
+        &quot;goods_number&quot;: 30,
+        &quot;goods_weight&quot;: 40,
+        &quot;goods_introduce&quot;: &quot;abc&quot;,
+        &quot;goods_big_logo&quot;: &quot;&quot;,
+        &quot;goods_small_logo&quot;: &quot;&quot;,
+        &quot;goods_state&quot;: 1,
+        &quot;add_time&quot;: 1512962370,
+        &quot;upd_time&quot;: 1512962370,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 397,
+                &quot;goods_id&quot;: 145,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x521B;&#x5EFA;&#x5546;&#x54C1;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 201
+    }
+}
+</code></pre><h3 class="mume-header" id="184-%E7%BC%96%E8%BE%91%E6%8F%90%E4%BA%A4%E5%95%86%E5%93%81">1.8.4. &#x7F16;&#x8F91;&#x63D0;&#x4EA4;&#x5546;&#x54C1;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>&#x5546;&#x54C1;&#x540D;&#x79F0;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>&#x4EF7;&#x683C;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>&#x6570;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>&#x91CD;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_introduce</td>
+<td>&#x4ECB;&#x7ECD;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pics</td>
+<td>&#x4E0A;&#x4F20;&#x7684;&#x56FE;&#x7247;&#x4E34;&#x65F6;&#x8DEF;&#x5F84;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x6570;&#x7EC4;&#xFF09;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+  &quot;goods_name&quot;:&quot;test_goods_name2&quot;,
+  &quot;goods_price&quot;:20,
+  &quot;goods_number&quot;:30,
+  &quot;goods_weight&quot;:40,
+  &quot;goods_introduce&quot;:&quot;abc&quot;,
+  &quot;pics&quot;:[
+    {&quot;pic&quot;:&quot;/tmp_uploads/30f08d52c551ecb447277eae232304b8&quot;}
+    ],
+  &quot;attrs&quot;:[
+    {
+      &quot;attr_id&quot;:15,
+      &quot;attr_value&quot;:&quot;ddd&quot;
+    },
+    {
+      &quot;attr_id&quot;:15,
+      &quot;attr_value&quot;:&quot;eee&quot;
+    }
+    ]
+}
+</code></pre><ul>
+<li>&#x54CD;&#x5E94;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>&#x603B;&#x5171;&#x5546;&#x54C1;&#x6761;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x5546;&#x54C1;&#x9875;&#x6570;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_name</td>
+<td>&#x5546;&#x54C1;&#x540D;&#x79F0;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_price</td>
+<td>&#x4EF7;&#x683C;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_number</td>
+<td>&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>goods_weight</td>
+<td>&#x91CD;&#x91CF;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>goods_state</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001;</td>
+<td>&#x5546;&#x54C1;&#x72B6;&#x6001; 0: &#x672A;&#x901A;&#x8FC7; 1: &#x5BA1;&#x6838;&#x4E2D; 2: &#x5DF2;&#x5BA1;&#x6838;</td>
+</tr>
+<tr>
+<td>add_time</td>
+<td>&#x6DFB;&#x52A0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>upd_time</td>
+<td>&#x66F4;&#x65B0;&#x65F6;&#x95F4;</td>
+<td></td>
+</tr>
+<tr>
+<td>hot_mumber</td>
+<td>&#x70ED;&#x9500;&#x54C1;&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>is_promote</td>
+<td>&#x662F;&#x5426;&#x662F;&#x70ED;&#x9500;&#x54C1;</td>
+<td></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>&#x4E0A;&#x4F20;&#x7684;&#x56FE;&#x7247;&#x4E34;&#x65F6;&#x8DEF;&#x5F84;&#xFF08;&#x5BF9;&#x8C61;&#xFF09;</td>
+<td>pics_id:&#x56FE;&#x7247; ID,goods_id:&#x5546;&#x54C1; ID,pics_big:&#x5927;&#x56FE;,pics_mid:&#x4E2D;&#x56FE;,pics_sma:&#x5C0F;&#x56FE;</td>
+</tr>
+<tr>
+<td>attrs</td>
+<td>&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x6570;&#x7EC4;&#xFF09;</td>
+<td>goods_id:&#x5546;&#x54C1; ID,attr_value:&#x5F53;&#x524D;&#x5546;&#x54C1;&#x7684;&#x53C2;&#x6570;&#x503C;,add_price:&#x6D6E;&#x52A8;&#x4EF7;&#x683C;,attr_vals:&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x53C2;&#x6570;&#x503C;,attr_sel:&#x624B;&#x52A8;&#x8F93;&#x5165;&#xFF0C;&#x8FD8;&#x662F;&#x5355;&#x9009;,</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 145,
+        &quot;goods_name&quot;: &quot;test_goods_name2&quot;,
+        &quot;goods_price&quot;: 20,
+        &quot;goods_number&quot;: 30,
+        &quot;goods_weight&quot;: 40,
+        &quot;goods_introduce&quot;: &quot;abc&quot;,
+        &quot;goods_big_logo&quot;: &quot;&quot;,
+        &quot;goods_small_logo&quot;: &quot;&quot;,
+        &quot;goods_state&quot;: 1,
+        &quot;add_time&quot;: 1512962370,
+        &quot;upd_time&quot;: 1512962370,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 397,
+                &quot;goods_id&quot;: 145,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 145,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x521B;&#x5EFA;&#x5546;&#x54C1;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 201
+    }
+}
+</code></pre><h3 class="mume-header" id="185-%E5%88%A0%E9%99%A4%E5%95%86%E5%93%81">1.8.5. &#x5220;&#x9664;&#x5546;&#x54C1;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;delete</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: null,
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x5220;&#x9664;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><p>###&#x540C;&#x6B65;&#x5546;&#x54C1;&#x56FE;&#x7247;</p>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods/:id/pics</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>pics</td>
+<td>&#x5546;&#x54C1;&#x56FE;&#x7247;&#x96C6;&#x5408;</td>
+<td>&#x5982;&#x679C;&#x6709; pics_id &#x5B57;&#x6BB5;&#x4F1A;&#x4FDD;&#x7559;&#x8BE5;&#x56FE;&#x7247;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709; pics_id &#x4F46;&#x662F;&#x6709; pic &#x5B57;&#x6BB5;&#x5C31;&#x4F1A;&#x65B0;&#x751F;&#x6210;&#x56FE;&#x7247;&#x6570;&#x636E;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>;[
+  { pic: &apos;tmp_uploads/db28f6316835836e97653b5c75e418be.png&apos; },
+  {
+    pics_id: 397,
+    goods_id: 145,
+    pics_big: &apos;uploads/goodspics/big_30f08d52c551ecb447277eae232304b8&apos;,
+    pics_mid: &apos;uploads/goodspics/mid_30f08d52c551ecb447277eae232304b8&apos;,
+    pics_sma: &apos;uploads/goodspics/sma_30f08d52c551ecb447277eae232304b8&apos;
+  }
+]
+</code></pre><ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 96,
+        &quot;goods_name&quot;: &quot;iphoneXX&quot;,
+        &quot;goods_price&quot;: 2,
+        &quot;goods_number&quot;: 22,
+        &quot;goods_weight&quot;: 22,
+        &quot;goods_introduce&quot;: null,
+        &quot;goods_big_logo&quot;: &quot;./uploads/goods/20171113/483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_small_logo&quot;: &quot;./uploads/goods/20171113/small_483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_state&quot;: 0,
+        &quot;is_del&quot;: &quot;1&quot;,
+        &quot;add_time&quot;: 1510045904,
+        &quot;upd_time&quot;: 1512635159,
+        &quot;delete_time&quot;: 1512635159,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 383,
+                &quot;goods_id&quot;: 96,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><p>###&#x540C;&#x6B65;&#x5546;&#x54C1;&#x5C5E;&#x6027;</p>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;goods/:id/attributes</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x5546;&#x54C1; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>;[
+  {
+    attr_id: 15,
+    attr_value: &apos;ddd&apos;
+  },
+  {
+    attr_id: 15,
+    attr_value: &apos;eee&apos;
+  }
+]
+</code></pre><ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;goods_id&quot;: 96,
+        &quot;goods_name&quot;: &quot;iphoneXX&quot;,
+        &quot;goods_price&quot;: 2,
+        &quot;goods_number&quot;: 22,
+        &quot;goods_weight&quot;: 22,
+        &quot;goods_introduce&quot;: null,
+        &quot;goods_big_logo&quot;: &quot;./uploads/goods/20171113/483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_small_logo&quot;: &quot;./uploads/goods/20171113/small_483a3b8e99e534ec3e4312dbbaee7c9d.jpg&quot;,
+        &quot;goods_state&quot;: 0,
+        &quot;is_del&quot;: &quot;1&quot;,
+        &quot;add_time&quot;: 1510045904,
+        &quot;upd_time&quot;: 1512635159,
+        &quot;delete_time&quot;: 1512635159,
+        &quot;hot_mumber&quot;: 0,
+        &quot;is_promote&quot;: false,
+        &quot;pics&quot;: [
+            {
+                &quot;pics_id&quot;: 383,
+                &quot;goods_id&quot;: 96,
+                &quot;pics_big&quot;: &quot;uploads/goodspics/big_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_mid&quot;: &quot;uploads/goodspics/mid_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;,
+                &quot;pics_sma&quot;: &quot;uploads/goodspics/sma_6f5750132abd3f5b2b93dd722fcde653.jpg&quot;
+            }
+        ],
+        &quot;attrs&quot;: [
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;eee&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            },
+            {
+                &quot;goods_id&quot;: 96,
+                &quot;attr_id&quot;: 15,
+                &quot;attr_value&quot;: &quot;ddd&quot;,
+                &quot;add_price&quot;: null,
+                &quot;attr_name&quot;: &quot;fffffff&quot;,
+                &quot;attr_sel&quot;: &quot;many&quot;,
+                &quot;attr_write&quot;: &quot;list&quot;,
+                &quot;attr_vals&quot;: &quot;&quot;
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x66F4;&#x65B0;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><p>###&#x5546;&#x54C1;&#x56FE;&#x7247;&#x5904;&#x7406;&#x5FC5;&#x987B;&#x5B89;&#x88C5; GraphicsMagick</p>
+<ul>
+<li>linux</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>apt-get install GraphicsMagick
+</code></pre><ul>
+<li>Mac OS X</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>brew install GraphicsMagick
+</code></pre><ul>
+<li>Windows <a href="https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/1.3.27/GraphicsMagick-1.3.27-Q8-win64-dll.exe/download">&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;</a></li>
+</ul>
+<h2 class="mume-header" id="19-%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0">1.9. &#x56FE;&#x7247;&#x4E0A;&#x4F20;</h2>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;upload</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;post</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>&#x4E0A;&#x4F20;&#x6587;&#x4EF6;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;tmp_path&quot;: &quot;tmp_uploads/ccfc5179a914e94506bcbb7377e8985f.png&quot;,
+        &quot;url&quot;: &quot;http://127.0.0.1:8888tmp_uploads/ccfc5179a914e94506bcbb7377e8985f.png&quot;
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x4E0A;&#x4F20;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h2 class="mume-header" id="110-%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86">1.10. &#x8BA2;&#x5355;&#x7BA1;&#x7406;</h2>
+
+<h3 class="mume-header" id="1101-%E8%AE%A2%E5%8D%95%E6%95%B0%E6%8D%AE%E5%88%97%E8%A1%A8">1.10.1. &#x8BA2;&#x5355;&#x6570;&#x636E;&#x5217;&#x8868;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;orders</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>&#x67E5;&#x8BE2;&#x53C2;&#x6570;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pagenum</td>
+<td>&#x5F53;&#x524D;&#x9875;&#x7801;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pagesize</td>
+<td>&#x6BCF;&#x9875;&#x663E;&#x793A;&#x6761;&#x6570;</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>&#x7528;&#x6237; ID</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>pay_status</td>
+<td>&#x652F;&#x4ED8;&#x72B6;&#x6001;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>is_send</td>
+<td>&#x662F;&#x5426;&#x53D1;&#x8D27;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>order_fapiao_title</td>
+<td>[&apos;&#x4E2A;&#x4EBA;&apos;,&apos;&#x516C;&#x53F8;&apos;]</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>order_fapiao_company</td>
+<td>&#x516C;&#x53F8;&#x540D;&#x79F0;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>order_fapiao_content</td>
+<td>&#x53D1;&#x7968;&#x5185;&#x5BB9;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+<tr>
+<td>consignee_addr</td>
+<td>&#x53D1;&#x8D27;&#x5730;&#x5740;</td>
+<td>&#x53EF;&#x4EE5;&#x4E3A;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;total&quot;: 1,
+        &quot;pagenum&quot;: &quot;1&quot;,
+        &quot;goods&quot;: [
+            {
+                &quot;order_id&quot;: 47,
+                &quot;user_id&quot;: 133,
+                &quot;order_number&quot;: &quot;itcast-59e7502d7993d&quot;,
+                &quot;order_price&quot;: 322,
+                &quot;order_pay&quot;: &quot;1&quot;,
+                &quot;is_send&quot;: &quot;&#x662F;&quot;,
+                &quot;trade_no&quot;: &quot;&quot;,
+                &quot;order_fapiao_title&quot;: &quot;&#x4E2A;&#x4EBA;&quot;,
+                &quot;order_fapiao_company&quot;: &quot;&quot;,
+                &quot;order_fapiao_content&quot;: &quot;&#x529E;&#x516C;&#x7528;&#x54C1;&quot;,
+                &quot;consignee_addr&quot;: &quot;a:7:{s:6:\&quot;cgn_id\&quot;;i:1;s:7:\&quot;user_id\&quot;;i:133;s:8:\&quot;cgn_name\&quot;;s:9:\&quot;&#x738B;&#x4E8C;&#x67F1;\&quot;;s:11:\&quot;cgn_address\&quot;;s:51:\&quot;&#x5317;&#x4EAC;&#x5E02;&#x6D77;&#x6DC0;&#x533A;&#x82CF;&#x5DDE;&#x8857;&#x957F;&#x8FDC;&#x5929;&#x5730;&#x5927;&#x53A6;305&#x5BA4;\&quot;;s:7:\&quot;cgn_tel\&quot;;s:11:\&quot;13566771298\&quot;;s:8:\&quot;cgn_code\&quot;;s:6:\&quot;306810\&quot;;s:11:\&quot;delete_time\&quot;;N;}&quot;,
+                &quot;pay_status&quot;: &quot;1&quot;,
+                &quot;create_time&quot;: 1508331565,
+                &quot;update_time&quot;: 1508331565
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="1102-%E4%BF%AE%E6%94%B9%E8%AE%A2%E5%8D%95%E7%8A%B6%E6%80%81">1.10.2. &#x4FEE;&#x6539;&#x8BA2;&#x5355;&#x72B6;&#x6001;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;orders/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;put</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x8BA2;&#x5355; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+<tr>
+<td>is_send</td>
+<td>&#x8BA2;&#x5355;&#x662F;&#x5426;&#x53D1;&#x8D27;</td>
+<td>1:&#x5DF2;&#x7ECF;&#x53D1;&#x8D27;&#xFF0C;0:&#x672A;&#x53D1;&#x8D27;</td>
+</tr>
+<tr>
+<td>order_pay</td>
+<td>&#x8BA2;&#x5355;&#x652F;&#x4ED8;</td>
+<td>&#x652F;&#x4ED8;&#x65B9;&#x5F0F; 0 &#x672A;&#x652F;&#x4ED8; 1 &#x652F;&#x4ED8;&#x5B9D; 2 &#x5FAE;&#x4FE1; 3 &#x94F6;&#x884C;&#x5361;</td>
+</tr>
+<tr>
+<td>order_price</td>
+<td>&#x8BA2;&#x5355;&#x4EF7;&#x683C;</td>
+<td></td>
+</tr>
+<tr>
+<td>order_number</td>
+<td>&#x8BA2;&#x5355;&#x6570;&#x91CF;</td>
+<td></td>
+</tr>
+<tr>
+<td>pay_status</td>
+<td>&#x652F;&#x4ED8;&#x72B6;&#x6001;</td>
+<td>&#x8BA2;&#x5355;&#x72B6;&#x6001;&#xFF1A; 0 &#x672A;&#x4ED8;&#x6B3E;&#x3001;1 &#x5DF2;&#x4ED8;&#x6B3E;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x8BF4;&#x660E;
+<ul>
+<li>&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x90FD;&#x662F;&#x589E;&#x91CF;&#x66F4;&#x65B0;&#xFF0C;&#x5982;&#x679C;&#x53C2;&#x6570;&#x4E0D;&#x586B;&#x5199;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x66F4;&#x65B0;&#x8BE5;&#x5B57;&#x6BB5;</li>
+</ul>
+</li>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;order_id&quot;: 67,
+        &quot;user_id&quot;: 1,
+        &quot;order_number&quot;: &quot;itcast-g7kmck71vjaujfgoi&quot;,
+        &quot;order_price&quot;: 20,
+        &quot;order_pay&quot;: &quot;0&quot;,
+        &quot;is_send&quot;: &quot;&#x5426;&quot;,
+        &quot;trade_no&quot;: &quot;&quot;,
+        &quot;order_fapiao_title&quot;: &quot;&#x4E2A;&#x4EBA;&quot;,
+        &quot;order_fapiao_company&quot;: &quot;&quot;,
+        &quot;order_fapiao_content&quot;: &quot;&quot;,
+        &quot;consignee_addr&quot;: &quot;&quot;,
+        &quot;pay_status&quot;: &quot;0&quot;,
+        &quot;create_time&quot;: 1512533560,
+        &quot;update_time&quot;: 1512533560,
+        &quot;goods&quot;: [
+            {
+                &quot;id&quot;: 82,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 96,
+                &quot;goods_price&quot;: 333,
+                &quot;goods_number&quot;: 2,
+                &quot;goods_total_price&quot;: 999
+            },
+            {
+                &quot;id&quot;: 83,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 95,
+                &quot;goods_price&quot;: 666,
+                &quot;goods_number&quot;: 5,
+                &quot;goods_total_price&quot;: 999
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="1103-%E6%9F%A5%E7%9C%8B%E8%AE%A2%E5%8D%95%E8%AF%A6%E6%83%85">1.10.3. &#x67E5;&#x770B;&#x8BA2;&#x5355;&#x8BE6;&#x60C5;</h3>
+
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;orders/:id</li>
+<li>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</li>
+<li>&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;&#x540D;</th>
+<th>&#x53C2;&#x6570;&#x8BF4;&#x660E;</th>
+<th>&#x5907;&#x6CE8;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>&#x8BA2;&#x5355; ID</td>
+<td>&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;<code>&#x643A;&#x5E26;&#x5728;url&#x4E2D;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x54CD;&#x5E94;&#x6570;&#x636E;</li>
+</ul>
+<pre data-role="codeBlock" data-info class="language-"><code>{
+    &quot;data&quot;: {
+        &quot;order_id&quot;: 67,
+        &quot;user_id&quot;: 1,
+        &quot;order_number&quot;: &quot;itcast-g7kmck71vjaujfgoi&quot;,
+        &quot;order_price&quot;: 20,
+        &quot;order_pay&quot;: &quot;0&quot;,
+        &quot;is_send&quot;: &quot;&#x5426;&quot;,
+        &quot;trade_no&quot;: &quot;&quot;,
+        &quot;order_fapiao_title&quot;: &quot;&#x4E2A;&#x4EBA;&quot;,
+        &quot;order_fapiao_company&quot;: &quot;&quot;,
+        &quot;order_fapiao_content&quot;: &quot;&quot;,
+        &quot;consignee_addr&quot;: &quot;&quot;,
+        &quot;pay_status&quot;: &quot;0&quot;,
+        &quot;create_time&quot;: 1512533560,
+        &quot;update_time&quot;: 1512533560,
+        &quot;goods&quot;: [
+            {
+                &quot;id&quot;: 82,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 96,
+                &quot;goods_price&quot;: 333,
+                &quot;goods_number&quot;: 2,
+                &quot;goods_total_price&quot;: 999
+            },
+            {
+                &quot;id&quot;: 83,
+                &quot;order_id&quot;: 67,
+                &quot;goods_id&quot;: 95,
+                &quot;goods_price&quot;: 666,
+                &quot;goods_number&quot;: 5,
+                &quot;goods_total_price&quot;: 999
+            }
+        ]
+    },
+    &quot;meta&quot;: {
+        &quot;msg&quot;: &quot;&#x83B7;&#x53D6;&#x6210;&#x529F;&quot;,
+        &quot;status&quot;: 200
+    }
+}
+</code></pre><h3 class="mume-header" id="1104-%E4%BF%AE%E6%94%B9%E5%9C%B0%E5%9D%80">1.10.4. &#x4FEE;&#x6539;&#x5730;&#x5740;</h3>
+
+<ol>
+<li><a href="https://github.com/iceyangcc/provinces-china">&#x7701;&#x5E02;&#x533A;/&#x53BF;&#x8054;&#x52A8;&#x6548;&#x679C; - &#x7ED3;&#x5408;ElementUI&#x7684; el-cascader &#x7EC4;&#x4EF6;</a></li>
+</ol>
+<h3 class="mume-header" id="1105-%E6%9F%A5%E7%9C%8B%E7%89%A9%E6%B5%81%E4%BF%A1%E6%81%AF">1.10.5. &#x67E5;&#x770B;&#x7269;&#x6D41;&#x4FE1;&#x606F;</h3>
+
+<ul>
+<li>
+<p>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;/kuaidi/:id</p>
+</li>
+<li>
+<p>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</p>
+</li>
+<li>
+<p>&#x4F9B;&#x6D4B;&#x8BD5;&#x7684;&#x7269;&#x6D41;&#x5355;&#x53F7;&#xFF1A;1106975712662</p>
+</li>
+<li>
+<p>&#x54CD;&#x5E94;&#x6570;&#x636E;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 09:39:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 09:39:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5DF2;&#x7B7E;&#x6536;,&#x611F;&#x8C22;&#x4F7F;&#x7528;&#x987A;&#x4E30;,&#x671F;&#x5F85;&#x518D;&#x6B21;&#x4E3A;&#x60A8;&#x670D;&#x52A1;&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 08:23:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 08:23:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;[&#x5317;&#x4EAC;&#x5E02;]&#x5317;&#x4EAC;&#x6D77;&#x6DC0;&#x80B2;&#x65B0;&#x5C0F;&#x533A;&#x8425;&#x4E1A;&#x70B9;&#x6D3E;&#x4EF6;&#x5458; &#x987A;&#x4E30;&#x901F;&#x8FD0; 95338&#x6B63;&#x5728;&#x4E3A;&#x60A8;&#x6D3E;&#x4EF6;&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 07:32:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 07:32:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5FEB;&#x4EF6;&#x5230;&#x8FBE; [&#x5317;&#x4EAC;&#x6D77;&#x6DC0;&#x80B2;&#x65B0;&#x5C0F;&#x533A;&#x8425;&#x4E1A;&#x70B9;]&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 02:03:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-10 02:03:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5FEB;&#x4EF6;&#x5728;[&#x5317;&#x4EAC;&#x987A;&#x4E49;&#x96C6;&#x6563;&#x4E2D;&#x5FC3;]&#x5DF2;&#x88C5;&#x8F66;,&#x51C6;&#x5907;&#x53D1;&#x5F80; [&#x5317;&#x4EAC;&#x6D77;&#x6DC0;&#x80B2;&#x65B0;&#x5C0F;&#x533A;&#x8425;&#x4E1A;&#x70B9;]&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 23:05:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 23:05:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5FEB;&#x4EF6;&#x5230;&#x8FBE; [&#x5317;&#x4EAC;&#x987A;&#x4E49;&#x96C6;&#x6563;&#x4E2D;&#x5FC3;]&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 21:21:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 21:21:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5FEB;&#x4EF6;&#x5728;[&#x5317;&#x4EAC;&#x5B9D;&#x80DC;&#x8425;&#x4E1A;&#x70B9;]&#x5DF2;&#x88C5;&#x8F66;,&#x51C6;&#x5907;&#x53D1;&#x5F80; [&#x5317;&#x4EAC;&#x987A;&#x4E49;&#x96C6;&#x6563;&#x4E2D;&#x5FC3;]&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 13:07:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 13:07:00&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x987A;&#x4E30;&#x901F;&#x8FD0; &#x5DF2;&#x6536;&#x53D6;&#x5FEB;&#x4EF6;&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 12:25:03&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 12:25:03&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5356;&#x5BB6;&#x53D1;&#x8D27;&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 12:22:24&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-09 12:22:24&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x60A8;&#x7684;&#x8BA2;&#x5355;&#x5C06;&#x7531;HLA&#xFF08;&#x5317;&#x4EAC;&#x6D77;&#x6DC0;&#x533A;&#x6E05;&#x6CB3;&#x4E2D;&#x8857;&#x5E97;&#xFF09;&#x95E8;&#x5E97;&#x5B89;&#x6392;&#x53D1;&#x8D27;&#x3002;&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-08 21:36:04&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;ftime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2018-05-08 21:36:04&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;context&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x5546;&#x54C1;&#x5DF2;&#x7ECF;&#x4E0B;&#x5355;&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;location&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&#x83B7;&#x53D6;&#x7269;&#x6D41;&#x4FE1;&#x606F;&#x6210;&#x529F;&#xFF01;&quot;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</pre></li>
+</ul>
+<h2 class="mume-header" id="111-%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1">1.11. &#x6570;&#x636E;&#x7EDF;&#x8BA1;</h2>
+
+<h3 class="mume-header" id="1111-%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1%E7%9A%84%E6%8A%98%E7%BA%BF%E5%9B%BE">1.11.1.  &#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7EDF;&#x8BA1;&#x7684;&#x6298;&#x7EBF;&#x56FE;</h3>
+
+<ul>
+<li>
+<p>&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF1A;reports/type/1</p>
+</li>
+<li>
+<p>&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;get</p>
+</li>
+<li>
+<p>&#x54CD;&#x5E94;&#x6570;&#x636E;</p>
+</li>
+<li>
+<p>&#x9700;&#x8981;&#x5408;&#x5E76;&#x7684;&#x9009;&#x9879;</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript">options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          text<span class="token punctuation">:</span> <span class="token string">&apos;&#x7528;&#x6237;&#x6765;&#x6E90;&apos;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        tooltip<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          trigger<span class="token punctuation">:</span> <span class="token string">&apos;axis&apos;</span><span class="token punctuation">,</span>
+          axisPointer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            type<span class="token punctuation">:</span> <span class="token string">&apos;cross&apos;</span><span class="token punctuation">,</span>
+            label<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+              backgroundColor<span class="token punctuation">:</span> <span class="token string">&apos;#E9EEF3&apos;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        grid<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          left<span class="token punctuation">:</span> <span class="token string">&apos;3%&apos;</span><span class="token punctuation">,</span>
+          right<span class="token punctuation">:</span> <span class="token string">&apos;4%&apos;</span><span class="token punctuation">,</span>
+          bottom<span class="token punctuation">:</span> <span class="token string">&apos;3%&apos;</span><span class="token punctuation">,</span>
+          containLabel<span class="token punctuation">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        xAxis<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            boundaryGap<span class="token punctuation">:</span> <span class="token boolean">false</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        yAxis<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            type<span class="token punctuation">:</span> <span class="token string">&apos;value&apos;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+</pre></li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
