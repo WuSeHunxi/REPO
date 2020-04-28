@@ -12,12 +12,33 @@ const routes = [
   { path: "/login", component: () => import("./components/Login.vue") },
   {
     path: "/home",
-    component: () => import("./view/Home.vue"),redirect:'/welcome',
+    component: () => import("./view/Home.vue"),
+    redirect: "/welcome",
     children: [
-      {path:'/welcome',component:()=>import('./components/Welcome')},
+      { path: "/welcome", component: () => import("./components/Welcome") },
       {
         path: "/users",
         component: () => import("./components/users/User.vue"),
+      },
+      {
+        path: "/roles",
+        component: () => import("./components/power/Role.vue"),
+      },
+      {
+        path: "/rights",
+        component: () => import("./components/power/Rights.vue"),
+      },
+      {
+        path: "/reports",
+        component: () => import("./components/report/Report.vue"),
+      },
+      {
+        path: "/orders",
+        component: () => import("./components/order/Order.vue"),
+      },
+      {
+        path: "/goods",
+        component: () => import("./components/goods/List.vue"),
       },
     ],
   },

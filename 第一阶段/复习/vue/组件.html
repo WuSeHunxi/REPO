@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button-counter :name="name"></button-counter>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      //注册全局组件
+      Vue.component("button-counter", {
+        data() {
+          return {
+            count: 0,
+          };
+        },
+        props: ["name"],
+        template: `
+    <button @click="count ++">{{name}}你按了我{{ count }}次</button>
+  `,
+      });
+
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "dadad",
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-cmp>haha</my-cmp>
+            <my-cmp1>
+                <template v-slot:header="slotProps">
+                    这是头部{{slotProps.user.name}}
+                </template>
+                <template v-slot:main={user}>这是内容{{user.pwd}}</template>
+                <template v-slot:footer={user:person}>这是底部{{person}}</template>
+            </my-cmp1>
+        </div>
+        <script>
+            Vue.component("my-cmp",{
+                template:`
+                    <div><slot>Submit</slot></div>
+                `
+            })
+
+            Vue.component('my-cmp1',{
+                data(){
+                    return {
+                        user:{
+                            name:"oaoao",
+                            pwd:'111'
+                        }
+                    }
+                },
+                //插槽访问的是子组件的数据
+                template:`
+                    <div>
+                        <div class="header">
+                            <slot name="header" :user='user'></slot>
+                        </div>
+                        <div class="main">
+                            <slot name="main" :user="user"></slot>
+                        </div>
+                        <div class="footer">
+                            <slot name="footer" :user='user'></slot>
+                        </div>    
+                    </div>
+                `
+            })
+            const vm=new Vue({
+                el:"#app",
+                data:{
+                    name:'oaoaoao'
+                }
+            })
+        </script>
+    </body>
+</html>
