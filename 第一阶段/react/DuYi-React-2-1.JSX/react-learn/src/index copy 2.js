@@ -8,6 +8,7 @@ const a = 1234, b = 4321;
 //     b: 2
 // }
 
+//React对象
 const obj = <span>这是一个span元素</span>;
 
 const arr = [2, null, false, undefined, 3];
