@@ -26,6 +26,7 @@ export default class Tick extends Component {
 
   render() {
     return (
+      // 被点击的时候就会触发
       <h1
         onClick={this.props.onClick}
       >

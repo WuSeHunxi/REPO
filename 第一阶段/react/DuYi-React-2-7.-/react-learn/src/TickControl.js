@@ -25,7 +25,7 @@ export default class TickControl extends Component {
     }
     return (
       <div>
-        {/*点击自定义组件时触发的事件*/}
+        {/*点击自定义组件时监听的事件*/}
         <Tick onClick={this.handleClick} onOver={this.handleOver} number={10} />
         <h2>{status}</h2>
       </div>
