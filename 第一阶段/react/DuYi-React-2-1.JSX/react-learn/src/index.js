@@ -27,4 +27,5 @@ function Welcome(props) {
 }
 
 const element = <Welcome name="Sara" />;
+console.log(element);
 ReactDOM.render(element, document.getElementById("root"));
