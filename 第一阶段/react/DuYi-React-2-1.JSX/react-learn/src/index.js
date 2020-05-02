@@ -16,9 +16,15 @@ import ReactDOM from "react-dom";
 // const img=(
 //     <img src={src} alt=""/>
 // );
-const h = (
-  <h1>
-    <span>hahahah</span>
-  </h1>
-);
-ReactDOM.render(h, document.getElementById("root"));
+// const h = (
+//   <h1>
+//     <span>hahahah</span>
+//   </h1>
+// );
+// ReactDOM.render(h, document.getElementById("root"));
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+const element = <Welcome name="Sara" />;
+ReactDOM.render(element, document.getElementById("root"));
