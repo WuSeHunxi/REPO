@@ -1,0 +1,15 @@
+.container {
+  /* background-color: #ff0; */
+  display: flex;
+  width: 100%;
+}
+
+.left-box {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.right-box {
+  flex: 1 1 auto;
+  text-align: center;
+}
