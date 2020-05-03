@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+// import { A, B } from "./components/Comp";
+// import withLog from "./HOC/WithLog";
+import Test from "./components/CheckBox/Test";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// let AComp = withLog(A);
+// let BComp = withLog(B);
+
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        {/* <AComp/>
+      <BComp/> */}
+        <Test />
+      </div>
+    );
+  }
 }
-
-export default App;
