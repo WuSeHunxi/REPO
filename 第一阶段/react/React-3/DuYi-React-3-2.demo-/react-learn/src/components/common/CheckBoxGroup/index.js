@@ -1,18 +1,33 @@
 import React, { Component } from "react";
-
+import types from "../../../utils/commonTypes";
+import PropTypes from "prop-types";
 /**
  * 一组多选框
  */
 export default class CheckBoxGroup extends Component {
+  /**
+   * 默认属性值
+   */
+  static defaulProps = {
+    datas: [],
+    chooseDatas: [],
+  };
+
+  //对组件使用静态属性propTypes
+  static propTypes = {
+    datas: types.groupDatas.isRequired,
+    name: PropTypes.string.isRequired,
+    chooseDatas: types.chooseDatas,
+    onChange: PropTypes.func,
+  };
+
   handleChange = (e) => {
     let newArr;
-    //选中了
     if (e.target.checked) {
       newArr = [...this.props.chooseDatas, e.target.value];
     } else {
       newArr = this.props.chooseDatas.filter((it) => it !== e.target.value);
     }
-    //抛出事件改变属性---需要由组件的使用者监听事件，修改属性
     this.props.onChange && this.props.onChange(newArr, this.props.name, e);
   };
 
