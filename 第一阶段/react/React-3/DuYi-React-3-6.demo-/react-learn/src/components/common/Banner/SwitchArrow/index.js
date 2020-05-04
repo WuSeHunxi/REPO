@@ -3,6 +3,7 @@ import "./index.css";
 import PropTypes from "prop-types";
 export default class SwitchArrow extends Component {
   static propTypes = {
+    //用来改变下标的函数，需要进行约束
     onChange: PropTypes.func,
   };
 
