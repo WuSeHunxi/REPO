@@ -20,7 +20,9 @@ export default class Form extends Component {
     }
   };
 
-
+  static propTypes={
+    onSubmit:PropTypes.func
+  }
 
   render() {
     return (

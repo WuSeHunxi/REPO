@@ -5,7 +5,9 @@ export default class Test extends Component {
   render() {
     return (
       <div>
-        <Form>
+        <Form onSubmit={datas=>{
+          console.log(datas)
+        }}>
           <div>
             账号： <Form.Input name="loginId" />
           </div>
