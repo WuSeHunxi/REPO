@@ -22,6 +22,7 @@ export default class ImgContainer extends Component {
    * 让包裹图片的div运动：该组件给外部提供了一个功能，让外部使用，自己不用
    * 切换到第几张图片---组件提供的函数，该函数是提供给外面的人调用的
    * 调用该函数，此组件会经过一段动画完成切换
+   * 该功能需要使用到dom元素，因此需要创建ref函数
    * @param {*} index 图片下标，从0开始
    */
   switchTo(index) {
