@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 // import { A, B } from "./components/Comp";
 // import withLog from "./HOC/WithLog";
-import Test from "./components/CheckBox/Test";
+// import Test from "./components/CheckBox/Test";
+import Test from "./components/Form/Test";
 
 // let AComp = withLog(A);
 // let BComp = withLog(B);
