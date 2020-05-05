@@ -1,12 +1,25 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 
 export default function App() {
-    const [n,setN]=useState(0);
-    return (
-        <div>
-            <button>-</button>
-    <span>{n}</span>
-    <button>+</button>
-        </div>
-    )
+  console.log("App render");
+  const [n, setN] = useState(0);
+  // const [,forceUpdate]=useState({});
+  return (
+    // <div>
+    //     <button onClick={()=>{
+    //         forceUpdate({})
+    //     }}>强制刷新</button>
+    // </div>
+    <div>
+      <p>{n}</p>
+      <button
+        onClick={() => {
+          setN((prev) => prev + 1);
+          setN((prev) => prev + 1);
+        }}
+      >
+        +1
+      </button>
+    </div>
+  );
 }
