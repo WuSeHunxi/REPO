@@ -1,25 +1,27 @@
-import React, { useState } from "react";
-import useTimer from "./components/myHooks/useTimer";
+import React from "react";
+import { getAllStudents } from "./components/services/student";
 
-function Test() {
-  useTimer(() => {
-    console.log("计时器开始");
-  }, 1000);
-  return <div>计时器</div>;
+class AllStudents extends React.Component {
+  state = { stus: [] };
+  async componentDidMount() {
+    const stus = await getAllStudents();
+    this.setState({
+      stus,
+    });
+  }
+  render() {
+    if (typeof this.props.render === "function") {
+      return this.props.render(this.state.stus);
+    }
+    return null;
+  }
+}
+
+function Test(props) {
+  const list = props.stus.map((it) => <li key={it.id}>{it.name}</li>);
+  return <ul>{list}</ul>;
 }
 
 export default function App() {
-  const [visible, setVisible] = useState(true);
-  return (
-    <div>
-      {visible && <Test />}
-      <button
-        onClick={() => {
-          setVisible(!visible);
-        }}
-      >
-        显示/隐藏
-      </button>
-    </div>
-  );
+  return <AllStudents render={(stus) => <Test stus={stus} />} />;
 }

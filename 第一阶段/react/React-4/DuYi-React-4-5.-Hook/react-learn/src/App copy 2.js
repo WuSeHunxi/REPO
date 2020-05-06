@@ -1,41 +1,37 @@
-import React from 'react'
-import { getAllStudents } from "./services/student"
+import React from "react";
+import { getAllStudents } from "./services/student";
 
-//
+//HOC 高阶组件--->一层套一层
 function withAllStudents(Comp) {
-    return class AllStudentsWrapper extends React.Component {
+  return class AllStudentsWrapper extends React.Component {
+    state = {
+      stus: [],
+    };
 
-        state = {
-            stus: []
-        }
-
-        async componentDidMount() {
-            const stus = await getAllStudents();
-            this.setState({
-                stus
-            })
-        }
-
-        render() {
-            return <Comp {...this.props} stus={this.state.stus} />
-        }
-
+    async componentDidMount() {
+      const stus = await getAllStudents();
+      this.setState({
+        stus,
+      });
     }
+
+    render() {
+      return <Comp {...this.props} stus={this.state.stus} />;
+    }
+  };
 }
 
 function Test(props) {
-    const list = props.stus.map(it => <li key={it.id}>{it.name}</li>)
-    return <ul>
-        {list}
-    </ul>
+  const list = props.stus.map((it) => <li key={it.id}>{it.name}</li>);
+  return <ul>{list}</ul>;
 }
 
-const TestStudents = withAllStudents(Test)
+const TestStudents = withAllStudents(Test);
 
 export default function App() {
-    return (
-        <div>
-            <TestStudents />
-        </div>
-    )
+  return (
+    <div>
+      <TestStudents />
+    </div>
+  );
 }
