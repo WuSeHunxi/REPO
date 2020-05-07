@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import "./App.css";
+import "./App copy.css";
 
 export default function App() {
   const [show1, setShow1] = useState(true);
@@ -11,7 +11,13 @@ export default function App() {
           <h1>{show1 ? "title1" : "title2"}</h1>
         </CSSTransition>
       </SwitchTransition>
-      <button onClick={() => setShow1(!show1)}>切换</button>
+      <button
+        onClick={() => {
+          setShow1(!show1);
+        }}
+      >
+        切换标题
+      </button>
     </div>
   );
 }

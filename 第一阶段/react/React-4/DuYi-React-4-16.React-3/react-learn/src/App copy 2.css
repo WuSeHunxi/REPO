@@ -1,6 +1,6 @@
 .exit-active {
-  transition: 2s;
   opacity: 0;
+  transition: 5s;
 }
 
 .enter,
@@ -10,6 +10,6 @@
 
 .enter-active,
 .appear-active {
-  transition: 5s;
   opacity: 1;
+  transition: 5s;
 }

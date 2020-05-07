@@ -1,38 +1,22 @@
-import React, { Component } from 'react'
-import FadeTransition from "./components/common/FadeTransition"
-import { TransitionGroup } from "react-transition-group"
-import uuid from "uuid";
+import React, { useState } from "react";
+import "animate.css";
+import FadeTransition from "./components/common/FadeTransition/index";
 
-export default class App extends Component {
-    state = {
-        tasks: [
-            { id: uuid(), name: "任务1" },
-            { id: uuid(), name: "任务2" },
-            { id: uuid(), name: "任务3" }
-        ]
-    }
+export default function App() {
+  const [visible, setVisible] = useState(true);
 
-    render() {
-        return <div>
-            <TransitionGroup component="ul">
-                {this.state.tasks.map(t => (
-                    <FadeTransition appear timeout={500} key={t.id}>
-                        <li>{t.name}
-                            <button onClick={() => {
-                                this.setState({
-                                    tasks: this.state.tasks.filter(it => it.id !== t.id)
-                                })
-                            }}>删除</button>
-                        </li>
-                    </FadeTransition>
-                ))}
-            </TransitionGroup>
-            <button onClick={() => {
-                var name = window.prompt("请输入任务名称");
-                this.setState({
-                    tasks: [...this.state.tasks, { id: uuid(), name }]
-                })
-            }}>添加</button>
-        </div>
-    }
+  return (
+    <div>
+      <FadeTransition timeout={1000} in={visible}>
+        <h1>标题</h1>
+      </FadeTransition>
+      <button
+        onClick={() => {
+          setVisible(!visible);
+        }}
+      >
+        切换状态
+      </button>
+    </div>
+  );
 }
