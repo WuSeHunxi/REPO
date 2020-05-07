@@ -1,19 +1,19 @@
-import React from 'react'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 //   /a
 function A() {
-    return <h1>组件A</h1>
+  return <h1>组件A</h1>;
 }
 
 //   /a/b
 function B() {
-    return <h1>组件B</h1>
+  return <h1>组件B</h1>;
 }
 
 // 任意路径
 function C() {
-    return <h1>组件C</h1>
+  return <h1>组件C</h1>;
 }
 
 // class Route extends React.Component {
@@ -27,11 +27,12 @@ function C() {
 // }
 
 export default function App() {
-    return (
-        <Router>
-            <Route path="/a" component={A} />
-            <Route path="/a/b" component={B} />
-            <Route component={C} />
-        </Router>
-    )
+  return (
+    <Router>
+      <Route path="/a" component={A} />
+      <Route path="/a/b" component={B} />
+      {/* 任意地址都可以匹配 */}
+      <Route component={C} />
+    </Router>
+  );
 }
