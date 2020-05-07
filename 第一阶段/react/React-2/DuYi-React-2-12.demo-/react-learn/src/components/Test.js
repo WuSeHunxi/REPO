@@ -25,7 +25,9 @@ export default class Test extends Component {
           src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3159856553,1527464792&fm=27&gp=0.jpg"
           alt=""
         />
+        {/* {组件里面的内容} */}
         {this.state.showModal ? (
+          // {组件据有关闭功能}
           <Modal onClose={this.hideModal}>
             <div
               style={{
