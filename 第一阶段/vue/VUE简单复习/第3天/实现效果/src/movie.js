@@ -18,6 +18,6 @@ const template = `
 `;
 
 export default {
-    template,
-    props: ["data"]
-}
+  template,
+  props: ["data"],
+};

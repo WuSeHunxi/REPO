@@ -13,45 +13,39 @@ const template = `
 `;
 
 export default {
-    template,
-    props: [
-        "total",
-        "value",
-        "panelNumber",
-        "pageSize"
-    ],
-    computed: {
-        pageNumber() {
-            return Math.ceil(this.total / this.pageSize)
-        },
-        numbers() {
-            let min = Math.floor(this.value - this.panelNumber / 2);
-            if (min < 1) {
-                min = 1;
-            }
-            let max = min + this.panelNumber - 1;
-            if (max > this.pageNumber) {
-                max = this.pageNumber;
-            }
-            const arr = [];
-            for (let i = min; i <= max; i++) {
-                arr.push(i);
-            }
-            return arr;
-        }
+  template,
+  props: ["total", "value", "panelNumber", "pageSize"],
+  computed: {
+    pageNumber() {
+      return Math.ceil(this.total / this.pageSize);
     },
-    methods: {
-        changePage(newPage) {
-            if (newPage < 1) {
-                newPage = 1;
-            }
-            else if (newPage > this.pageNumber) {
-                newPage = this.pageNumber;
-            }
-            if (newPage === this.value) {
-                return;
-            }
-            this.$emit("input", newPage);
-        }
-    }
-}
+    numbers() {
+      let min = Math.floor(this.value - this.panelNumber / 2);
+      if (min < 1) {
+        min = 1;
+      }
+      let max = min + this.panelNumber - 1;
+      if (max > this.pageNumber) {
+        max = this.pageNumber;
+      }
+      const arr = [];
+      for (let i = min; i <= max; i++) {
+        arr.push(i);
+      }
+      return arr;
+    },
+  },
+  methods: {
+    changePage(newPage) {
+      if (newPage < 1) {
+        newPage = 1;
+      } else if (newPage > this.pageNumber) {
+        newPage = this.pageNumber;
+      }
+      if (newPage === this.value) {
+        return;
+      }
+      this.$emit("input", newPage);
+    },
+  },
+};
