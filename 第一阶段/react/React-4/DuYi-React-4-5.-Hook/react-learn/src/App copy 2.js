@@ -21,6 +21,7 @@ function withAllStudents(Comp) {
   };
 }
 
+//显示内容即可，但是如何获取数据利用高阶组件
 function Test(props) {
   const list = props.stus.map((it) => <li key={it.id}>{it.name}</li>);
   return <ul>{list}</ul>;

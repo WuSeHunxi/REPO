@@ -4,6 +4,7 @@ export default function App() {
   const [n, setN] = useState(0);
   //要处理本次渲染完成后的数据
   useEffect(() => {
+    console.log("运行");
     setTimeout(() => {
       console.log(n); //n指向，当前App函数调用时的n
     }, 5000);

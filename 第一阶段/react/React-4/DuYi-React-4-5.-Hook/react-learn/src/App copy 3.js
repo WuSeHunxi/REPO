@@ -13,7 +13,7 @@ class AllStudents extends React.Component {
     });
   }
 
-  //render props
+  //利用render props
   render() {
     if (typeof this.props.render === "function") {
       //如果是函数则进行渲染

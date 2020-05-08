@@ -1,31 +1,55 @@
 import React, { useState } from "react";
 
 export default function App() {
-  console.log("App render");
-  const [n, setN] = useState(0); //使用一个状态，该状态的默认值是0
+  console.log("App Render");
+  const [visible, setVisible] = useState(true);
+  const [point, setPoint] = useState({
+    x: 0,
+    y: 0,
+  });
+  //强制刷新
+  const [, forceFrush] = useState({});
   return (
     <div>
-      <button
-        onClick={() => {
-          // setN(n - 1);
-          // setN(n - 1);
-          setN((prevN) => prevN - 1); //传入的函数，在事件完成之后统一运行
-          setN((prevN) => prevN - 1);
+      <h1
+        style={{
+          display: visible ? "block" : "none",
         }}
       >
-        -
+        哈哈哈哈哈
+      </h1>
+      <button
+        onClick={() => {
+          setVisible(!visible);
+        }}
+      >
+        显示/隐藏
       </button>
-      <span>{n}</span>
+      <p>
+        x:{point.x},y:{point.y}
+      </p>
       <button
         onClick={() => {
-          // setN(n + 1) //不会立即改变，事件运行完成之后一起改变
-          // setN(n + 1) //此时，n的值仍然是0
-
-          setN((prevN) => prevN + 1); //传入的函数，在事件完成之后统一运行
-          setN((prevN) => prevN + 1);
+          setPoint((prev) => {
+            return {
+              ...prev,
+              x: prev.x + 1,
+            };
+          });
+          setPoint((prev) => {
+            return { ...prev, y: prev.y + 1 };
+          });
         }}
       >
-        +
+        x+1
+      </button>
+
+      <button
+        onClick={() => {
+          forceFrush({});
+        }}
+      >
+        强制刷新
       </button>
     </div>
   );
