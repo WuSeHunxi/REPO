@@ -1,0 +1,8 @@
+{
+  "name": "react-transition",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react-router-dom": "^5.1.2"
+  }
+}

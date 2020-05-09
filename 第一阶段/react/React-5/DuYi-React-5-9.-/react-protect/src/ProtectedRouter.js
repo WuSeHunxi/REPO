@@ -4,7 +4,7 @@ import loginInfo from "./loginInfo";
 
 export default function ProtectedRouter({
   component: Component,
-  path,
+  // path,
   render,
   children,
   ...rest
@@ -13,11 +13,18 @@ export default function ProtectedRouter({
   return (
     <Route
       {...rest}
-      render={(value) => {
+      render={(values) => {
         if (loginInfo.isLogin) {
           return <Component />;
         } else {
-          return <Redirect to="/login" />;
+          return (
+            <Redirect
+            to={{
+              pathname: "/login",
+              state: values.location.pathname,
+            }}
+            />
+          );
         }
       }}
     ></Route>
