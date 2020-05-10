@@ -1,0 +1,9 @@
+{
+  "name": "react-history",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "path-to-regexp": "^6.1.0",
+    "react-router-dom": "^5.1.2"
+  }
+}
