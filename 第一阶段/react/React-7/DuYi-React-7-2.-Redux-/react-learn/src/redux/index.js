@@ -25,6 +25,7 @@ const action = {
     type: "increase"
 }
 
+window.createStore=createStore(reducer, 10)
 console.log(window.store.getState()); //得到仓库中当前的数据
 
 window.store.dispatch(action); //向仓库分发action

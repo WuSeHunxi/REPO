@@ -16,7 +16,7 @@ const action={
     type:"increase"
 }
 
-console.log(store.getState(state));
+console.log(store.getState());
 
 store.dispatch(action)
 
