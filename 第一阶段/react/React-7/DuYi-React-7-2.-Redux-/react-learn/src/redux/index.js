@@ -9,25 +9,26 @@ import { createStore } from "redux";
  * @param action 描述要作什么的对象
  */
 function reducer(state, action) {
-    //返回一个新的状态
-    if (action.type === "increase") {
-        return state + 1;
-    }
-    else if (action.type === "decrease") {
-        return state - 1;
-    }
-    return state;//如果是一个无效的操作类型，数据不变
+  //返回一个新的状态
+  if (action.type === "increase") {
+    return state + 1;
+  } else if (action.type === "decrease") {
+    return state - 1;
+  }
+  return state; //如果是一个无效的操作类型，数据不变
 }
 
+//创建一个数据仓库（仓库里面有一个数据以及reducer的引用）
 window.store = createStore(reducer, 10);
 
 const action = {
-    type: "increase"
-}
+  type: "increase",
+};
 
-window.createStore=createStore(reducer, 10)
+window.createStore = createStore(reducer, 10);
 console.log(window.store.getState()); //得到仓库中当前的数据
 
+//自动的将action传递给reducer，调用reducer
 window.store.dispatch(action); //向仓库分发action
 
 console.log(window.store.getState()); //得到仓库中当前的数据
