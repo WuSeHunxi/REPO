@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const sym = Symbol();
+      const obj = {
+        a: 1,
+        b: 2,
+        [sym]: 3,
+      };
+      console.log(obj);
+      for (const key in obj) {
+        console.log(key);
+      }
+    </script>
+  </body>
+</html>

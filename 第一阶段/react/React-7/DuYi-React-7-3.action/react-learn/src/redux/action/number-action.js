@@ -15,6 +15,7 @@ export function getDecreaseAction() {
   };
 }
 
+//设置新的数据
 export function getSetAction(newNumber) {
   return {
     type: actionTypes.SET,

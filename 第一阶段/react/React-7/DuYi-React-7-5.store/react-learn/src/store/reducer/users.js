@@ -9,10 +9,13 @@ const initialState = [
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case usersAction.ADDUSER:
+      // console.log("add");
       return [...state, payload];
     case usersAction.DELETEUSER:
+      // console.log("delete");
       return state.filter((it) => it.id !== payload);
     case usersAction.UPDATEUSER:
+      // console.log("update");
       return state.map((it) =>
         it.id === payload.id ? { ...it, ...payload } : it
       );
