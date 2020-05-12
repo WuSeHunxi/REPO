@@ -12,11 +12,14 @@
         a: 1,
         b: 2,
         [sym]: 3,
+        [Symbol()]:4
       };
       console.log(obj);
       for (const key in obj) {
         console.log(key);
       }
+      console.log(obj[sym])
+    //   console.log(object[Symbol()])//永远无法获取 
     </script>
   </body>
 </html>
