@@ -1,3 +1,6 @@
+/**
+ * 实用工具函数
+ */
 const util = require("util");
 
 // async function delay(duration = 1000) {
@@ -31,9 +34,9 @@ const obj1 = {
   b: {
     c: 3,
     d: {
-      e: 5
-    }
-  }
+      e: 5,
+    },
+  },
 };
 
 const obj2 = {
@@ -42,9 +45,10 @@ const obj2 = {
     c: 3,
     d: {
       e: 5,
-      g: 6
-    }
-  }
+      g: 6,
+    },
+  },
 };
 
+//深度比较
 console.log(util.isDeepStrictEqual(obj1, obj2));
