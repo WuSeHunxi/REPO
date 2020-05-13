@@ -1,6 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * 读取一个目录中的子目录和文件
+ * 让每一个目录和文件都是有一个对象，有属性和方法
+ * 先获取对象信息，然后分为文件和目录两种情况：getContent和getChildren
+ */
 class File {
   constructor(filename, name, ext, isFile, size, createTime, updateTime) {
     this.filename = filename;
@@ -23,20 +28,25 @@ class File {
     return null;
   }
 
+  //返回一个新的数组
   async getChildren() {
     if (this.isFile) {
       //文件不可能有子文件
       return [];
     }
+    //目录
     let children = await fs.promises.readdir(this.filename);
-    children = children.map(name => {
+    //得到目录数组
+    children = children.map((name) => {
       const result = path.resolve(this.filename, name);
       return File.getFile(result);
     });
     return Promise.all(children);
   }
 
+  //该方法通过路径得到文件/目录对象
   static async getFile(filename) {
+    //拿到文件的所有信息
     const stat = await fs.promises.stat(filename);
     const name = path.basename(filename);
     const ext = path.extname(filename);

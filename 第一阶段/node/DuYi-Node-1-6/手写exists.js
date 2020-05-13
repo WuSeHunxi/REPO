@@ -4,6 +4,7 @@ const dirname = path.resolve(__dirname, "./myfiles/3");
 
 async function exists(filename) {
   try {
+    //读取状态，存在的话就是true，反之为false
     await fs.promises.stat(filename);
     return true;
   } catch (err) {
