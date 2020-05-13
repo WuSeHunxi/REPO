@@ -5,7 +5,7 @@ const filename = path.resolve(__dirname, "./abc.txt");
 const rs = fs.createReadStream(filename, {
   encoding: "utf-8",
   highWaterMark: 1,
-  autoClose: true //读完后会自动完毕，默认为true
+  autoClose: true, //读完后会自动完毕，默认为true
 });
 
 rs.on("open", () => {
@@ -19,15 +19,15 @@ rs.on("error", () => {
 rs.on("close", () => {
   console.log("文件关闭了");
 });
-rs.on("data", chunk => {
+rs.on("data", (chunk) => {
   console.log("读到了一部分数据：", chunk);
-  rs.pause(); //暂停
+  rs.pause(); //暂停，当调用该方法时就会触发pause事件
 });
 
 rs.on("pause", () => {
   console.log("暂停了");
   setTimeout(() => {
-    rs.resume();
+    rs.resume(); //调用resume方法，并且读取流不为false时就会触发
   }, 1000);
 });
 

@@ -10,6 +10,7 @@ async function method2() {
   const rs = fs.createReadStream(from);
   const ws = fs.createWriteStream(to);
 
+  //将读取流和写入流直接连接起来
   rs.pipe(ws);
 
   rs.on("close", () => {
