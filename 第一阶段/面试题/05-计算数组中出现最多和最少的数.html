@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [1, 2, 4, 3, 1, 2, 5, 1];
+      function getTimes(arr) {
+        var obj = {};
+        for (let i = 0; i < arr.length; i++) {
+          if (!obj[arr[i]]) {
+            obj[arr[i]] = 1;
+          } else {
+            obj[arr[i]]++;
+          }
+        }
+        return obj;
+      }
+
+      function getMaxandMin(callback) {
+        var obj = getTimes(arr);
+        let arr1 = [];
+        //将对象转成数组
+        for (var i in obj) {
+          arr1.push(obj[i]);
+        }
+        console.log("最多的次数", Math.max(...arr1));
+        console.log("最少的次数", Math.min(...arr1));
+      }
+      //   const obj = getTimes(arr);
+      //   console.log(obj);
+      getMaxandMin(getTimes(arr));
+    </script>
+  </body>
+</html>

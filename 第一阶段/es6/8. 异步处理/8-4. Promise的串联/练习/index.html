@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        const pro=new Promise()
+      const pro = new Promise((resolve, reject) => {
+        resolve(1);
+        // return 1;
+      });
+      const pro1 = pro.then((data) => {
+        return data * 2;
+      });
+      const pro2 = pro1.then((data) => {
+        return data * 4;
+      });
+      pro2.then((data) => {
+        console.log(data);
+      });
+      console.log(pro);
+      
     </script>
-</body>
+  </body>
 </html>

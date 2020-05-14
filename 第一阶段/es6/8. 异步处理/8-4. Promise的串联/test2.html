@@ -20,15 +20,23 @@
           return err * 3;
         }
       );
-      pro1.catch((err) => {
-        return err * 2;
-      });
+      //   pro1.catch((err) => {
+      //     return err * 2;
+      //   });
       //pro2类型：Promise对象
       //pro2的状态：
-      pro2.then(
+      const pro3 = pro2.then(
         (result) => console.log(result * 2),
         (err) => console.log(err * 3)
       );
+      //   console.log(pro3);
+      pro3.then((data) => {
+        console.log(data);
+      });
+
+      console.log(pro1);
+      console.log(pro2);
+      console.log(pro3);
 
       //输出：6
     </script>

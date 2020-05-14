@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function type(target) {
+        var typeStr = typeof target,
+          toStr = Object.prototype.toString,
+          objStr = {
+            "[object Object]": "_objectObject_",
+            "[object Array]": "_objectObject_",
+            "[object Number]": "_numberObject_",
+            "[object Boolean]": "_booleanObject_",
+            "[object String]": "_stringObject_",
+          };
+        if (target == null) {
+          return null;
+        }
+        if (typeStr !== "object") {
+          return typeStr;
+        } else {
+          return objStr[toStr.call(target)];
+        }
+      }
+      function a() {}
+      console.log(type(a));
+    </script>
+  </body>
+</html>

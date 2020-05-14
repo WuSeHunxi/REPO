@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      #app {
+        position: relative;
+        width: 284px;
+        margin: 50px auto;
+      }
+
+      .username,
+      .mail {
+        width: 284px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .username input,
+      .mail input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        padding: 10px 8px;
+        border: none;
+        outline: none;
+      }
+
+      .upload-btn,
+      .show-btn,
+      .test-btn {
+        width: 284px;
+        height: 40px;
+        margin-bottom: 10px;
+        line-height: 40px;
+        color: #fff;
+        background-color: #3f89ec;
+        border-radius: 3px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .person-list {
+        width: 284px;
+        border: 1px solid #ddd;
+        border-bottom: none;
+      }
+
+      .person {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+        font-size: 12px;
+      }
+
+      .person span:first-of-type {
+        padding-right: 8px;
+        border-right: 1px solid #ddd;
+      }
+
+      .person span:last-of-type {
+        padding-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="username">
+        <input v-model="name" type="text" placeholder="用户名" />
+      </div>
+      <div class="mail">
+        <input type="text" v-model="mail" placeholder="邮箱" />
+      </div>
+      <div class="upload-btn" @click="uploadContent">上传</div>
+      <div class="show-btn" @click="showContent">显示人物信息</div>
+      <ul class="person-list" v-if="personList.length">
+        <li class="person" v-for="person in personList">
+          <span>{{person.name}}</span>
+          <span>{{person.mail}}</span>
+        </li>
+      </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./axios.js"></script>
+    <script>
+      axios.defaults.baseURL = "http://developer.duyiedu.com/vue";
+      axios.interceptors.response.use((resp) => {
+        if (resp.status === 200) {
+          return resp.data;
+        }
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "",
+          mail: "",
+          personList: [],
+          msg: "",
+        },
+        methods: {
+          uploadContent() {
+            axios
+              .post("/setUserInfo", {
+                name: this.name,
+                mail: this.mail,
+              })
+              .then((resp) => {
+                this.msg = res.data.msg;
+                // console.log(resp)
+              });
+          },
+          showContent() {
+            axios.get("/getUserInfo").then((res) => {
+              this.personList = res.data;
+              console.log(res);
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
