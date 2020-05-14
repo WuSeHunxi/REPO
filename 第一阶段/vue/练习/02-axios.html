@@ -85,6 +85,7 @@
       </div>
       <div class="upload-btn" @click="uploadContent">上传</div>
       <div class="show-btn" @click="showContent">显示人物信息</div>
+      <button @click="handleCancel">取消请求</button>
       <ul class="person-list" v-if="personList.length">
         <li class="person" v-for="person in personList">
           <span>{{person.name}}</span>
@@ -95,12 +96,23 @@
     <script src="./vue.js"></script>
     <script src="./axios.js"></script>
     <script>
-      axios.defaults.baseURL = "http://developer.duyiedu.com/vue";
-      axios.interceptors.response.use((resp) => {
-        if (resp.status === 200) {
-          return resp.data;
+      axios.defaults.baseURL = "https://developer.duyiedu.com/vue";
+      axios.interceptors.response.use(
+        (resp) => {
+          if (resp.status === 200) {
+            return resp.data;
+          }
+        },
+        (error) => {
+          if (error.response) {
+            console.log("响应时错误"+error.response);
+          } else if (error.request) {
+            console.log("请求时错误"+error.request);
+          }
+          return Promise.reject(error);
         }
-      });
+      );
+      const source = axios.CancelToken.source();
       const vm = new Vue({
         el: "#app",
         data: {
@@ -111,21 +123,43 @@
         },
         methods: {
           uploadContent() {
+            // const { name, mail } = this;
             axios
               .post("/setUserInfo", {
                 name: this.name,
                 mail: this.mail,
               })
               .then((resp) => {
-                this.msg = res.data.msg;
-                // console.log(resp)
+                this.msg = resp.msg;
+              }).catch(error=>{
+                console.log(error)
               });
           },
           showContent() {
-            axios.get("/getUserInfo").then((res) => {
-              this.personList = res.data;
-              console.log(res);
-            });
+            axios
+              .get("/getUserInfo1", {
+                cancelToken: source.token,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          },
+          handleCancel() {
+            //   console.log(0)
+            source.cancel("取消请求");
+          },
+        },
+        watch: {
+          msg() {
+            if (this.msg === "") {
+              return;
+            } else {
+              console.log(this.msg);
+              this.msg = "";
+            }
           },
         },
       });

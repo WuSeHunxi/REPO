@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-cmp></my-cmp>
+      <my-cmp1 :name="name" @input="name=$event"></my-cmp1>
+      <my-cmp2 @blur="onBlur" @focus="onFocus"></my-cmp2>
+      <my-cmp3
+        type="checkbox"
+        @change="checked=$event"
+        :checked="checked"
+      ></my-cmp3>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      Vue.component("my-cmp3", {
+        data() {
+          return {
+            count: 1,
+          };
+        },
+        props: ["checked"],
+        methods: {},
+        //动态绑定的v-on和v-bind
+        template: `<div>
+                <input v-bind="$attrs" :checked="checked"
+          @change="$emit('change', $event.target.checked)"/>
+            </div>`,
+      });
+      Vue.component("my-cmp", {
+        data() {
+          return {
+            count: 1,
+          };
+        },
+        methods: {},
+        template: `<div>
+                <button @click="count++">点击++{{count}}</button>
+            </div>`,
+      });
+      Vue.component("my-cmp1", {
+        data() {
+          return {};
+        },
+        props: ["name"],
+        methods: {},
+        template: `<div>
+                <input type="text" :value="name" @input="$emit('input',$event.target.value)"/>{{name}}
+            </div>`,
+      });
+
+      Vue.component("my-cmp2", {
+        data() {
+          return {};
+        },
+        props: ["name"],
+        methods: {},
+        template: `<div>
+                <input type="text"  v-on="$listeners"/>
+            </div>`,
+        mounted() {
+          console.log(this.$listeners);
+        },
+      });
+
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "haha",
+          checked: true,
+        },
+        methods: {
+          onBlur() {
+            console.log("失焦");
+          },
+          onFocus() {
+            console.log("聚焦");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
