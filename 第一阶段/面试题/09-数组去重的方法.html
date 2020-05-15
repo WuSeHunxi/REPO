@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //方法1：使用Set
+      Array.prototype.uniq = function () {
+        return [...new Set(this)];
+      };
+
+      //方法2
+      Array.prototype.uniq = function () {
+        var resArr = [];
+        var flag = true;
+
+        for (var i = 0; i < this.length; i++) {
+          if (resArr.indexOf(this[i]) == -1) {
+            if (this[i] != this[i]) {
+              //排除 NaN
+              if (flag) {
+                resArr.push(this[i]);
+                flag = false;
+              }
+            } else {
+              resArr.push(this[i]);
+            }
+          }
+        }
+        return resArr;
+      };
+    </script>
+  </body>
+</html>

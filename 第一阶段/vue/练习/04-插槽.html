@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-cmp>
+        <template v-slot:default="contentProp">
+          <p>oooooo~{{contentProp.age}}</p>
+        </template>
+        <template v-slot:info="infoProp">
+          <h1>{{infoProp.user.name}}</h1>
+        </template>
+      </my-cmp>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+      Vue.component("my-cmp", {
+        template: `<div>我喜欢哈哈哈哈<slot v-bind:age="age"></slot>
+                <slot name="info" v-bind:user="user"></slot>
+            </div>`,
+        data() {
+          return {
+            age: 18,
+            user: {
+              name: "popo",
+              age: 12,
+            },
+          };
+        },
+        mwthods: {},
+        props: ["name"],
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          name: "YES",
+        },
+        methods: {},
+        template: ``,
+      });
+    </script>
+  </body>
+</html>

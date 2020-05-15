@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #one{
+            width: 400px;
+            height: 400px;
+            background-color: #ff0;
+        }
+        #two{
+            width: 300px;
+            height: 300px;
+            background-color: #f0f;
+        }
+        #three{
+            width: 200px;
+            height: 200px;
+            background-color: #0ff;
+        }
+        #four{
+            width: 100px;
+            height: 100px;
+            background-color: #0f0;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="one">
+      <div id="two">
+        <div id="three">
+          <div id="four"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      //   const EventUtils = {
+      //     addEvent: function (element, type, handler) {
+      //       if (element.addEventListener) {
+      //         element.addEventListener(type, handler, false);
+      //       } else if (element.attachEvent) {
+      //         element.attachEvent("on" + type, handler);
+      //       } else {
+      //         element["on" + type] = handler;
+      //       }
+      //     },
+      //     preventDefault: function (event) {
+      //       if (event.preventDefault) {
+      //         event.preventDefault();
+      //       } else {
+      //         event.returnValue = false;
+      //       }
+      //     },
+      //     stopPropagation: function (event) {
+      //       if (event.stopPropagation) {
+      //         event.stopPropagation();
+      //       } else {
+      //         event.cancelBubble = true;
+      //       }
+      //     },
+      //     getTarget: function (event) {
+      //       return event.target || event.srcElement;
+      //     },
+      //   };
+      var one = document.getElementById("one");
+      var two = document.getElementById("two");
+      var three = document.getElementById("three");
+      var four = document.getElementById("four");
+
+      //冒泡是从下向上，DOM元素绑定的事件被触发时，此时该元素为目标元素，目标元素执行后，它的的祖元素绑定的事件会向上顺序执行。
+      //捕获则和冒泡相反，目标元素被触发后，会从目标元素的最顶层的祖先元素事件往下执行到目标元素为止。
+      one.addEventListener(
+        "click",
+        function () {
+          console.log("one");
+        },
+        true
+      );
+      two.addEventListener(
+        "click",
+        function () {
+          console.log("two,bubble");
+        },
+        false
+      );
+      two.addEventListener(
+        "click",
+        function () {
+          console.log("two,capture");
+        },
+        true
+      );
+      three.addEventListener(
+        "click",
+        function () {
+          console.log("three,capture");
+        },
+        true
+      );
+      four.addEventListener(
+        "click",
+        function () {
+          console.log("four");
+        },
+        true
+      );
+    </script>
+  </body>
+</html>

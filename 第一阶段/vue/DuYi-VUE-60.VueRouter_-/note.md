@@ -3811,6 +3811,7 @@ Vue.component('my-cmp', {
   },
   template: `
     <span>
+      //绑定的就是data中的值，因为用到的就是当前组件的值
       <slot v-bind:user="user"></slot>
     </span>
   `,

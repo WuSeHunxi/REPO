@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
+      //   function randomsort(a, b) {
+      //     return Math.random() > 0.5 ? -1 : 1;
+      //   }
+      //   var arr = [1, 2, 3, 4, 5];
+      //   var arr2 = arr.sort(randomsort);
+      //   alert(arr2);
+
+      //   function randomSort(arr) {
+      //     var result = [];
+      //     while (arr.length > 0) {
+      //       var randomIndex = Math.floor(Math.random() * arr.length);
+      //     //   console.log(randomIndex);
+      //       result.push(arr[randomIndex]);
+      //       arr.splice(randomIndex, 1);
+      //     }
+      //     return result;
+      //   }
+      //
+
+      //类似洗牌算法
+      function randomSort(arr) {
+        var index,
+          randomIndex,
+          temp,
+          len = arr.length;
+        for (index = 0; index < len; index++) {
+          randomIndex = Math.floor(Math.random() * (len - index) + index);
+          console.log(randomIndex);
+          temp = arr[index];
+          arr[index] = arr[randomIndex];
+          arr[randomIndex] = temp;
+        }
+        return arr;
+      }
+      console.log(randomSort([1, 2, 3, 4, 5]));
+    </script>
+  </body>
+</html>
