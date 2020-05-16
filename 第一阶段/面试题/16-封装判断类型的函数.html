@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getType(value) {
+        if (value === null) {
+          return value + "";
+        }
+        if (typeof value === "object") {
+          let valueClass = Object.prototype.toString.call(value),
+            type = valueClass.split(" ")[1].split("");
+          console.log(valueClass);
+          console.log(type);
+          
+        }
+      }
+      getType(Object)
+    </script>
+  </body>
+</html>
