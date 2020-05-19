@@ -13,13 +13,17 @@
         }
         if (typeof value === "object") {
           let valueClass = Object.prototype.toString.call(value),
-            type = valueClass.split(" ")[1].split("");
-          console.log(valueClass);
-          console.log(type);
-          
+            type = valueClass.split(" ")[1].split(""); //得到的是object]，转成数组去掉最后一个字符
+          //   console.log(valueClass);
+          type.pop(); //删除数组的最后一项
+          return type.join("").toLowerCase();
+        } else {
+          return typeof value;
         }
       }
-      getType(Object)
+      getType(new Object());
+
+    //   Object.keys(obj).length===0?--->用来判断对象是否为空
     </script>
   </body>
 </html>

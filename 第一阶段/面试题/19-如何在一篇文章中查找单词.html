@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function findMostWorld(article) {
+        if (!article) {
+          return;
+        }
+        article = article.trim().toLowerCase();
+        let wordList = article.match(/[a-z]+/g), //数组
+          visited = [],
+          maxNum = 0,
+          maxWord = "";
+        console.log(wordList);
+        article = " " + wordList.join(" ") + " "; //字符串
+        console.log(article);
+        wordList.forEach(function (item) {
+          if (visited.indexOf(item) < 0) {
+            visited.push(item);
+            //每次拿一个单词在单词数组中进行全局匹配
+            let word = new RegExp(" " + item + " ", "g"),
+              num = article.match(word).length;
+            if (num > maxNum) {
+              maxNum = num;
+              maxWord = item;
+            }
+          }
+        });
+        return maxWord + " " + maxNum;
+      }
+
+      console.log(findMostWorld("papap aauwd  dhshdus  ii qq qq qq"));
+    </script>
+  </body>
+</html>

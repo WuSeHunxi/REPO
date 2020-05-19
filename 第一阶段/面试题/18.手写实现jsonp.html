@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function jsonp(url, params, callback) {
+        let queryString = url.indexOf("?") === "-1" ? "?" : "&";
+        for (var k in params) {
+          if (params.hasOwnProperty(k)) {
+            queryString += k + "=" + params[k] + "&";
+          }
+        }
+        let random = Math.random().toString().replace(".", ""),
+          callbackName = "myJsonp" + random;
+        queryString += "callback=" + callbackName;
+        let scriptNode = document.createElement("script");
+        scriptNode.src = url + queryString;
+        window[callbackName] = function () {
+          callback(...arguments);
+          document.getElementsByTagName("head")[0].removeChild("scriptNode");
+        };
+        document.getElementsByTagName("head")[0].appendChild(scriptNode);
+      }
+    </script>
+  </body>
+</html>
