@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        //www.baidu.com?a=1&b=2
-        const parseQueryString=url=>{
-            var json={};
-            var arr=url.substr(url.indexOf('?')+1).split('&');
-            arr.forEach(item => {
-                var tmp=item.split('=');
-                json[temp[0]]=tmp[1];
-            });
-            return json;
-        }
-        let result=parseQueryString('www.baidu.com?a=1&b=2');
-        console.log(result)
+      //www.baidu.com?a=1&b=2
+      const parseQueryString = (url) => {
+        var json = {};
+        var arr = url.substr(url.indexOf("?") + 1).split("&");
+        // console.log(url.substr(url.indexOf("?") + 1));
+        // console.log(url.indexOf('?'))
+        arr.forEach((item) => {
+          var temp = item.split("=");
+          json[temp[0]] = temp[1];
+        });
+        return json;
+      };
+      let result = parseQueryString("www.baidu.com?a=1&b=2");
+      console.log(result);
     </script>
-</body>
+  </body>
 </html>
