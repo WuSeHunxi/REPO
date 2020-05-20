@@ -30,9 +30,13 @@
           len = arr.length;
         for (index = 0; index < len; index++) {
           randomIndex = Math.floor(Math.random() * (len - index) + index);
-          
+          temp = arr[index];
+          arr[index] = arr[randomIndex];
+          arr[randomIndex] = temp;
         }
+        return arr;
       }
+
       function strLength(s, bUnicode255For1) {
         if (bUnicode255For1) {
           return s.length;

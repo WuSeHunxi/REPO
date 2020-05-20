@@ -17,6 +17,7 @@
           if (proto === prototype) {
             return true;
           }
+          //继续向上一层找原型
           proto = Object.getPrototypeOf(proto);
         }
       }
