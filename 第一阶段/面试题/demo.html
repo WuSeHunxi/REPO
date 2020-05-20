@@ -4,17 +4,124 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      div {
-        width: 0;
-        height: 0;
-        border-width: 20px;
-        border-style: solid;
-        border-color: transparent transparent transparent #ff0;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <div></div>
+    <script>
+      function randomSort(a, b) {
+        return Math.random() > 0.5 ? -1 : 1;
+      }
+
+      function randomSort(arr) {
+        var result = [];
+        while (arr.length > 0) {
+          var randomIndex = Math.floor(Math.random() * arr.length);
+          result.push(arr[randomIndex]);
+          arr.split(randomIndex, 1);
+        }
+        return result;
+      }
+
+      function randomSort(arr) {
+        var index,
+          randomIndex,
+          temp,
+          len = arr.length;
+        for (index = 0; index < len; index++) {
+          randomIndex = Math.floor(Math.random() * (len - index) + index);
+          
+        }
+      }
+      function strLength(s, bUnicode255For1) {
+        if (bUnicode255For1) {
+          return s.length;
+        } else {
+          var len = s.length;
+          for (var i = 0; i < s.length; i++) {
+            if (s.charCodeAt(i) > 255) {
+              len++;
+            }
+          }
+          return len;
+        }
+      }
+      Array.prototype.uniq = function () {
+        return [...new Set(this)];
+      };
+
+      Array.prototype.uniq = function () {
+        var resArr = [];
+        var flag = true;
+        for (var i = 0; i < this.length; i++) {
+          if (resArr.indexOf(this[i]) == -1) {
+            if (this[i] != this[i]) {
+              if (flag) {
+                resArr.push(this[i]);
+                flag = false;
+              }
+            } else {
+              resArr.push(this[i]);
+            }
+          }
+        }
+        return resArr;
+      };
+
+      function uniq(arr) {
+        var res = [];
+        var obj = {};
+        for (var i = 0; i < arr.length; i++) {
+          if (!obj[arr[i]]) {
+            res.push(arr[i]);
+            obj[arr[i]] = 1;
+          }
+        }
+        return res;
+      }
+      console.log(uniq([1, 2, 3, 3, 4, 4]));
+
+      function getParams(sUrl, sKey) {
+        var params = sUrl.split("#")[0].split("?")[1].split("&");
+        console.log(params);
+      }
+      getParams("http://www.nowcoder.com?key=1&key=2&key=3&test=4#hehe key");
+
+      function commonParentNode(oNode1, oNode2) {
+        if (oNode1.contains(oNode2)) {
+          return oNode1;
+        } else {
+          return commonParentNode(oNode1, parent, oNode2);
+        }
+      }
+
+      function shallowCopy(object) {
+        if (!object || typeof object !== "object") {
+          return;
+        }
+        let newObject = Array.isArray(object) ? [] : {};
+        for (let key in newObject) {
+          if (object.hasOwnProperty(key)) {
+            newObject[key] = object[key];
+          }
+        }
+        return newObject;
+      }
+
+      function deepCopy(object) {
+        if (!object || typeof object !== "object") {
+          return;
+        }
+        let newObject = Array.isArray(object) ? [] : {};
+        for (let key in object) {
+          if (object.hasOwnProperty(key)) {
+            newObject[key] =
+              typeof object[key] === "object"
+                ? deepCopy(object[key])
+                : object[key];
+          }
+        }
+      }
+    </script>
   </body>
 </html>
