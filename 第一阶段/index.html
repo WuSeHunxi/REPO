@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function twoSum(nums, target) {
+        for (var i = 0; i < nums.length; i++) {
+          for (var j = nums.length - 1; j > 0; j--) {
+            if (nums[j] + nums[i] === target) {
+              return {
+                i,
+                j,
+              };
+            }
+          }
+        }
+      }
+      console.log(twoSum([1, 3, 5, 8], 9));
+
+      //   function getWorldLength(str) {
+      //     var arr = [];
+      //     var len = [];
+      //     if (str[str.length - 1] == " ") {
+      //       return 0;
+      //     }
+      //     arr = str.split(" ");
+      //     console.log(arr);
+      //     for (var i = 0; i < arr.length; i++) {
+      //       len.push(arr[i].length);
+      //     }
+      //     var max = len[0];
+      //     for (var i = 0; i < len.length; i++) {
+      //       if (len[i] < len[i + 1]) {
+      //         max = len[i + 1];
+      //       }
+      //     }
+      //     return max;
+      //   }
+      //   console.log(getWorldLength("hello world"));
+    </script>
+  </body>
+</html>
