@@ -1,17 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import TickControl from "./TickControl";
+import Tick from "./Tick";
 
-const tc = new TickControl();
-console.log(tc);
+// const tc = new TickControl();
+// console.log(tc);
 
 ////父组件是TickControl，子组件是Tick
-ReactDOM.render(
-  <TickControl
-    id="hello"
-    onClicked={() => {
-      console.log("hello");
-    }}
-  />,
-  document.getElementById("root")
-);
+ReactDOM.render(<Tick number={10} />, document.getElementById("root"));

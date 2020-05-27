@@ -7,6 +7,7 @@ import { getRandom } from "../util";
 export default class BallList extends Component {
   constructor(props) {
     super(props);
+    //初始化数据的数组信息，根据数据进行渲染
     this.state = {
       ballInfoes: [],
     };
