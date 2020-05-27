@@ -103,7 +103,7 @@ const router = new VueRouter({
       return savedPosition;
     } else {
       if (to.hash) {
-        return { selector: to.hash };//定位到有锚点的位置
+        return { selector: to.hash }; //定位到有锚点的位置
       } else {
         return { x: 0, y: 0 };
       }

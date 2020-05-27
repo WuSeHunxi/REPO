@@ -1,6 +1,6 @@
-import movieService from "../services/movieService.js"
-import Loading from "../components/loading.js"
-import MovieDetail from "../components/movieDetail.js"
+import movieService from "../services/movieService.js";
+import Loading from "../components/loading.js";
+import MovieDetail from "../components/movieDetail.js";
 const template = `
     <div class="data-container">
         <MovieDetail v-if="movieData" :data="movieData"/>
@@ -10,20 +10,23 @@ const template = `
 `;
 
 export default {
-    template,
-    data() {
-        return {
-            movieData: null,
-            isLoading: false
-        }
-    },
-    async mounted(){
-        this.isLoading = true;
-        this.movieData = await movieService.getMovie(this.$route.params.id);
-        this.isLoading = false;
-    },
-    components: {
-        MovieDetail,
-        Loading
-    }
-}
+  template,
+  data() {
+    return {
+      movieData: null,
+      isLoading: false,
+    };
+  },
+  async mounted() {
+    this.isLoading = true;
+    /**
+     * 详情页使用params，列表页中使用点击跳转push
+     */
+    this.movieData = await movieService.getMovie(this.$route.params.id);
+    this.isLoading = false;
+  },
+  components: {
+    MovieDetail,
+    Loading,
+  },
+};

@@ -14,59 +14,59 @@ const template = `
 `;
 
 export default {
-    template,
-    props: {
-        value: {
-            type: Number,
-            default: 1
-        },
-        pageSize: {
-            type: Number,
-            default: 10
-        },
-        panelNumber: {
-            type: Number,
-            default: 5
-        },
-        total: {
-            type: Number,
-            required: true
-        }
+  template,
+  props: {
+    value: {
+      type: Number,
+      default: 1,
     },
-    computed: {
-        pageNumber() { //总页数
-            return Math.ceil(this.total / this.pageSize)
-        },
-        numbers() {
-            //用于得到一个数字的数组
-            //最小页码数字
-            var min = this.value - Math.floor(this.panelNumber / 2);
-            if (min < 1) {
-                min = 1;
-            }
-            //最大页码数字
-            var max = min + this.panelNumber - 1;
-            if (max > this.pageNumber) {
-                max = this.pageNumber;
-            }
-            const arr = [];
-            for (let i = min; i <= max; i++) {
-                arr.push(i);
-            }
-            return arr;
-        }
+    pageSize: {
+      type: Number,
+      default: 10,
     },
-    methods: {
-        changePage(newPage) {
-            if (newPage < 1) {
-                newPage = 1;
-            }
-            else if (newPage > this.pageNumber) {
-                newPage = this.pageNumber;
-            }
-            // this.value = newPage; //不可以直接修改属性
-            // 应该变页码！！，但是由于数据不是我的，我不能改，所以，只能触发事件，让父组件（使用这个组件的组件）收到通知
-            this.$emit("input", newPage); 
-        }
-    }
-}
+    panelNumber: {
+      type: Number,
+      default: 5,
+    },
+    total: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    pageNumber() {
+      //总页数
+      return Math.ceil(this.total / this.pageSize);
+    },
+    numbers() {
+      //用于得到一个数字的数组
+      //最小页码数字
+      var min = this.value - Math.floor(this.panelNumber / 2);
+      if (min < 1) {
+        min = 1;
+      }
+      //最大页码数字
+      var max = min + this.panelNumber - 1;
+      if (max > this.pageNumber) {
+        max = this.pageNumber;
+      }
+      const arr = [];
+      for (let i = min; i <= max; i++) {
+        arr.push(i);
+      }
+      return arr;
+    },
+  },
+  methods: {
+    changePage(newPage) {
+      if (newPage < 1) {
+        newPage = 1;
+      } else if (newPage > this.pageNumber) {
+        newPage = this.pageNumber;
+      }
+      // this.value = newPage; //不可以直接修改属性
+      // 应该变页码！！，但是由于数据不是我的，我不能改，所以，只能触发事件，让父组件（使用这个组件的组件）收到通知
+      this.$emit("input", newPage);
+    },
+  },
+};

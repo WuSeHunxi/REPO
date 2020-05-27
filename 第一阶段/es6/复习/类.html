@@ -6,25 +6,168 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="app">
+      <transitiion name="toast">
+        <div class="toast" :class="type"></div>
+      </transitiion>
+    </div>
     <script>
-      class Animal {
-        constructor(name, age, sex) {
-          this.name = name;
-          this.age = age;
-          this.sex = sex;
-        }
+      export default {
+        type: "",
+        message: "",
+        show: false,
+      };
 
-        print() {
-          console.log(this.name, this.age, this.sex);
+      let instance = {};
+      let timer = null;
+      let Toast = Vue.extend(toast);
+      let toaMsg = (options) => {
+        if (!instance) {
+          instance = new Toast();
+          document.body.append(instance.$mount().$el);
         }
+        instance.duration = 3000;
+        if (typeof options === "string") {
+          instance = options;
+        } else if (typeof options === "object") {
+          instance.type = options.type;
+          instance.duration = options.duration;
+          instance.message = options.message;
+        } else {
+          return;
+        }
+        instance.show = true;
+        instance.timer = setTimeout(() => {
+          instance.show = false;
+          clearTimeout(instance.duration);
+        }, instance.duration);
+      };
+
+      //www.baidu.com  a,1  b,2 ---->http://www.baidu.com?a=1,b=2
+      function contactUrl(url, key, value) {
+        var params = {};
+        if (Array.isArray(key) && Array.isArray(value)) {
+          for (let i = 0, j = 0; i < key.length, j < value.length; i++, j++) {
+            params[key[i]] = value[j];
+          }
+          if (url.indexOf("?") !== -1) {
+            for (const key in params) {
+              url += `${key}=${params[key]}&`;
+            }
+            url = url.substring(0, url.length - 1);
+            return url;
+          }
+        } else {
+          url += `${key}=${value}`;
+        }
+        return url;
+      }
+      console.log(contactUrl("www.baidu?", ["a", "b", "a"], [1, 2, 5]));
+
+      let Toast = Vue.extend(toast);
+      let timer = null;
+      let instance = {};
+      let toastMsg = (options) => {
+        if (!instance) {
+          instance = new Toast();
+          document.body.append(instance.$mount().$el);
+        }
+        instance.duration = 3000;
+        if (typeof options === "string") {
+          instance = options;
+        } else if (typeof options === "object") {
+          instance.type = options.type;
+          instance.message = options.message;
+          instance.duration = options.duration;
+        } else {
+          return;
+        }
+        instance.show = true;
+        instance.timer = setTimeout(() => {
+          instance.timer = null;
+          clearTimeout(instance.timer);
+        }, instance.duration);
+      };
+
+      function sortBubble(arr) {
+        for (var i = 0; i < arr.length; i++) {
+          for (var j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+              var temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+        return arr;
       }
 
-      const animal = new Animal("pp", 12, true);
-      animal.print();
-
-      for (prop in animal) {
-        console.log(prop);
+      function quickSort(arr) {
+        if (arr.length <= 1) {
+          return arr;
+        }
+        var num = Math.floor(arr.length / 2);
+        var numVal = arr[num];
+        var left = [];
+        var right = [];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] < numVal) {
+            left.push(arr[i]);
+          } else {
+            right.push(arr[i]);
+          }
+        }
+        return quickSort(left).concat([numVal], quickSort(right));
       }
+
+      // const baseUrl = "";
+      // const search = { a: 1, b: 2 };
+      // function encodeParamsSearch(obj) {
+      //   const params = [];
+      //   Object.keys(obj).forEach((key) => {
+      //     let value = obj[key];
+      //     if (typeof value === "undefined") {
+      //       value = "";
+      //     }
+      //     params.push([key, encodeURIComponent(value)].join("="));
+      //   });
+      //   return params.join("&");
+      // }
+      // var obj = {
+      //   name: "pap",
+      //   age: "11",
+      //   name: "alal",
+      // };
+      // console.log(obj);
+
+      // class Animal {
+      //   constructor(type, name, sex, age) {
+      //     this.type = type;
+      //     this.name = name;
+      //     this.sex = sex;
+      //     this.age = age;
+      //   }
+      //   print() {
+      //     console.log(this.name);
+      //   }
+      // }
+
+      // class Dog extends Animal {
+      //   constructor(name, sex, age, habbit) {
+      //     super("动物", name, sex, age);
+      //     this.name = name;
+      //     this.sex = sex;
+      //     this.age = age;
+      //     this.habbit = habbit;
+      //   }
+      //   print() {
+      //     super.print();
+      //     console.log(this.name, this.habbit);
+      //   }
+      // }
+
+      // const d = new Dog("huahua", 0, 11, "ooo");
+      // d.print();
     </script>
   </body>
 </html>
