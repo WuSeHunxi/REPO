@@ -14,7 +14,7 @@ export default class Tick extends Component {
     if (this.state.number === 0) {
       clearInterval(this.timer);
       //定时器完成之后需要进行一些其他的操作
-      
+      this.props.onOver && this.props.onOver();
     }
   }
   render() {

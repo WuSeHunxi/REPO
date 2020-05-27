@@ -8,6 +8,11 @@ export default class TickControl extends Component {
       isOver: false,
     };
   }
+  handleOver = () => {
+    this.setState({
+      isOver: true,
+    });
+  };
   render() {
     const msg = "正在进行加载";
     if (this.state.isOver) {
@@ -15,12 +20,14 @@ export default class TickControl extends Component {
     }
     return (
       <div>
-        <Tick number={10} onOver={()=>{
-            this.setState({
-                
-            })
-        }}/>
-        <h1>{msg}</h1>
+        <Tick number={10} onOver={this.handleOver} />
+        <h1
+          onClick={() => {
+            console.log("点击了" + this);
+          }}
+        >
+          {msg}
+        </h1>
       </div>
     );
   }

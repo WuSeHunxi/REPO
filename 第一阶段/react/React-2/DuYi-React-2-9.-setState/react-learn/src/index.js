@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Comp from './Comp'
+import React from "react";
+import ReactDOM from "react-dom";
+import MyComp from "./MyComp";
 
-ReactDOM.render(<Comp/>, document.getElementById('root'));
+ReactDOM.render(<MyComp />, document.getElementById("root"));
