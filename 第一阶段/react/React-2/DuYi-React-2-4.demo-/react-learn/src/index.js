@@ -1,23 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import StudentList from "./components/StudentList";
-const appkey = "demo13_1545210570249";
-/**
- * 获取所有的学生数据
- */
-async function fetchAllStudents() {
-    const stus = await fetch("http://api.duyiedu.com/api/student/findAll?appkey=" + appkey)
-        .then(resp => resp.json()).then(resp => resp.data)
-    return stus;
+import React from "react";
+import ReactDOM from "react-dom";
+// import Student from "./component/Student";
+import StudentList from "./component/StudentList";
+// import StudentList from "./component/StudentList";
+
+const appkey = "77521ily__1571400791988";
+
+async function getData() {
+  const data = await fetch(
+    "http://api.duyiedu.com/api/student/findAll?appkey=" + appkey
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      return res.data;
+    });
+  return data;
 }
 
 async function render() {
-    ReactDOM.render("正在加载中....", document.getElementById('root'));
-    const stus = await fetchAllStudents();//获取学生数组
-    ReactDOM.render(<StudentList stus={stus} />, document.getElementById('root'));
+  const data = await getData(); //得到的是数组
+  console.log(data);
+  ReactDOM.render(
+    <>
+      <StudentList data={data} />
+    </>,
+    document.getElementById("root")
+  );
 }
 
 render();
-
-
-
