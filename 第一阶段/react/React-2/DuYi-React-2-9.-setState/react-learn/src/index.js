@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import MyComp from "./MyComp";
+import MyCmp from "./MyCmp";
 
-ReactDOM.render(<MyComp />, document.getElementById("root"));
+ReactDOM.render(<MyCmp />, document.getElementById("root"));

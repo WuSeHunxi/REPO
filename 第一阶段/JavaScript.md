@@ -782,7 +782,7 @@ function Person(name) {
   this.name = name;
 }
 
-Person.prototype.sayName = function() {
+Person.prototype.sayName = function () {
   console.log("My name is " + this.name + ".");
 };
 
@@ -794,7 +794,7 @@ function Student(name, grade) {
 Student.prototype = Object.create(Person.prototype);
 Student.prototype.constructor = Student;
 
-Student.prototype.sayMyGrade = function() {
+Student.prototype.sayMyGrade = function () {
   console.log("My grade is " + this.grade + ".");
 };
 ```
@@ -873,7 +873,7 @@ on 对象、navigator 对象、screen 对象等子对象，并且 DOM 的最根�
 const EventUtils = {
   // 视能力分别使用dom0||dom2||IE方式 来绑定事件
   // 添加事件
-  addEvent: function(element, type, handler) {
+  addEvent: function (element, type, handler) {
     if (element.addEventListener) {
       element.addEventListener(type, handler, false);
     } else if (element.attachEvent) {
@@ -884,7 +884,7 @@ const EventUtils = {
   },
 
   // 移除事件
-  removeEvent: function(element, type, handler) {
+  removeEvent: function (element, type, handler) {
     if (element.removeEventListener) {
       element.removeEventListener(type, handler, false);
     } else if (element.detachEvent) {
@@ -895,17 +895,17 @@ const EventUtils = {
   },
 
   // 获取事件目标
-  getTarget: function(event) {
+  getTarget: function (event) {
     return event.target || event.srcElement;
   },
 
   // 获取 event 对象的引用，取到事件的所有信息，确保随时能使用 event
-  getEvent: function(event) {
+  getEvent: function (event) {
     return event || window.event;
   },
 
   // 阻止事件（主要是事件冒泡，因为 IE 不支持事件捕获）
-  stopPropagation: function(event) {
+  stopPropagation: function (event) {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else {
@@ -914,13 +914,13 @@ const EventUtils = {
   },
 
   // 取消事件的默认行为
-  preventDefault: function(event) {
+  preventDefault: function (event) {
     if (event.preventDefault) {
       event.preventDefault();
     } else {
       event.returnValue = false;
     }
-  }
+  },
 };
 ```
 
@@ -1234,7 +1234,7 @@ let xhr = new XMLHttpRequest();
 xhr.open("GET", SERVER_URL, true);
 
 // 设置状态监听函数
-xhr.onreadystatechange = function() {
+xhr.onreadystatechange = function () {
   if (this.readyState !== 4) return;
 
   // 当请求成功时
@@ -1246,7 +1246,7 @@ xhr.onreadystatechange = function() {
 };
 
 // 设置请求失败时的监听函数
-xhr.onerror = function() {
+xhr.onerror = function () {
   console.error(this.statusText);
 };
 
@@ -1261,14 +1261,14 @@ xhr.send(null);
 
 function getJSON(url) {
   // 创建一个 promise 对象
-  let promise = new Promise(function(resolve, reject) {
+  let promise = new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest();
 
     // 新建一个 http 请求
     xhr.open("GET", url, true);
 
     // 设置状态的监听函数
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
       if (this.readyState !== 4) return;
 
       // 当请求成功或失败时，改变 promise 的状态
@@ -1280,7 +1280,7 @@ function getJSON(url) {
     };
 
     // 设置错误监听函数
-    xhr.onerror = function() {
+    xhr.onerror = function () {
       reject(new Error(this.statusText));
     };
 
@@ -1537,7 +1537,7 @@ js 中现在比较成熟的有四种模块加载方案。
 
 ```js
 // CMD
-define(function(require, exports, module) {
+define(function (require, exports, module) {
   var a = require("./a");
   a.doSomething();
   // 此处略去 100 行
@@ -1547,7 +1547,7 @@ define(function(require, exports, module) {
 });
 
 // AMD 默认推荐
-define(["./a", "./b"], function(a, b) {
+define(["./a", "./b"], function (a, b) {
   // 依赖必须一开始就写好
   a.doSomething();
   // 此处略去 100 行
@@ -1973,7 +1973,7 @@ function getFileExtension(filename) {
 function debounce(fn, wait) {
   var timer = null;
 
-  return function() {
+  return function () {
     var context = this,
       args = arguments;
 
@@ -1994,7 +1994,7 @@ function debounce(fn, wait) {
 function throttle(fn, delay) {
   var preTime = Date.now();
 
-  return function() {
+  return function () {
     var context = this,
       args = arguments,
       nowTime = Date.now();
@@ -2163,7 +2163,7 @@ function deepCopy(object) {
 
 ```js
 // call函数实现
-Function.prototype.myCall = function(context) {
+Function.prototype.myCall = function (context) {
   // 判断调用对象
   if (typeof this !== "function") {
     console.error("type error");
@@ -2190,7 +2190,7 @@ Function.prototype.myCall = function(context) {
 
 // apply 函数实现
 
-Function.prototype.myApply = function(context) {
+Function.prototype.myApply = function (context) {
   // 判断调用对象是否为函数
   if (typeof this !== "function") {
     throw new TypeError("Error");
@@ -2218,7 +2218,7 @@ Function.prototype.myApply = function(context) {
 };
 
 // bind 函数实现
-Function.prototype.myBind = function(context) {
+Function.prototype.myBind = function (context) {
   // 判断调用对象是否为函数
   if (typeof this !== "function") {
     throw new TypeError("Error");
@@ -2282,7 +2282,7 @@ function curry(fn, args) {
 
   args = args || [];
 
-  return function() {
+  return function () {
     let subArgs = args.slice(0);
 
     // 拼接得到现有的所有参数
@@ -2805,7 +2805,7 @@ clientX，clientY 标识的是鼠标的坐标，分别标识横坐标和纵坐�
 function mySetInterval(fn, timeout) {
   // 控制器，控制定时器是否继续执行
   var timer = {
-    flag: true
+    flag: true,
   };
 
   // 设置递归函数，模拟定时器执行。
@@ -2976,7 +2976,7 @@ function MyPromise(fn) {
         self.value = value;
 
         // 执行回调函数
-        self.resolvedCallbacks.forEach(callback => {
+        self.resolvedCallbacks.forEach((callback) => {
           callback(value);
         });
       }
@@ -2996,7 +2996,7 @@ function MyPromise(fn) {
         self.value = value;
 
         // 执行回调函数
-        self.rejectedCallbacks.forEach(callback => {
+        self.rejectedCallbacks.forEach((callback) => {
           callback(value);
         });
       }
@@ -3012,19 +3012,19 @@ function MyPromise(fn) {
   }
 }
 
-MyPromise.prototype.then = function(onResolved, onRejected) {
+MyPromise.prototype.then = function (onResolved, onRejected) {
   // 首先判断两个参数是否为函数类型，因为这两个参数是可选参数
   onResolved =
     typeof onResolved === "function"
       ? onResolved
-      : function(value) {
+      : function (value) {
           return value;
         };
 
   onRejected =
     typeof onRejected === "function"
       ? onRejected
-      : function(error) {
+      : function (error) {
           throw error;
         };
 
@@ -3327,8 +3327,8 @@ function checkNullObj(obj) {
 ```js
 // 使用闭包实现
 for (var i = 0; i < 5; i++) {
-  (function(i) {
-    setTimeout(function() {
+  (function (i) {
+    setTimeout(function () {
       console.log(i);
     }, i * 1000);
   })(i);
@@ -3337,7 +3337,7 @@ for (var i = 0; i < 5; i++) {
 // 使用 let 块级作用域
 
 for (let i = 0; i < 5; i++) {
-  setTimeout(function() {
+  setTimeout(function () {
     console.log(i);
   }, i * 1000);
 }
@@ -3358,9 +3358,7 @@ function jsonp(url, params, callback) {
   }
 
   // 处理回调函数名
-  let random = Math.random()
-      .toString()
-      .replace(".", ""),
+  let random = Math.random().toString().replace(".", ""),
     callbackName = "myJsonp" + random;
 
   // 添加回调函数
@@ -3370,7 +3368,7 @@ function jsonp(url, params, callback) {
   let scriptNode = document.createElement("script");
   scriptNode.src = url + queryString;
 
-  window[callbackName] = function() {
+  window[callbackName] = function () {
     // 调用回调函数
     callback(...arguments);
 
@@ -3390,12 +3388,12 @@ function jsonp(url, params, callback) {
 #### 162. 手写一个观察者模式？
 
 ```js
-var events = (function() {
+var events = (function () {
   var topics = {};
 
   return {
     // 注册监听函数
-    subscribe: function(topic, handler) {
+    subscribe: function (topic, handler) {
       if (!topics.hasOwnProperty(topic)) {
         topics[topic] = [];
       }
@@ -3403,20 +3401,20 @@ var events = (function() {
     },
 
     // 发布事件，触发观察者回调事件
-    publish: function(topic, info) {
+    publish: function (topic, info) {
       if (topics.hasOwnProperty(topic)) {
-        topics[topic].forEach(function(handler) {
+        topics[topic].forEach(function (handler) {
           handler(info);
         });
       }
     },
 
     // 移除主题的一个观察者的回调事件
-    remove: function(topic, handler) {
+    remove: function (topic, handler) {
       if (!topics.hasOwnProperty(topic)) return;
 
       var handlerIndex = -1;
-      topics[topic].forEach(function(item, index) {
+      topics[topic].forEach(function (item, index) {
         if (item === handler) {
           handlerIndex = index;
         }
@@ -3428,11 +3426,11 @@ var events = (function() {
     },
 
     // 移除主题的所有观察者的回调事件
-    removeAll: function(topic) {
+    removeAll: function (topic) {
       if (topics.hasOwnProperty(topic)) {
         topics[topic] = [];
       }
-    }
+    },
   };
 })();
 ```
@@ -3458,14 +3456,14 @@ class EventEmitter {
 
   off(event, callback) {
     let callbacks = this.events[event];
-    this.events[event] = callbacks && callbacks.filter(fn => fn !== callback);
+    this.events[event] = callbacks && callbacks.filter((fn) => fn !== callback);
 
     return this;
   }
 
   emit(event, ...args) {
     let callbacks = this.events[event];
-    callbacks.forEach(fn => {
+    callbacks.forEach((fn) => {
       fn(...args);
     });
 
@@ -3473,7 +3471,7 @@ class EventEmitter {
   }
 
   once(event, callback) {
-    let wrapFun = function(...args) {
+    let wrapFun = function (...args) {
       callback(...args);
 
       this.off(event, wrapFun);
@@ -3489,18 +3487,18 @@ class EventEmitter {
 
 ```js
 function Foo() {
-  getName = function() {
+  getName = function () {
     alert(1);
   };
   return this;
 }
-Foo.getName = function() {
+Foo.getName = function () {
   alert(2);
 };
-Foo.prototype.getName = function() {
+Foo.prototype.getName = function () {
   alert(3);
 };
-var getName = function() {
+var getName = function () {
   alert(4);
 };
 function getName() {
@@ -3651,10 +3649,9 @@ function findMostWord(article) {
   article = " " + wordList.join("  ") + " ";
 
   // 遍历判断单词出现次数
-  wordList.forEach(function(item) {
+  wordList.forEach(function (item) {
     if (visited.indexOf(item) < 0) {
-
-      // 加入 visited 
+      // 加入 visited
       visited.push(item);
 
       let word = new RegExp(" " + item + " ", "g"),
@@ -3670,3 +3667,35 @@ function findMostWord(article) {
   return maxWord + "  " + maxNum;
 }
 ```
+
+#### 175.闭包在实际场景中怎么用，常见的坑？
+
+- 概念：能过读取其他函数内部变量的函数
+- 用途：读取函数内部的变量；让这些变量的值始终保持在内存中，不会自动清除；方便调用上下文的局部变量，利于代码的封装。
+- 应用场景：
+
+  - 1.节点循环绑定 click 事件：解决办法：let；立即执行函数；利用函数工厂，函数为每一个回调创建新的词法环境。
+  - 2.全局变量封装成私有变量：
+    有一个计算乘积的函数，mult 函数接收一些 number 类型的参数，并返回乘积结果。为了提高函数性能，我们增加缓存机制，将之前计算过的结果缓存起来，下次遇到同样的参数，就可以直接返回结果，而不需要参与运算。这里，存放缓存结果的变量不需要暴露给外界，并且需要在函数运行结束后，仍然保存，所以可以采用闭包。
+
+  ````js
+  var mult = (function(){ var cache = {}; var calculate = function() { var a = 1; for(var i = 0, len = arguments.length; i < len; i++) { a = a * arguments[i]; } return a; } return function() { var args = Array.prototype.join.call(arguments, ','); if(args in cache) { return cache[args]; } return cache[args] = calculate.apply(null, arguments); } }())
+  ``` 。
+  - 3.延长局部变量的寿命：
+
+  ```js
+  var report = (function () {
+    var imgs = [];
+    return function (src) {
+      var img = new Image();
+      imgs.push(img);
+      img.src = src;
+    };
+  })();
+  ````
+
+#### 176.常见的动画库：AniJS.js-->基于 CSS3 的动画库，Velocity.js--》高性能、功能丰富的轻量级 JS 动画库，vivus.js-->可执行 SVG 路径动画的轻量级 JS 库，Bounce.js-->是一个漂亮的关键帧动画生成工具和类库，基于 CSS3 实现
+
+CSS3 的动画的优点： - 1.在性能上会稍微好一些，浏览器会对 CSS3 的动画做一些优化（比如专门新建一个图层用来跑动画） - 2.代码相对简单。
+但其缺点也很明显： - 1.在动画控制上不够灵活 - 2.兼容性不好 - 3.部分动画功能无法实现（如滚动动画，视差滚动等）
+JavaScript 的动画正好弥补了这两个缺点，控制能力很强，可以单帧的控制、变换，同时写得好完全可以兼容 IE6，并且功能强大。但想想 CSS 动画的 transform 矩阵是 C++级的计算，必然要比 javascript 级的计算要快。另外对库的依赖也是一个很让人头疼的问题。所以，对于一些复杂控制的动画，使用 javascript 会比较靠谱。而在实现一些小的交互动效的时候，就多考虑考虑 CSS 吧
