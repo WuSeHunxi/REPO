@@ -3,8 +3,8 @@ const path = require("path");
 
 //方式1
 async function method1() {
-  const from = path.resolve(__dirname, "./temp/abc.txt");
-  const to = path.resolve(__dirname, "./temp/abc2.txt");
+  const from = path.resolve(__dirname, "./abc.txt");
+  const to = path.resolve(__dirname, "./abc2.txt");
   console.time("方式1");
   const content = await fs.promises.readFile(from);
   await fs.promises.writeFile(to, content);
@@ -14,13 +14,13 @@ async function method1() {
 
 //方式2
 async function method2() {
-  const from = path.resolve(__dirname, "./temp/abc.txt");
-  const to = path.resolve(__dirname, "./temp/abc2.txt");
+  const from = path.resolve(__dirname, "./abc.txt");
+  const to = path.resolve(__dirname, "./abc2.txt");
   console.time("方式2");
 
   const rs = fs.createReadStream(from);
   const ws = fs.createWriteStream(to);
-  rs.on("data", chunk => {
+  rs.on("data", (chunk) => {
     //读到一部分数据
     const flag = ws.write(chunk);
     if (!flag) {
