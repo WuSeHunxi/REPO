@@ -6,7 +6,11 @@ const moment = require("moment");
 const { pick } = require("../util/propertyHelper");
 exports.addStudent = async function (stuObj) {
   stuObj = pick(stuObj, "name", "birthday", "sex", "mobile", "ClassId");
-  console.log(stuObj)
+  // console.log(stuObj);
+  //ClassId通过自己写的函数完成数据的验证
+  /**
+   * 数据的验证通常是在服务层进行处理
+   */
   validate.validators.classExits = async function (value) {
     const c = await Class.findByPk(value);
     if (c) {
@@ -19,6 +23,7 @@ exports.addStudent = async function (stuObj) {
     //验证规则
     name: {
       presence: {
+        //必须存在且不为空
         allowEmpty: false,
       },
       type: "string",
@@ -79,7 +84,9 @@ exports.updateStudent = async function (id, obj) {
 
 exports.getStudentById = async function (id) {
   const result = await Student.findByPk(id);
+  //
   if (result) {
+    console.log(result.toJSON() + "");
     return result.toJSON();
   }
   return null;

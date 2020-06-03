@@ -15,6 +15,7 @@ async function getBooksHTML() {
  */
 async function getBookLinks() {
   const html = await getBooksHTML();
+  //加载html，需要将获取到的html dom作为参数传递
   const $ = cheerio.load(html);
   const achorElements = $("#content .grid-12-12 li a.cover");
   const links = achorElements

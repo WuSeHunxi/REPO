@@ -1,5 +1,6 @@
 const sequelize = require("./db");
 const { DataTypes } = require("sequelize");
+
 module.exports = sequelize.define(
   "Book",
   {
@@ -8,7 +9,7 @@ module.exports = sequelize.define(
       allowNull: false,
     },
     imgurl: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     publishDate: {
       type: DataTypes.STRING,
@@ -17,7 +18,7 @@ module.exports = sequelize.define(
     author: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }
   },
   {
     paranoid: true,

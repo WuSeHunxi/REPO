@@ -15,3 +15,6 @@ stuServ
   .catch((err) => {
     console.log(err);
   });
+stuServ.getStudentById(3).then((res)=>{
+  console.log(res)
+})

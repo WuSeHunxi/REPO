@@ -9,6 +9,7 @@ const result = Mock.mock({
   ],
 }).datas;
 
+//将数据添加到数据库中
 const Class = require("../models/Class");
 //批量添加的放法
 Class.bulkCreate(result);

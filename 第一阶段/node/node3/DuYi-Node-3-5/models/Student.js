@@ -10,7 +10,7 @@ module.exports = sequelize.define(
     },
     birthdady: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     sex: {
       type: DataTypes.BOOLEAN,
@@ -19,7 +19,7 @@ module.exports = sequelize.define(
     mobile: {
       type: DataTypes.STRING(11),
       allowNull: false,
-    }
+    },
   },
   {
     createdAt: false,

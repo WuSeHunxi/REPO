@@ -1,2 +1,4 @@
 require("./models/relation");
-require("./mock/mockStudent");
+// const studentResult = require("./mock/mockStudent");
+// require("./mock/mockClass");
+

@@ -11,6 +11,7 @@ const result = Mock.mock({
     },
   ],
 }).datas;
-console.log(result);
+// console.log(result);
+//导入数据库
 const Student = require("../models/Student");
 Student.bulkCreate(result);
