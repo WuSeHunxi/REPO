@@ -13,12 +13,15 @@ module.exports = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
       get() {
+        //得到的是时间戳
         return this.getDataValue("birthday").getTime();
       },
     },
     age: {
+      //虚拟字段
       type: DataTypes.VIRTUAL,
       get() {
+        //访问器属性
         const now = moment.utc();
         const birth = moment.utc(this.birthday);
         return now.diff(birth, "y"); //得到两个日期的年份的差异
