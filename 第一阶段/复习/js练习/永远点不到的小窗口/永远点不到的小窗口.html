@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        /**
+         * 这个小窗口在整个屏幕上都可以移动
+         **/
+      var game = {
+        maxTop: 0, //保存小窗口可用的最大top
+        maxLeft: 0, //保存小窗口可用的最大left
+        WSIZE: 100, //保存小窗口的文档显示区大小
+        OFFSET: 0, //完整窗口大小和文档显示区大小的差
+        pop: null, //保存弹出的新窗口对象
+        init: function () {
+          // 计算当前对象的OFFSET:当前窗口的高 - 文档显示区的高
+          this.OFFSET = window.outerHeight - window.innerHeight;
+          // 计算当前对象的maxTop:屏幕的可用高-WSIZE-OFFSET
+          this.maxTop = screen.availHeight - this.WSIZE - this.OFFSET;
+          // 计算当前对象的maxLeft:屏幕的可用宽-WSIZE
+          this.maxLeft = screen.availWidth - this.WSIZE;
+          // 随机生成top：0~maxTop之间随机生成一个随机整数 ，保存在变量t中
+          var t = parseInt(Math.random() * (this.maxTop + 1));
+          // 随机生成left：left也是在0到maxLeft之间随机生成一个随机整数，保存在变量l中
+          var l = parseInt(Math.random() * (this.maxLeft + 1));
+          //  定义配置字符串config:"top = t+OFFSET,left = ?,width=WSIZE,height=WSIZE"；
+          var config =
+            "top = " +
+            t +
+            ",left = " +
+            l +
+            ", width = " +
+            this.WSIZE +
+            ",height = " +
+            this.WSIZE;
+          // 打开新窗口，设置url为ablout:blank,设置name为_blank，设置config为config字符串,将返回的新窗口对象保存在pop中
+          this.pop = window.open("about:blank", "_blank", config);
+          var img = new Image(); //创建img元素
+          // 设置img 的src为D:/xx.gif
+          img.src = "./lbxx.png";
+          // 设置img的宽为80px
+          img.style.width = "100%";
+          // 为img绑定onclick：提示：“约么？”
+          img.onclick = function () {
+            alert("约么？");
+          };
+          // 将img追加到pop中的document的body下
+          this.pop.document.body.appendChild(img);
+          // 留住this
+          var me = this;
+          // 为pop绑定鼠标进入事件为function(e){
+          this.pop.onmouseover = function (e) {
+            //获得鼠标相对于整个屏幕的X坐标
+            //获得鼠标相对于整个屏幕的Y坐标
+            var x = e.screenX,
+              y = e.screenY;
+            for (;;) {
+              // 反复生成随机位置
+              // 随机生成top：0~maxTop之间随机生成一个随机整数 ，保存在变量t中
+              var t = parseInt(Math.random() * (me.maxTop + 1));
+              // 随机生成left：left也是在0到maxLeft之间随机生成一个随机整数，保存在变量l中
+              var l = parseInt(Math.random() * (me.maxLeft + 1));
+              //如果！（x大于l而且x小于l+outerWidth
+              // 而且y大于t而且y小于t+outerHeight）
+              if (
+                !(
+                  x > l &&
+                  x < l + this.outerWidth &&
+                  y > t &&
+                  y < t + this.outerHeight
+                )
+              ) {
+                // 将pop移动到l，t的位置
+                this.moveTo(l, t);
+                // 退出循环
+                break;
+              }
+            }
+          };
+        },
+      };
+      window.onload = function () {
+        game.init();
+      };
+    </script>
+  </body>
+</html>
