@@ -8,9 +8,9 @@
   </head>
   <body>
     <script>
-        /**
-         * 这个小窗口在整个屏幕上都可以移动
-         **/
+      /**
+       * 这个小窗口在整个屏幕上都可以移动
+       **/
       var game = {
         maxTop: 0, //保存小窗口可用的最大top
         maxLeft: 0, //保存小窗口可用的最大left
@@ -69,10 +69,12 @@
               // 而且y大于t而且y小于t+outerHeight）
               if (
                 !(
-                  x > l &&
-                  x < l + this.outerWidth &&
-                  y > t &&
-                  y < t + this.outerHeight
+                  (
+                    x > l &&
+                    x < l + this.outerWidth &&
+                    y > t &&
+                    y < t + this.outerHeight
+                  ) //鼠标不能在小窗口的文档区域内
                 )
               ) {
                 // 将pop移动到l，t的位置
