@@ -6,6 +6,44 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      //开始进行配置
+      var game = {
+        wise: 100,
+        maxTop: 0,
+        maxLeft: 0,
+        pop: null,
+        offset: 0,
+        init() {
+          this.offset = window.outerHeight - window.innerHeight;
+          this.maxTop = screen.availHeight - this.wise - this.offset;
+          this.maxLeft = screen.availWidth - this.wise;
+          var top = parseInt(Math.random() * this.maxTop + 1);
+          var left = parseInt(Math.random() * this.left + 1);
+          var config = `top=${top},left=${left},width=${this.wise},height=${this.wise}`;
+          this.pop = window.open("about:blank", "_blank", config);
+          this.pop.onmouseover = (e) => {
+            var x = e.screenX;
+            var y = e.screenY;
+            for (;;) {
+              var randTop = parseInt(Math.random() * this.maxTop);
+              var randLeft = parseInt(Math.random() * this.maxLeft);
+              if (
+                x > randLeft &&
+                x < randLeft + this.outerHeight &&
+                y > randTop &&
+                y < randTop + this.outerHeight
+              ) {
+                this.moveTo(randLeft, randTop);
+                break;
+              }
+            }
+          };
+        },
+      };
+      window.onload = function () {
+        game.init();
+      };
+    </script>
   </body>
 </html>
