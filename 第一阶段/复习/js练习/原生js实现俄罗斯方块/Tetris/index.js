@@ -98,6 +98,9 @@ function checkClear() {
   return result;
 }
 
+/**
+ * 当俄罗斯方块到达最后一行或者下一行有内容的时候进行固定，并且开始清除
+ */
 function fixed() {
   //将动态的元素进行固定，并且置空
   try {
@@ -122,6 +125,7 @@ function fixed() {
 function isDrop() {
   //判断是否还能下降
   for (var i = 0; i < dynamicElement.squareList.length; i++) {
+    //二维数组要先纵在横：每一行就也是一个数组
     if (
       (squareSet[dynamicElement.squareList[i].y + 1] &&
         squareSet[dynamicElement.squareList[i].y + 1][
@@ -164,9 +168,10 @@ function render(all) {
 }
 
 function checkOutOfRange() {
-  //检查出界
+  //检查出界：使用到了出界算法
   var max = 0;
   for (var i = 0; i < dynamicElement.squareList.length; i++) {
+    //先判断是不是出界了，然后再判断出界了就要分别看哪边出界了
     if (
       (dynamicElement.squareList[i].x < 0 ||
         dynamicElement.squareList[i].x > 9) && //有小方块出界
@@ -188,6 +193,7 @@ function randomGenerateElement() {
   var elementTypeNum = Math.floor(Math.random() * elementType.length);
   var statusNum = Math.floor(Math.random() * 4);
   var colorTypeNum = Math.floor(Math.random() * colorType.length);
+  //返回的是类的实例对象：elementType是每一个俄罗斯方块的类型的数组
   return new elementType[elementTypeNum](
     5,
     -2,
