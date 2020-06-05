@@ -7,6 +7,7 @@ module.exports = (err, req, res, next) => {
       msg: err instanceof Error ? err.message : err,
     };
     //发生了错误
+    // res.send(errObj);
     res.status(500).send(errObj);
   } else {
     next();

@@ -1,21 +1,21 @@
 const express = require("express");
-const app = express(); //创建一个express应用
+const app = express();
+app.get(
+  "/news",
+  (req, res, next) => {
+    console.log("handle1");
+    next(new Error("abc"));
+  }
+  // require("./errorMiddleware")
+);
 
-app.use(require("./staticMiddleware"));
-
-app.get("/news/abc", (req, res, next) => {
-  console.log("handler1");
-  // throw new Error("abc")
-  // 相当于 next(new Error("abc"))
-  next(new Error("abc"));
-  //   next();
+app.get("/news", (req, res, next) => {
+  console.log("handle2");
+  next();
 });
+app.use(require("./errorMiddleware"));
 
-//能匹配  /news  /news/abc   /news/123   /news/ab/adfs
-//不能匹配  /n   /a   /   /newsabc
-app.use("/news", require("./errorMiddleware"));
-
-const port = 5008;
+const port = 4400;
 app.listen(port, () => {
   console.log(`server listen on ${port}`);
 });
